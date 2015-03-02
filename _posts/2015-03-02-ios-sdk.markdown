@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "iOS SDK"
+short-title: 'iOS'
+date:   2015-03-02 17:21:38
+categories: sdks
+permalink: /:categories/ios/
+---
+
+This is the ios sdk, lol!

@@ -1,26 +1,116 @@
+body, html {
+    background: #2f3e64;
+    background-image: url('/assets/images/bg.png');
+    font-family: 'proxima-nova', Helvetica, sans-serif;
+}
+
+.page-content {
+
+    .wrapper {
+        border-radius: 6px;
+        background: white;
+        padding: 0;
+        box-shadow: 0 0 21px rgba(0,0,0,.21);
+    }
+}
+
+.sidebar {
+    width: 250px;
+    float: left;
+    padding: 47px 30px;
+
+    ul {
+        li {
+            float: none;
+            display: block;
+            font-size: 19px;
+            font-weight: 400;
+            color: #2b2b2b;
+
+            li {
+                font-size: 14px;
+                padding-left: 15px;
+                font-weight: 300;
+            }
+        }
+    }
+}
+
+.content {
+    width: 690px;
+    float: left;
+    background: white;
+    padding: 47px 30px;
+    border-left: 1px solid #ddd;
+}
+
+.breadcrumb {
+    display: inline-block;
+    width: 100%;
+    background: #F0F0F0;
+    padding: 20px 30px;
+    border-radius: 6px 6px 0 0;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: -7px;
+
+    li {
+        margin-right: 13px;
+        font-size: 15px;
+        font-weight: 400;
+
+        &:after {
+            content: '/';
+            padding-left: 13px;
+            color: #aaa;
+            font-weight: 600;
+        }
+
+        &:last-of-type:after {
+            content: '';
+        }
+    }
+}
+
+
+.main-menu {
+    li {
+        margin-left: 15px;
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: 300;
+        letter-spacing: 0.06em;
+
+        a {
+            color: white;
+        }
+    }
+}
+
+.btn {
+    border: 2px solid white;
+    border-radius: 4px;
+    padding: 8px 10px;
+    letter-spacing: 0.06em;
+
+    &.primary {
+        color: #79c237;
+        border-color: #79c237;
+    }
+}
+
+.site-header {
+    padding: 40px 0;
+}
+
 /**
  * Site header
  */
-.site-header {
-    border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
-    min-height: 56px;
 
-    // Positioning context for the mobile navigation icon
-    position: relative;
-}
 
 .site-title {
-    font-size: 26px;
-    line-height: 56px;
-    letter-spacing: -1px;
-    margin-bottom: 0;
-    float: left;
-
-    &,
-    &:visited {
-        color: $grey-color-dark;
-    }
+    display: inline-block;
+    width: 130px;
+    padding-top: 14px;
 }
 
 .site-nav {
@@ -92,8 +182,9 @@
  * Site footer
  */
 .site-footer {
-    border-top: 1px solid $grey-color-light;
     padding: $spacing-unit 0;
+    color: white;
+    font-size: 12px;
 }
 
 .footer-heading {

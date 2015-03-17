@@ -7,17 +7,37 @@
 
     {% include header.html %}
 
+
     <div class="page-content">
       <div class="wrapper">
-        {{ content }}
+        <div class="breadcrumb">
+          <ul id='breadcrumb'>
+            {% if page.categories %}
+              <li><a href="/">Home</a></li>
+              {% for category in page.categories %}
+                <li><a href="/{{category}}">{{ category | capitalize }}</a></li>
+              {% endfor %}
+            {% endif %}
+            <li class="active">{{ page.title }}</li>
+          </ul><!-- /.breadcrumb #breadcrumb -->
+        </div>
+
+        <div class="sidebar">
+          {% if page.portal == "developer" %}
+            {% include _sidebar_developer.html %}
+          {% elsif page.portal == "learn" %}
+            {% include _sidebar_learn.html %}
+          {% else %}
+            {% include _sidebar_developer.html %}
+          {% endif %}
+        </div>
+
+        <div class="content">
+          {{ content }}
+        </div>
+
       </div>
     </div>
-
-    {% for page in site.categories.sdks reversed %}
-      <li>
-        <a href="{{page.url}}">{{ page.short-title }}</a>
-      </li>
-    {% endfor %}
 
     {% include footer.html %}
   </body>

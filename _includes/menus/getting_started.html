@@ -1,0 +1,12 @@
+<ul>
+  <li>
+    Getting Started
+    <ul>
+    {% for page in site.categories.getting-started reversed %}
+      <li>
+        <a href="{{page.url}}">{{ page.title }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+  </li>
+</ul>

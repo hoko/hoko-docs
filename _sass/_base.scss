@@ -1,3 +1,9 @@
+*, *:after, *:before {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
 /**
  * Reset some basic elements
  */
@@ -65,6 +71,16 @@ figcaption {
  */
 ul, ol {
     margin-left: $spacing-unit;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    float: left;
+  }
 }
 
 li {
@@ -154,12 +170,10 @@ pre {
  * Wrapper
  */
 .wrapper {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+    max-width: #{$content-width};
+    max-width: #{$content-width};
     margin-right: auto;
     margin-left: auto;
-    padding-right: $spacing-unit;
-    padding-left: $spacing-unit;
     @extend %clearfix;
 
     @include media-query($on-laptop) {

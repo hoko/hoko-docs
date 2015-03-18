@@ -50,10 +50,11 @@ body {
     background: white;
     padding: 47px 30px;
     border-left: 1px solid #ddd;
-    border-radius: 6px;
+
 
     @include media-query($on-palm) {
         width: 100%;
+        border-radius: 6px;
     }
 }
 

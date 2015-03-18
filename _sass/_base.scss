@@ -144,13 +144,13 @@ blockquote {
 pre,
 code {
     font-size: 15px;
-    border: 1px solid $grey-color-light;
     border-radius: 3px;
-    background-color: #eef;
 }
 
 code {
-    padding: 1px 5px;
+    padding: 2px 5px;
+    background: #eee;
+    border: 1px solid #ddd;
 }
 
 pre {

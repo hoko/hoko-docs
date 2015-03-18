@@ -4,6 +4,10 @@ body, html {
     font-family: 'proxima-nova', Helvetica, sans-serif;
 }
 
+body {
+    padding: 0 15px;
+}
+
 .page-content {
 
     .wrapper {
@@ -34,6 +38,10 @@ body, html {
             }
         }
     }
+
+    @include media-query($on-palm) {
+        display: none;
+    }
 }
 
 .content {
@@ -42,6 +50,11 @@ body, html {
     background: white;
     padding: 47px 30px;
     border-left: 1px solid #ddd;
+    border-radius: 6px;
+
+    @include media-query($on-palm) {
+        width: 100%;
+    }
 }
 
 .breadcrumb {
@@ -91,15 +104,39 @@ body, html {
     border-radius: 4px;
     padding: 8px 10px;
     letter-spacing: 0.06em;
+    font-size: 12px;
+    margin-left: 10px;
+    color: white!important;
+
+    &:hover {
+        color: black!important;
+        background: white;
+        text-decoration: none;
+    }
 
     &.primary {
-        color: #79c237;
+        color: #79c237!important;
         border-color: #79c237;
+
+        &:hover {
+            color: white!important;
+            background: #79c237;
+        }
     }
+
+    @include media-query($on-palm) {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
 }
 
 .site-header {
     padding: 40px 0;
+
+    @include media-query($on-palm) {
+        padding: 20px 0;
+    }
 }
 
 /**
@@ -107,15 +144,31 @@ body, html {
  */
 
 
+.static-menu {
+    float: right;
+    display: inline-block;
+    padding-top: 7px;
+
+    @include media-query($on-palm) {
+        position: absolute;
+        top: 29px;
+        right: 65px;
+    }
+}
+
 .site-title {
     display: inline-block;
     width: 130px;
     padding-top: 14px;
+
+    @include media-query($on-palm) {
+        width: 95px;
+    }
 }
 
 .site-nav {
     float: right;
-    line-height: 56px;
+    line-height: 40px;
 
     .menu-icon {
         display: none;
@@ -133,20 +186,42 @@ body, html {
 
     @include media-query($on-palm) {
         position: absolute;
-        top: 9px;
-        right: 30px;
-        background-color: $background-color;
-        border: 1px solid $grey-color-light;
+        top: 32px;
+        right: 15px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 2px rgba(0,0,0,0.12);
         border-radius: 5px;
         text-align: right;
+        padding-left: 0;
+
+        li {
+            display: block;
+            float: none;
+            font-size: 15px;
+            text-align: left;
+            padding: 5px 20px;
+            border-bottom: 1px solid #ddd;
+            margin: 0;
+
+            &:last-of-type {
+                border: none;
+            }
+
+            a {
+                color: black;
+                text-transform: none;
+                letter-spacing: 0;
+                font-weight: 500;
+            }
+        }
 
         .menu-icon {
             display: block;
             float: right;
             width: 36px;
-            height: 26px;
             line-height: 0;
-            padding-top: 10px;
+            padding: 10px;
             text-align: center;
 
             > svg {
@@ -171,7 +246,7 @@ body, html {
 
         .page-link {
             display: block;
-            padding: 5px 10px;
+            // padding: 5px 10px;
         }
     }
 }

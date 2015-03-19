@@ -1,0 +1,25 @@
+<ul>
+  <li>
+    Basic
+    <ul>
+    {% for page in site.categories.basic reversed %}
+      <li>
+        <a href="{{page.url}}">{{ page.title }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+  </li>
+</ul>
+
+<ul>
+  <li>
+    Advanced
+    <ul>
+    {% for page in site.categories.advanced reversed %}
+      <li>
+        <a href="{{page.url}}">{{ page.title }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+  </li>
+</ul>

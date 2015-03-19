@@ -1,6 +1,5 @@
 ---
-layout: default
-portal: developer
+layout: documentation
 title: Developers
 ---
 

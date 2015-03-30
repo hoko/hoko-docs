@@ -1,6 +1,6 @@
 ---
 title: Integrate Android SDK
-categories: getting-started
+categories: quickstart
 layout: documentation
 permalink: /:categories/:title
 ---

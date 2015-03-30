@@ -1,8 +1,38 @@
 <ul>
   <li>
-    Getting Started
+    Quickstart
     <ul>
-    {% for page in site.categories.getting-started reversed %}
+    {% for page in site.categories.quickstart reversed %}
+      <li>
+        <a href="{{page.url}}">{{ page.title }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+  </li>
+  <li>
+    iOS
+    <ul>
+    {% for page in site.categories.ios reversed %}
+      <li>
+        <a href="{{page.url}}">{{ page.title }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+  </li>
+  <li>
+    Android
+    <ul>
+    {% for page in site.categories.android reversed %}
+      <li>
+        <a href="{{page.url}}">{{ page.title }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+  </li>
+  <li>
+    REST API
+    <ul>
+    {% for page in site.categories.android reversed %}
       <li>
         <a href="{{page.url}}">{{ page.title }}</a>
       </li>

@@ -5,17 +5,11 @@ layout: documentation
 permalink: /:categories/android
 ---
 
-To integrate HOKO in your app, simply follow the 3 simple steps below after adding it to your project.
+To integrate HOKO in your app, simply follow the 3 simple steps below.
 
 # Install HOKO in your project
 
-## Gradle
-
-{% highlight groovy %}
-compile 'com.hokolinks:hoko:1.2'
-{% endhighlight %}
-
-## Maven
+Download [the latest JAR](https://oss.sonatype.org/service/local/repositories/releases/content/com/hokolinks/hoko/1.2/hoko-1.2.jar) or grab via Maven:
 
 {% highlight xml %}
 <dependency>
@@ -23,6 +17,12 @@ compile 'com.hokolinks:hoko:1.2'
   <artifactId>hoko</artifactId>
   <version>1.2</version>
 </dependency>
+{% endhighlight %}
+
+or Gradle:
+
+{% highlight groovy %}
+compile 'com.hokolinks:hoko:1.2'
 {% endhighlight %}
 
 # Setting up the AndroidManifest.xml

@@ -5,7 +5,7 @@ layout: documentation
 permalink: /:categories/ios
 ---
 
-To integrate HOKO in your app, simply follow the 3 simple steps below after adding it to your project.
+To integrate HOKO in your app, simply follow the 3 simple steps below.
 
 # Install HOKO in your project
 
@@ -18,7 +18,7 @@ To integrate HOKO in your app, simply follow the 3 simple steps below after addi
 pod 'Hoko', '~> 1.2'
 {% endhighlight %}
 
-3. Run `pod install` and wait for CocoaPod to install HOKO SDK. From this moment on, instead of using `.xcodeproj` file, you should start using `.xcworkspace`.
+3. Run `pod install` and wait for **CocoaPods** to install **HOKO SDK**. From this moment on, instead of using `.xcodeproj` file, you should start using `.xcworkspace`.
 
 ## Framework
 

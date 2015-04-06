@@ -450,7 +450,7 @@ body, html {
 }
 
 .suggest-edits-btn {
-  background-color: #bbb;
+  background-color: transparent;
   padding: 6px 20px 6px 35px;
   color: #333!important;
   border-radius: 3px;
@@ -464,7 +464,7 @@ body, html {
   border: 1px solid #999;
 
   &:hover {
-    background-color: #aaa;
+    background-color: #ddd;
     text-decoration: none;
   }
 }

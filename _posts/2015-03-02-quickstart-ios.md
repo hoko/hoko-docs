@@ -36,8 +36,6 @@ Next, we need to define our custom URL type. Remember, we want to open the app v
 
 Add the following line to your `applicationDidFinishLaunching` method in your `AppDelegate` class.
 
-Objective-C
-
 {% highlight objective-c %}
 #import <Hoko/Hoko.h>
 

@@ -191,8 +191,8 @@ To allow applications to link to content without the use of templates, the HOKO 
 HKDeeplink *deeplink = [HKDeeplink deeplinkWithRoute:@"product/:product_id"
                                      routeParameters:@{@"product_id":@(self.product.identifier)}
                                      queryParameters:@{@"referrer": self.user.name}];
-[deeplink addURL:@"http://hokolinks.com/the_perfect_product" forPlatform:HKDeeplinkPlatformWeb];
-[deeplink addURL:@"http://hokolinks.com/no_android_app_yet" forPlatform:HKDeeplinkPlatformAndroid];
+[deeplink addURL:@"http://awesomeapp.com/the_perfect_product" forPlatform:HKDeeplinkPlatformWeb];
+[deeplink addURL:@"http://awesomeapp.com/no_android_app_yet" forPlatform:HKDeeplinkPlatformAndroid];
 
 [[Hoko deeplinking] generateSmartlinkForDeeplink:deeplink success:^(NSString *smartlink) {
   [[Social sharedInstance] shareProduct:self.product link:smartlink];
@@ -205,8 +205,8 @@ HKDeeplink *deeplink = [HKDeeplink deeplinkWithRoute:@"product/:product_id"
 {% highlight swift %}
 let deeplink = HKDeeplink("product/:product_id", routeParameters: ["product_id": product.identifier], 
                                                  queryParameters:["referrer": user.name])
-deeplink.addURL("http://hokolinks.com/the_perfect_product" forPlatform:.Web)
-deeplink.addURL("http://hokolinks.com/no_android_app_yet" forPlatform:.Android)
+deeplink.addURL("http://awesomeapp.com/the_perfect_product" forPlatform:.Web)
+deeplink.addURL("http://awesomeapp.com/no_android_app_yet" forPlatform:.Android)
 
 Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink: String!) -> Void in
   Social.sharedInstance().shareProduct(product, link: smartlink)

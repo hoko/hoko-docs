@@ -4,4 +4,4 @@ title: Support
 permalink: /support/
 ---
 
-LEARN
+{% include _sidebar_learn.html %}

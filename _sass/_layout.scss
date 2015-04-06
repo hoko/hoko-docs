@@ -4,10 +4,6 @@ body, html {
     font-family: 'proxima-nova', Helvetica, sans-serif;
 }
 
-body {
-    padding: 0 15px;
-}
-
 .page-content {
 
     .wrapper {
@@ -51,6 +47,22 @@ body {
     padding: 47px 30px;
     border-left: 1px solid #ddd;
 
+    ul {
+        li {
+            float: none;
+            display: block;
+            font-size: 19px;
+            font-weight: 400;
+            color: #2b2b2b;
+
+            li {
+                font-size: 14px;
+                padding-left: 15px;
+                font-weight: 300;
+            }
+        }
+    }
+
 
     @include media-query($on-palm) {
         width: 100%;
@@ -62,10 +74,14 @@ body {
     display: inline-block;
     width: 100%;
     background: #F0F0F0;
-    padding: 20px 30px;
+    padding: 13px 13px 11px 30px;
     border-radius: 6px 6px 0 0;
     border-bottom: 2px solid #ddd;
     margin-bottom: -7px;
+
+    ul {
+      line-height: 2.3em;
+    }
 
     li {
         margin-right: 13px;
@@ -93,6 +109,7 @@ body {
         text-transform: uppercase;
         font-weight: 300;
         letter-spacing: 0.06em;
+        line-height: 32px;
 
         a {
             color: white;
@@ -106,8 +123,8 @@ body {
     padding: 8px 10px;
     letter-spacing: 0.06em;
     font-size: 12px;
-    margin-left: 10px;
     color: white!important;
+    text-transform: none;
 
     &:hover {
         color: black!important;
@@ -159,18 +176,27 @@ body {
 
 .site-title {
     display: inline-block;
-    width: 130px;
-    padding-top: 14px;
+    width: 120px;
 
     @include media-query($on-palm) {
         width: 95px;
     }
 }
 
-.site-nav {
-    float: right;
-    line-height: 40px;
+.header {
+  background: #1B182A;
+  padding: 20px 0;
+}
 
+.header-logo {
+  float: left;
+}
+
+.header-links {
+  float: right;
+}
+
+.site-nav {
     .menu-icon {
         display: none;
     }
@@ -187,7 +213,7 @@ body {
 
     @include media-query($on-palm) {
         position: absolute;
-        top: 32px;
+        top: 14px;
         right: 15px;
         background-color: #fff;
         border: 1px solid #ddd;
@@ -238,6 +264,18 @@ body {
         .trigger {
             clear: both;
             display: none;
+
+            .btn {
+              color: black!important;
+              border: none;
+              padding: 0;
+              font-size: 15px;
+
+              &:hover {
+                background: transparent;
+                text-decoration: underline!important;
+              }
+            }
         }
 
         &:hover .trigger {
@@ -258,7 +296,7 @@ body {
  * Site footer
  */
 .site-footer {
-    padding: $spacing-unit 0;
+    padding: 0 0 $spacing-unit;
     color: white;
     font-size: 12px;
 }
@@ -329,7 +367,7 @@ body {
  * Page content
  */
 .page-content {
-    padding: $spacing-unit 0;
+    padding: $spacing-unit 15px;
 }
 
 .page-heading {
@@ -361,13 +399,17 @@ body {
  * Posts
  */
 .post-header {
-    margin-bottom: $spacing-unit;
+    margin-bottom: 10px;
 }
 
 .post-title {
     font-size: 42px;
     letter-spacing: -1px;
     line-height: 1;
+    color: #1B182A;
+    font-weight: 500;
+    margin-top: 0px;
+    margin-bottom: 0;
 
     @include media-query($on-laptop) {
         font-size: 36px;
@@ -400,4 +442,29 @@ body {
             font-size: 18px;
         }
     }
+}
+
+
+.suggest-edits {
+  float: right;
+}
+
+.suggest-edits-btn {
+  background-color: #bbb;
+  padding: 6px 20px 6px 35px;
+  color: #333!important;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
+  background-image: url('/assets/images/pencil.svg');
+  background-size: 12px 12px;
+  background-position: 15px 9px;
+  background-repeat: no-repeat;
+  border: 1px solid #999;
+
+  &:hover {
+    background-color: #aaa;
+    text-decoration: none;
+  }
 }

@@ -29,7 +29,14 @@ compile 'com.hokolinks:hoko:1.2.1'
 
 ## Deep linking
 
-Add the following lines to your `AndroidManifest.xml` while making sure to have the `android.permission.INTERNET` and `android.permission.ACCESS_NETWORK_STATE` permissions.
+Add the following lines to your `AndroidManifest.xml` to make sure to have the following permissions:
+
+{% highlight xml %}
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+{% endhighlight %}
+
+Now for the actual deeplinking, please add the `Activity` and `Receiver` to the `application` of your `AndroidManifest.xml`
 
 {% highlight xml %}
 <activity
@@ -67,8 +74,6 @@ To make sure push notifications work with HOKO make sure you have the following 
 <uses-permission android:name="===YOUR-PACKAGE-NAME===.permission.C2D_MESSAGE" />
 <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 <uses-permission android:name="android.permission.WAKE_LOCK" />
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 {% endhighlight %}
 
 And the following `Service` and `Receiver` declared as well.

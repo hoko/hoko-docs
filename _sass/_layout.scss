@@ -19,6 +19,7 @@ body, html {
     float: left;
     padding: 47px 30px;
 
+
     ul {
         li {
             float: none;
@@ -38,6 +39,10 @@ body, html {
     @include media-query($on-palm) {
         display: none;
     }
+}
+
+.sidebar > ul > li {
+  margin-bottom: 14px;
 }
 
 .content {

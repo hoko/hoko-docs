@@ -5,15 +5,15 @@
   background: #333;
   border: 1px solid black;
   border-radius: 3px;
-  //@extend %vertical-rhythm;
+  line-height: 1.1em !important;
+  @extend %vertical-rhythm;
 
   pre {
     margin: 0;
 
     code {
       color: white;
-      line-height: 1.1em;
-      padding: 1px 5px;
+      line-height: 1.1em !important;
       background: transparent;
       border: none;
       font-family: Menlo, monospace;

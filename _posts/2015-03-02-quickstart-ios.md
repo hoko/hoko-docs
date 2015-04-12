@@ -5,7 +5,7 @@ layout: documentation
 permalink: /:categories/ios
 ---
 
-To integrate HOKO in your app, simply follow the 3 simple steps below.
+To integrate HOKO open source SDK in your app, simply follow the 3 simple steps below.
 
 # Install HOKO in your project
 
@@ -14,9 +14,9 @@ To integrate HOKO in your app, simply follow the 3 simple steps below.
 1. Install [CocoaPods](http://cocoapods.org/) in your system
 2. Open your Xcode project folder and create a file called `Podfile` with the following content:
 
-{% highlight ruby %}
-pod 'Hoko', '~> 1.2'
-{% endhighlight %}
+  {% highlight ruby %}
+  pod 'Hoko', '~> 1.2'
+  {% endhighlight %}
 
 3. Run `pod install` and wait for **CocoaPods** to install **HOKO SDK**. From this moment on, instead of using `.xcodeproj` file, you should start using `.xcworkspace`.
 

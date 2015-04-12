@@ -160,7 +160,7 @@ Hoko.deeplinking().addHandler(new Handler() {
 
 ## Deep link delegation
 
-To save time integrating HOKO in an application, HOKO **does not require** delegation of actual deep links, so long as `HokoActivity` is added to the `AndroidManifest.xml` with a ***URL scheme**. In case you want a better control of how HOKO should operate, you can manually delegate deep links through the deep linking module.
+To save time integrating HOKO in an application, HOKO **does not require** delegation of actual deep links, as long as `HokoActivity` is added to the `AndroidManifest.xml` with a ***URL scheme**. In case you want a better control of how HOKO should operate, you can manually delegate deep links through the deep linking module.
 
 {% highlight java %}
 Hoko.deeplinking().openURL(deeplink);
@@ -172,7 +172,7 @@ Smartlinks may be created on the dashboard or through the HOKO SDK, in order to 
 
 ### Smartlinks from templates
 
-To generate Smartlinks through templates, the application it needs a **route format**, the corresponding **route parameters** and optional **query parameters**.
+To generate Smartlinks through templates, the application needs a **route format**, the corresponding **route parameters** and optional **query parameters**.
 
 #### From @DeeplinkRoute
 

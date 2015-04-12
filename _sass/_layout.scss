@@ -4,14 +4,18 @@ body, html {
     font-family: 'proxima-nova', Helvetica, sans-serif;
 }
 
+h2 {
+  margin-top: 40px;
+}
+
 .page-content {
 
-    .wrapper {
-        border-radius: 6px;
-        background: white;
-        padding: 0;
-        box-shadow: 0 0 21px rgba(0,0,0,.21);
-    }
+  .wrapper {
+    border-radius: 6px;
+    background: white;
+    padding: 0;
+    box-shadow: 0 0 21px rgba(0,0,0,.21);
+  }
 }
 
 .sidebar {

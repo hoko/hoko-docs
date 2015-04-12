@@ -5,26 +5,28 @@ layout: documentation
 permalink: /:categories/ios
 ---
 
-To integrate HOKO open source SDK in your app, simply follow the 3 simple steps below.
+To integrate HOKO open source SDK in your app you just have to follow 3 simple steps (either using
+[cocoapods][cocoapods] or doing it manually).
 
-# Install HOKO in your project
+## Using cocoapods
 
-## Cocoapods
+**1.** Install [CocoaPods][cocoapods] in your system
 
-1. Install [CocoaPods](http://cocoapods.org/) in your system
-2. Open your Xcode project folder and create a file called `Podfile` with the following content:
+**2.** Open your Xcode project folder and create a file called `Podfile` with the following content:
 
-  {% highlight ruby %}
-  pod 'Hoko', '~> 1.2'
-  {% endhighlight %}
+{% highlight ruby %}
+pod 'Hoko', '~> 1.2'
+{% endhighlight %}
 
-3. Run `pod install` and wait for **CocoaPods** to install **HOKO SDK**. From this moment on, instead of using `.xcodeproj` file, you should start using `.xcworkspace`.
+**3.** Run `pod install` and wait for **CocoaPods** to install **HOKO SDK**. From this moment on, instead of using `.xcodeproj` file, you should start using `.xcworkspace`.
 
-## Framework
+## Manual integration
 
-1. Download the [Hoko SDK](https://github.com/hokolinks/hoko-ios/archive/master.zip).
-2. Drag the `Hoko` folder to your project.
-3. Be sure to also add `SystemConfiguration.framework` and `zlib.dylib` in case your project does not include it already.
+**1.** Download the [Hoko SDK](https://github.com/hokolinks/hoko-ios/archive/master.zip).
+
+**2.** Drag the `Hoko` folder to your project.
+
+**3.** Be sure to also add `SystemConfiguration.framework` and `zlib.dylib` in case your project does not include it already.
 
 # Add a URL Scheme to your App
 
@@ -52,3 +54,5 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
   // The rest of your code goes here...
 }
 {% endhighlight %}
+
+[cocoapods]: http://cocoapods.org/ "Cocoapods website"

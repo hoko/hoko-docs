@@ -158,7 +158,7 @@ Smartlinks may be created on the dashboard or through the HOKO SDK, in order to 
 
 ### Smartlinks from templates
 
-To generate Smartlinks through templates, the application it needs a **route format**, the corresponding **route parameters** and optional **query parameters**.
+To generate Smartlinks through templates, the application needs a **route format**, the corresponding **route parameters** and optional **query parameters**.
 
 {% highlight objective-c %}
 HKDeeplink *deeplink = [HKDeeplink deeplinkWithRoute:@"product/:product_id"

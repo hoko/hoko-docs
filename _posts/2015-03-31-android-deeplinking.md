@@ -26,7 +26,7 @@ public class WishlistActivity extends Activity {
 }
 {% endhighlight %}
 
-This will map a `product/:product_id` route to the `ProductDetailActivity`. This `ProductDetailActivity` will always be started when a deep link matching the route is opened in the user's device. (e.g. opening `hoko://wishlist`).
+This will map a `products/:product_id` route to the `ProductDetailActivity`. This `ProductDetailActivity` will always be started when a deep link matching the route is opened in the user's device. (e.g. opening `hoko://wishlist`).
 
 ### Injection
 
@@ -37,7 +37,7 @@ HOKO works by injecting deep link parameters into `Activity` or `Fragment` varia
 On classes annotated with `@DeeplinkRoute`, the injection will look for variables annotated `@DeeplinkRouteParameter` and `@DeeplinkQueryParameter`.
 
 {% highlight java %}
-@DeeplinkRoute("product/:product_id")
+@DeeplinkRoute("products/:product_id")
 public class ProductActivity extends Activity {
 
   @DeeplinkRouteParameter("product_id")
@@ -57,7 +57,7 @@ public class ProductActivity extends Activity {
 }
 {% endhighlight %}
 
-When `inject(...)` is called, and the `ProductActivity` was started from a deep link such as `hoko://product/42?referrer=hokolinks.com`, it will set the `mProductId` as `42` and the `mReferrer` as `"hokolinks.com"`.
+When `inject(...)` is called, and the `ProductActivity` was started from a deep link such as `hoko://products/42?referrer=hokolinks.com`, it will set the `mProductId` as `42` and the `mReferrer` as `"hokolinks.com"`.
 
 The difference between **route parameters** and **query parameters** is how they appear in the actual deep link and if they are required or not for a route to be triggered. 
 
@@ -86,7 +86,7 @@ public class MainActivity extends FragmentActivity {
 In which `ProductFragment` and `WishlistFragment` classes are annotated with `@DeeplinkRoute`.
 
 {% highlight java %}
-@DeeplinkRoute("product/:product_id")
+@DeeplinkRoute("products/:product_id")
 public class ProductFragment extends Fragment {
 
   @DeeplinkRouteParameter("product_id")
@@ -160,7 +160,7 @@ Hoko.deeplinking().addHandler(new Handler() {
 
 ## Deep link delegation
 
-To save time integrating HOKO in an application, HOKO **does not require** delegation of actual deep links, as long as `HokoActivity` is added to the `AndroidManifest.xml` with a ***URL scheme**. In case you want a better control of how HOKO should operate, you can manually delegate deep links through the deep linking module.
+To save time integrating HOKO in an application, HOKO **does not require** delegation of actual deep links, as long as `HokoActivity` is added to the `AndroidManifest.xml` with a **URL scheme**. In case you want a better control of how HOKO should operate, you can manually delegate deep links through the deep linking module.
 
 {% highlight java %}
 Hoko.deeplinking().openURL(deeplink);
@@ -176,61 +176,73 @@ To generate Smartlinks through templates, the application needs a **route format
 
 #### From @DeeplinkRoute
 
-To generate Smartlinks from a `@DeeplinkRoute
-/// TO BE CONTINUED
+To generate Smartlinks from a `@DeeplinkRoute` annotated `Activity` or `Fragment` you can pass the object to the `generateSmartlink(...)` call.
 
-{% highlight objective-c %}
-HKDeeplink *deeplink = [HKDeeplink deeplinkWithRoute:@"product/:product_id"
-                                     routeParameters:@{@"product_id":@(self.product.identifier)}
-                                     queryParameters:@{@"referrer": self.user.name}];
-[[Hoko deeplinking] generateSmartlinkForDeeplink:deeplink success:^(NSString *smartlink) {
-  [[Social sharedInstance] shareProduct:self.product link:smartlink];
-} failure:^(NSError *error) {
-  // Share web link instead
-  [[Social sharedInstance] shareProduct:self.product link:self.product.webLink];
-}];
+{% highlight java %}
+Hoko.deeplinking().generateSmartlink(this, new LinkGenerationListener() {
+  @Override
+  public void onLinkGenerated(String smartlink) {
+    Social.getInstance().shareProduct(mProduct.getName(), smartlink);
+  }
+
+  // Share product link in case smartlink fails
+  @Override
+  public void onError(Exception exception) {
+    Social.getInstance().shareProduct(mProduct.getName(), mProduct.getLink());
+  }
+});
 {% endhighlight %}
 
-{% highlight swift %}
-let deeplink = HKDeeplink("product/:product_id", routeParameters: ["product_id": product.identifier], 
-                                                 queryParameters:["referrer": user.name])        
-Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink: String!) -> Void in
-  Social.sharedInstance().shareProduct(product, link: smartlink)
-}) { (error: NSError!) -> Void in
-  // Share web link instead
-  Social.sharedInstance().shareProduct(product, link: self.product.webLink)
-}
+#### From Deeplink
+
+Another way is to generate Smartlinks from a `Deeplink` object.
+
+{% highlight java %}
+HashMap routeParameters = new HashMap();
+routeParameters.put("product_id", mProduct.getId());
+
+HashMap queryParameters = new HashMap();
+queryParameters.put("referrer", "app");
+
+Deeplink deeplink = Deeplink.deeplink("products/:product_id", routeParameters, queryParameters);
+Hoko.deeplinking().generateSmartlink(deeplink, new LinkGenerationListener() {
+  @Override
+  public void onLinkGenerated(String smartlink) {
+    Social.getInstance().shareProduct(mProduct.getName(), smartlink);
+  }
+  
+  @Override
+  public void onError(Exception e) {
+    Social.getInstance().shareProduct(mProduct.getName(), mProduct.getLink());
+  }
+});
 {% endhighlight %}
 
 ### Smartlinks from URLs
 
-To allow applications to link to content without the use of templates, the HOKO SDK allows the creation of `HKDeeplink` objects and the manual addition of platform dependent URLs.
+To allow applications to link to content without the use of templates, the HOKO SDK allows the creation of `Deeplink` objects and the manual addition of platform dependent URLs.
 
-{% highlight objective-c %}
-HKDeeplink *deeplink = [HKDeeplink deeplinkWithRoute:@"product/:product_id"
-                                     routeParameters:@{@"product_id":@(self.product.identifier)}
-                                     queryParameters:@{@"referrer": self.user.name}];
-[deeplink addURL:@"http://awesomeapp.com/the_perfect_product" forPlatform:HKDeeplinkPlatformWeb];
-[deeplink addURL:@"http://awesomeapp.com/no_android_app_yet" forPlatform:HKDeeplinkPlatformAndroid];
+{% highlight java %}
+HashMap routeParameters = new HashMap();
+routeParameters.put("product_id", mProduct.getId());
 
-[[Hoko deeplinking] generateSmartlinkForDeeplink:deeplink success:^(NSString *smartlink) {
-  [[Social sharedInstance] shareProduct:self.product link:smartlink];
-} failure:^(NSError *error) {
-  // Share web link instead
-  [[Social sharedInstance] shareProduct:self.product link:self.product.webLink];
-}];
-{% endhighlight %}
+HashMap queryParameters = new HashMap();
+queryParameters.put("referrer", "app");
 
-{% highlight swift %}
-let deeplink = HKDeeplink("product/:product_id", routeParameters: ["product_id": product.identifier], 
-                                                 queryParameters:["referrer": user.name])
-deeplink.addURL("http://awesomeapp.com/the_perfect_product" forPlatform:.Web)
-deeplink.addURL("http://awesomeapp.com/no_android_app_yet" forPlatform:.Android)
+Deeplink deeplink = Deeplink.deeplink("products/:product_id", routeParameters, queryParameters);
 
-Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink: String!) -> Void in
-  Social.sharedInstance().shareProduct(product, link: smartlink)
-}) { (error: NSError!) -> Void in
-  // Share web link instead
-  Social.sharedInstance().shareProduct(product, link: self.product.webLink)
-}
+deeplink.addURL("http://awesomeapp.com/the_perfect_product", DeeplinkPlatform.WEB);
+deeplink.addURL("http://awesomeapp.com/no_ios_app_yet", DeeplinkPlatform.IOS);
+
+Hoko.deeplinking().generateSmartlink(deeplink, new LinkGenerationListener() {
+  @Override
+  public void onLinkGenerated(String smartlink) {
+    Social.getInstance().shareProduct(mProduct.getName(), smartlink);
+  }
+  
+  @Override
+  public void onError(Exception e) {
+    Social.getInstance().shareProduct(mProduct.getName(), mProduct.getLink());
+  }
+});
 {% endhighlight %}

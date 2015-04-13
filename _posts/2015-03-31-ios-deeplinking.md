@@ -14,26 +14,26 @@ To map routes with HOKO you should call the **deep linking** module's `mapRoute:
 If an application which has a **product detail view controller** it should somehow map a product route by calling `mapRoute:toTarget:` to the **deep linking** module. 
 
 {% highlight objective-c %}
-[[Hoko deeplinking] mapRoute:@"product/:product_id" 
+[[Hoko deeplinking] mapRoute:@"products/:product_id" 
                     toTarget:^(HKDeeplink *deeplink) {
   // Do something when deeplink is opened
 }];
 {% endhighlight %}
 
 {% highlight swift %}
-Hoko.deeplinking().mapRoute("product/:product_id", toTarget: { 
+Hoko.deeplinking().mapRoute("products/:product_id", toTarget: { 
   (deeplink: HKDeeplink!) -> Void in
     // Do something when deep link is opened
 })
 {% endhighlight %}
 
-This will map a `product/:product_id` route to an executable `target` block. This `target` will always be executed when a deep link matching the route is opened in the user's device. (e.g. opening `hoko://product/42?referrer=hokolinks.com`).
+This will map a `products/:product_id` route to an executable `target` block. This `target` will always be executed when a deep link matching the route is opened in the user's device. (e.g. opening `hoko://products/42?referrer=hokolinks.com`).
 
 ### HKDeeplink
 
 When a `target` block is executed a `HKDeeplink` object is passed as an argument. 
 
-This `HKDeeplink` object will contain 3 parameters. The `route` to which the deep linking was matched against (in this case `product/:product_id`). 
+This `HKDeeplink` object will contain 3 parameters. The `route` to which the deep linking was matched against (in this case `products/:product_id`). 
 
 The `routeParameters`, a dictionary containing all the route format variables which were mapped to the incoming deep link (in this case `{"product_id": 42}`). 
 
@@ -41,10 +41,10 @@ And finally the `queryParameters`, a dictionary which contains all the **optiona
 
 ### Target
 
-The main purpose of a `target` execution block is for the app to create the navigation path and instantiate the proper view controllers to create the designed user experience. If a `hoko://product/42?referrer=hokolinks.com` deep linking is opened the target should provide the user with a product detail view controller representing the product opened.
+The main purpose of a `target` execution block is for the app to create the navigation path and instantiate the proper view controllers to create the designed user experience. If a `hoko://products/42?referrer=hokolinks.com` deep linking is opened the target should provide the user with a product detail view controller representing the product opened.
 
 {% highlight objective-c %}
-[[Hoko deeplinking] mapRoute:@"product/:product_id" 
+[[Hoko deeplinking] mapRoute:@"products/:product_id" 
                     toTarget:^(HKDeeplink *deeplink) {
   BLKProductViewController *productViewController = [[BLKProductViewController alloc] initWithProductId:deeplink.routeParameters[@"product_id"]]; // always exists
   productViewController.referrer = deeplink.queryParameters[@"referrer"]; // might not exist
@@ -53,7 +53,7 @@ The main purpose of a `target` execution block is for the app to create the navi
 {% endhighlight %}
 
 {% highlight swift %}
-Hoko.deeplinking().mapRoute("product/:product_id", toTarget: { 
+Hoko.deeplinking().mapRoute("products/:product_id", toTarget: { 
   (deeplink: HKDeeplink!) -> Void in
     let productViewController = BLKPRoductViewController(productId: deeplink.routeParameters["product_id"]) // always exists
     productViewController.referrer = deeplink.queryParameters["referrer"] // might not exist
@@ -161,7 +161,7 @@ Smartlinks may be created on the dashboard or through the HOKO SDK, in order to 
 To generate Smartlinks through templates, the application needs a **route format**, the corresponding **route parameters** and optional **query parameters**.
 
 {% highlight objective-c %}
-HKDeeplink *deeplink = [HKDeeplink deeplinkWithRoute:@"product/:product_id"
+HKDeeplink *deeplink = [HKDeeplink deeplinkWithRoute:@"products/:product_id"
                                      routeParameters:@{@"product_id":@(self.product.identifier)}
                                      queryParameters:@{@"referrer": self.user.name}];
 [[Hoko deeplinking] generateSmartlinkForDeeplink:deeplink success:^(NSString *smartlink) {
@@ -173,7 +173,7 @@ HKDeeplink *deeplink = [HKDeeplink deeplinkWithRoute:@"product/:product_id"
 {% endhighlight %}
 
 {% highlight swift %}
-let deeplink = HKDeeplink("product/:product_id", routeParameters: ["product_id": product.identifier], 
+let deeplink = HKDeeplink("products/:product_id", routeParameters: ["product_id": product.identifier], 
                                                  queryParameters:["referrer": user.name])        
 Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink: String!) -> Void in
   Social.sharedInstance().shareProduct(product, link: smartlink)
@@ -188,7 +188,7 @@ Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink:
 To allow applications to link to content without the use of templates, the HOKO SDK allows the creation of `HKDeeplink` objects and the manual addition of platform dependent URLs.
 
 {% highlight objective-c %}
-HKDeeplink *deeplink = [HKDeeplink deeplinkWithRoute:@"product/:product_id"
+HKDeeplink *deeplink = [HKDeeplink deeplinkWithRoute:@"products/:product_id"
                                      routeParameters:@{@"product_id":@(self.product.identifier)}
                                      queryParameters:@{@"referrer": self.user.name}];
 [deeplink addURL:@"http://awesomeapp.com/the_perfect_product" forPlatform:HKDeeplinkPlatformWeb];
@@ -203,7 +203,7 @@ HKDeeplink *deeplink = [HKDeeplink deeplinkWithRoute:@"product/:product_id"
 {% endhighlight %}
 
 {% highlight swift %}
-let deeplink = HKDeeplink("product/:product_id", routeParameters: ["product_id": product.identifier], 
+let deeplink = HKDeeplink("products/:product_id", routeParameters: ["product_id": product.identifier], 
                                                  queryParameters:["referrer": user.name])
 deeplink.addURL("http://awesomeapp.com/the_perfect_product" forPlatform:.Web)
 deeplink.addURL("http://awesomeapp.com/no_android_app_yet" forPlatform:.Android)

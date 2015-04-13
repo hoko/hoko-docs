@@ -176,7 +176,7 @@ To generate Smartlinks through templates, the application it needs a **route for
 
 #### From @DeeplinkRoute
 
-To generate Smartlinks from a `@DeeplinkRoute`
+To generate Smartlinks from a `@DeeplinkRoute
 /// TO BE CONTINUED
 
 {% highlight objective-c %}

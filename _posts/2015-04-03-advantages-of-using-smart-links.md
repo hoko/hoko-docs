@@ -1,5 +1,5 @@
 ---
-title: What is the advantage of using Smart Links?
+title: Advantages of using smart links
 categories: basic
 layout: learning_center
 permalink: /:title

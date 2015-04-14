@@ -20,7 +20,7 @@ h2 {
 }
 
 .sidebar {
-    width: 250px;
+    width: 270px;
     float: left;
     padding: 47px 30px;
 
@@ -439,10 +439,11 @@ h2 {
     }
 }
 
-.toc {
+.content .toc {
     list-style: none;
     margin: 0 0 35px;
     border-radius: 6px;
+    padding: 0;
 
     li {
         background: #F7F9FB;
@@ -455,13 +456,6 @@ h2 {
         &:last-of-type {
             padding-bottom: 20px;
             border-radius: 0 0 6px 6px;
-        }
-    }
-
-    a {
-        &:before {
-            content: '- ';
-            margin-right: 5px;
         }
     }
 }

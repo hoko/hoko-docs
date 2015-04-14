@@ -5,9 +5,9 @@ module TocFilter
       id = (entry[1][/^id=(['"])(.*)\1$/, 2] rescue nil)
       title = entry[2].gsub(/<(\w*).*?>(.*?)<\/\1\s*>/m, '\2').strip
       if id
-        output << %{<li><a href="##{id}">#{title}</a></li>}
+        output << %{<li>- <a href="##{id}">#{title}</a></li>}
       else
-        output << %{<li>#{title}</li>}
+        output << %{<li>- #{title}</li>}
       end
     end
     output << '</ul>'

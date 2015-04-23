@@ -1,7 +1,8 @@
 ---
-layout: learning_center
 title: What is HOKO?
-permalink: /support/
+categories: basic
+layout: learning_center
+permalink: /:title
 ---
 
 HOKO is **a deep linking management platform + open source SDK for apps, coupled with an advance tracking dashboard to monitor the performance of every link you share.**
@@ -17,3 +18,6 @@ The integration process is as easy as peeling a banana! We spent half of our tim
 2. let our wizard guide you through the 3 steps process.
   
 It shouldn’t take more than 15 minutes until you can create your first smart link. Ok, maybe it takes a little longer than peeling a banana.
+
+
+

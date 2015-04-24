@@ -3,6 +3,7 @@ title: Is my app ready to deep link?
 categories: basic
 layout: learning_center
 permalink: /:title
+description: Any app is ready for deep linking, and actually every app in the world will end up using this technology at some point. Now it’s a great time for you to ...
 ---
 
 Any app is ready for deep linking, and actually every app in the world will end up using this technology at some point. Now it’s a great time for you to differentiate from other apps, but no many years from now, apps without deep linking will start to get relegated from the app ecosystem.

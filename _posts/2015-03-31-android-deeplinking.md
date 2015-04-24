@@ -3,6 +3,7 @@ title: Deeplinking
 categories: android
 layout: documentation
 permalink: /:categories/:title
+description: Learn how to make your app deep linkable and can you create smart links directly from the HOKO SDK.
 ---
 
 To allow an application to be deep linkable, aside the mandatory additions to **AndroidManifest.xml**, as seen on [quickstart](/quickstart/android) and setting up the SDK, it needs to map **routes**. These **routes** should follow the convention `static/path/:variable/:another_variable`. 

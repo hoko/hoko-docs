@@ -3,6 +3,7 @@ title: Push Notifications
 categories: android
 layout: documentation
 permalink: /:categories/:title
+description: Learn how to make your push notifications smarter with HOKO.
 ---
 
 HOKO allows the creation of push notification campaigns which, with the help of deep links, take users to a specified content. By taking advantage of the user metrics, push notification campaigns can target specific users with specific content to maximize conversion rate.

@@ -3,6 +3,7 @@ title: Deeplinking
 categories: ios
 layout: documentation
 permalink: /:categories/:title
+description: Learn how to make your app deep linkable and can you create smart links directly from the HOKO SDK.
 ---
 
 To allow an application to be deep linkable, aside from registering a **URL Scheme**, as seen on [quickstart](/quickstart/ios) and setting up the SDK, it needs to map **routes**. These **routes** should follow the convention `static/path/:variable/:another_variable`. 

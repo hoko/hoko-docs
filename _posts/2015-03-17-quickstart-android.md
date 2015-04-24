@@ -3,6 +3,7 @@ title: Integrate Android SDK
 categories: quickstart
 layout: documentation
 permalink: /:categories/android
+description: To integrate HOKO open source SDK in your app you just have to follow 3 simple steps (either using the lastest AAR or via Maven).
 ---
 
 To integrate HOKO in your app, simply follow the 3 simple steps below.

@@ -3,6 +3,7 @@ title: What is a deferred deep link?
 categories: basic
 layout: learning_center
 permalink: /:title
+description: HOKO deferred deep linking feature is a proprietary technology that allows apps to send users to a specific section within your app, but with the unique characteristic of working also for users that don't have the app installed yet bypassing ...
 ---
 
 HOKO deferred deep linking feature is a proprietary technology that allows apps to send users to a specific section within your app, but with the unique characteristic of working also for users that don't have the app installed yet bypassing the app store.

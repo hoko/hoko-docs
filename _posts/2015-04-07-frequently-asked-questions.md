@@ -3,6 +3,7 @@ title: Frequently asked questions
 categories: basic
 layout: learning_center
 permalink: /:title
+description: Which platforms does HOKO support? What type of metrics/data can i get from HOKO? What about privacy? ...
 ---
 
 ##Which platforms does HOKO support?

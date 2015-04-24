@@ -3,6 +3,7 @@ title: What is mobile deep linking?
 categories: basic
 layout: learning_center
 permalink: /:title
+description: Mobile deep linking is the ability to bring a user into a specific place or action within a native app, bypassing the homepage.
 ---
 
 

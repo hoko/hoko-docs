@@ -3,6 +3,7 @@ title: Analytics
 categories: ios
 layout: documentation
 permalink: /:categories/:title
+description: How to send data from your app to the HOKO Dashboard
 ---
 
 To allow the creation of Smartlinks with associated user targets HOKO implements a simple form of **Analytics**. It only tracks **users**, their **devices**, **deep linking sessions** and associated **key events**. This also provides a better result analysis, with a breakdown of Smartlink user metrics.

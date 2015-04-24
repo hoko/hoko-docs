@@ -512,3 +512,24 @@ h2 {
     text-decoration: none;
   }
 }
+
+.content .index-list {
+    margin: 0;
+    padding: 0;
+    li {
+        background: #F7F9FB;
+        padding: 10px 20px;
+        margin-bottom: 15px;
+        border-radius: 6px;
+        // border: 1px solid darken(#F7F9FB, 14%);
+        // border-bottom-width: 3px;
+
+        a {
+            font-size: 22px;
+        }
+
+        p:before {
+            display: none;
+        }
+    }
+}

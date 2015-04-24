@@ -3,6 +3,7 @@ title: Utilities
 categories: ios
 layout: documentation
 permalink: /:categories/:title
+description: To help your app on becoming deep linkable we provide a non-mandatory utility class to handle navigation on HOKO’s deep link target block.
 ---
 
 To help your app on becoming deep linkable we provide a **non-mandatory** utility class to handle navigation on HOKO's deep link `target` block.

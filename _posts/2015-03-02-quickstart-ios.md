@@ -3,6 +3,7 @@ title: Integrate iOS SDK
 categories: quickstart
 layout: documentation
 permalink: /:categories/ios
+description: To integrate HOKO open source SDK in your app you just have to follow 3 simple steps (either using cocoapods or doing it manually).
 ---
 
 To integrate HOKO open source SDK in your app you just have to follow 3 simple steps (either using

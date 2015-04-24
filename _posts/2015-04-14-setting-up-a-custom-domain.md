@@ -3,9 +3,10 @@ title: Setting up a custom domain
 categories: advanced
 layout: learning_center
 permalink: /:categories/:title
+description: The Branded Short Domain is the domain that takes the place of “hoko.link” in a shortened URL.
 ---
 
-The Branded Short Domain is the domain that takes the place of "hoko.links" in a shortened URL. To start using a Branded Short Domain, follow these steps:
+The Branded Short Domain is the domain that takes the place of "hoko.link" in a shortened URL. To start using a Branded Short Domain, follow these steps:
 
 1. Purchase the short domain you'd like to use. This domain can only be used for your shortened URLs*. We strongly recommend that you only use short domain names, e.g. 10 characters or less (including the dot).
 

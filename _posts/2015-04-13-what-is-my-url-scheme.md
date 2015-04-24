@@ -3,6 +3,7 @@ title: What is my URL scheme?
 categories: advanced
 layout: learning_center
 permalink: /:title
+description: A URL scheme is what identifies your app deep links and how other apps can link into it.
 ---
 
 A URL scheme is what identifies your app deep links and how other apps can link into it. All of URL

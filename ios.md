@@ -1,7 +1,7 @@
 ---
 layout: documentation
 title: iOS
-permalink: /iOS/
+permalink: /ios/
 ---
 
 <ul class="index-list">

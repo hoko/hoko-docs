@@ -10,9 +10,11 @@ To allow an application to be deep linkable, aside the mandatory additions to **
 
 ## Route mapping
 
-To map routes with HOKO you should add `@DeeplinkRoute`, `@DeeplinkDefaultRoute` `@DeeplinkFragmentActivity` and annotations to your `Activities` and `Fragments`.
+### Annotations
 
-If an application which has a **product detail activity** it should somehow map a product route by adding `@DeeplinkRoute` to your `ProductDetailActivity`.
+To map routes with HOKO through annotations you should add `@DeeplinkRoute`, `@DeeplinkDefaultRoute` `@DeeplinkFragmentActivity` annotations to your `Activities` and `Fragments`.
+
+If an application which has a **wishlist activity** it should somehow map a product route by adding `@DeeplinkRoute` to your `WishlistActivity`.
 
 {% highlight java %}
 @DeeplinkRoute("wishlist")
@@ -27,13 +29,13 @@ public class WishlistActivity extends Activity {
 }
 {% endhighlight %}
 
-This will map a `products/:product_id` route to the `ProductDetailActivity`. This `ProductDetailActivity` will always be started when a deep link matching the route is opened in the user's device. (e.g. opening `hoko://wishlist`).
+This will map a `wishlist` route to the `WishlistActivity`. This `WishlistActivity` will always be started when a deep link matching the route is opened in the user's device. (e.g. opening `hoko://wishlist`).
 
-### Injection
+#### Injection
 
 HOKO works by injecting deep link parameters into `Activity` or `Fragment` variables. This happens on the `inject(...)` method on the deep linking module.
 
-#### DeeplinkRoute
+##### DeeplinkRoute
 
 On classes annotated with `@DeeplinkRoute`, the injection will look for variables annotated `@DeeplinkRouteParameter` and `@DeeplinkQueryParameter`.
 
@@ -66,7 +68,7 @@ The difference between **route parameters** and **query parameters** is how they
 
 **Query parameters** are completly optional and may be `null` or `0`, even if the `Activity` was injected with a given deep link.
 
-#### DeeplinkFragmentActivity
+##### DeeplinkFragmentActivity
 
 In order to be able to deep link into fragments, HOKO has a `@DeeplinkFragmentActivity`. This annotation serves the purpose of identifying which `View` to replace with which possible `DeeplinkRoute` annotated `Fragments`.
 
@@ -105,7 +107,7 @@ public class ProductFragment extends Fragment {
 }
 {% endhighlight %}
 
-#### Default route
+##### Default route
 
 In case you want to provide a given behavior for when an unmapped deep linking opens the app you can do so by using the `@DeeplinkDefaultRoute` annotation. Only deep links that do not match any existing **routes** will trigger the default route.
 
@@ -125,12 +127,28 @@ public class SplashActivity extends Activity {
 }
 {% endhighlight %}
 
+### DeeplinkCallback
+
+If you want to manually manage the deeplinking logic, all you have to do is map a route format to a `DeeplinkCallback` object after your `Hoko.setup()` call in your Application subclass.
+
+{% highlight java %}
+Hoko.deeplinking().mapRoute("invite/:user_id", new DeeplinkCallback() {
+  @Override
+  public void deeplinkOpened(Deeplink deeplink) {
+    String userId = deeplink.getRouteParameters().get("user_id");
+    Social.getInstance().showInvitePopup(userId);
+  }
+})
+{% endhighlight %}
+
+This code will be executed on the `HokoActivity` class, if you want to create show something to the user you have to start an `Activity` on the `deeplinkOpened()` method.
+
 ### Handlers
 
 In order to execute code that is common to any incoming deep link (e.g. analytics tracking, referrer tracking, etc), the **deeplinking** module allows delegating and block execution of **handlers**. 
 
 If a class object implements the `Handler` interface and that object is added to the handler list, its `handle(deeplink)` method will be executed.
-
+p
 {% highlight java %}
 // Analytics.java
 public class Analytics implements Handler {

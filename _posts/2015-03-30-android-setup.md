@@ -21,24 +21,14 @@ public void onCreate() {
 }
 {% endhighlight %}
 
-In case you want to use HOKO's push notifications as well, you have to setup the SDK with a [Google Cloud Messaging Sender Id](http://developer.android.com/google/gcm/gs.html). 
+
+Calling `setup(context, token)` will automatically check if your application is in **debug mode** by checking for the automatically generated `BuildConfig` class and its `DEBUG` property. In case it is found and `true` in the running application, the SDK will be sure to upload your deep linking routes and application icon to the HOKO dashboard. This can be reverted to a manual mode if `setup(context, token, debugMode)` is called instead.
 
 {% highlight java %}
 @Override
 public void onCreate() {
   super.onCreate();
-  Hoko.setup(this, "YOUR-APP-TOKEN", "YOUR-GCM-SENDER-ID");
-  // The rest of your code goes here...
-}
-{% endhighlight %}
-
-Calling `setup(context, token)` or `setup(context, token, gcmSenderId)` will automatically check if your application is in **debug mode** by checking for the automatically generated `BuildConfig` class and its `DEBUG` property. In case it is found and `true` in the running application, the SDK will be sure to upload your deep linking routes and application icon to the HOKO dashboard. This can be reverted to a manual mode if `setup(context, token, gcmSenderId, debugMode)` is called instead.
-
-{% highlight java %}
-@Override
-public void onCreate() {
-  super.onCreate();
-  Hoko.setup(this, "YOUR-APP-TOKEN", "YOUR-GCM-SENDER-ID", false);
+  Hoko.setup(this, "YOUR-APP-TOKEN", false);
   // The rest of your code goes here...
 }
 {% endhighlight %}

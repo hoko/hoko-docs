@@ -10,12 +10,10 @@ A URL scheme is what identifies your app deep links and how other apps can link 
 schemes are formed by a scheme name, followed by a colon character (":"), and the remainder of the
 URI called the scheme-specific part.
 
-The scheme name is a string that you choose for your own apps
-(usually for your own company) so if your company is called *MyCompany* you can use `com.mycompany`
-and your complete URL scheme would look like:
+The scheme name is a string that you choose for your own apps, so if your app is called **Megastore** your URL scheme should be **megastore** and its identifier should be **com.company.megastore**.
 
 {% highlight java %}
-com.mycompany://
+megastore://
 {% endhighlight %}
 
 

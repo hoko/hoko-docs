@@ -63,37 +63,6 @@ Now for the actual deeplinking, please add the `Activity` and `Receiver` to the 
 </receiver>
 {% endhighlight %}
 
-## Push Notifications
-
-To make sure push notifications work with HOKO make sure you have the following permissions in your `AndroidManifest.xml`
-
-{% highlight xml %}
-<permission
-  android:name="===YOUR-PACKAGE-NAME===.permission.C2D_MESSAGE"
-  android:protectionLevel="signature" />
-
-<uses-permission android:name="===YOUR-PACKAGE-NAME===.permission.C2D_MESSAGE" />
-<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-<uses-permission android:name="android.permission.WAKE_LOCK" />
-{% endhighlight %}
-
-And the following `Service` and `Receiver` declared as well.
-
-{% highlight xml %}
-<receiver
-  android:name="com.hokolinks.pushnotifications.NotificationReceiver"
-  android:permission="com.google.android.c2dm.permission.SEND">
-  <intent-filter>
-    <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-    <category android:name="===YOUR-PACKAGE-NAME===" />
-  </intent-filter>
-</receiver>
-
-<service
-  android:name="com.hokolinks.pushnotifications.NotificationHandler"
-  android:exported="true" />
-{% endhighlight %}
-
 # SDK Setup
 
 In your `Application` subclass setup the Hoko Framework in the `onCreate()` method:

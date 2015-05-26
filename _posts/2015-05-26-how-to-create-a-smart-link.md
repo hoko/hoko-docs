@@ -6,7 +6,7 @@ permalink: /:categories/:title
 description: Creating a smart link involves setting up a set of rules that define what happens in each environment.
 ---
 
-> [What is a smart link?](/basic/what-is-a-smart-link) A smart link is able to redirect your users through different paths depending on the environment where they are opened.
+> [What is a smart link?](/what-is-a-smart-link) A smart link is able to redirect your users through different paths depending on the environment where they are opened.
 
 Creating a smart link involves setting up a set of rules that define what happens in each environment. Our intelligent *smart link builder* is here to ease the generation of these rules.
 

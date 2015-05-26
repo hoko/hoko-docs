@@ -1,6 +1,6 @@
 ---
-title: Advantages of using smart links
-categories: basic
+title: Advantages
+categories: smartlinks
 layout: learning_center
 permalink: /:title
 description: Smart links allow you to design flexible user experiences without having to worry about the fact that users will open their links across different devices, platforms, and contexts. 

@@ -1,6 +1,6 @@
 ---
 title: How to configure a template?
-categories: advanced
+categories: templates
 layout: learning_center
 permalink: /:title
 description: For each available platform choose the appropriate route URL and its fallback.

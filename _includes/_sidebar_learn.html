@@ -16,6 +16,51 @@
 <div>
   <ul>
     <li>
+      Deep linking
+      <ul>
+      {% for page in site.categories.deeplinking reversed %}
+        <li>
+          <a href="{{page.url}}">{{ page.title }}</a>
+        </li>
+      {% endfor %}
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <ul>
+    <li>
+      Smart links
+      <ul>
+      {% for page in site.categories.smartlinks reversed %}
+        <li>
+          <a href="{{page.url}}">{{ page.title }}</a>
+        </li>
+      {% endfor %}
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <ul>
+    <li>
+      Templates
+      <ul>
+      {% for page in site.categories.templates reversed %}
+        <li>
+          <a href="{{page.url}}">{{ page.title }}</a>
+        </li>
+      {% endfor %}
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <ul>
+    <li>
       Advanced
       <ul>
       {% for page in site.categories.advanced reversed %}

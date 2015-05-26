@@ -1,8 +1,8 @@
 ---
 title: How to create a smart link?
-categories: advanced
+categories: smartlinks
 layout: learning_center
-permalink: /:categories/:title
+permalink: /:title
 description: Creating a smart link involves setting up a set of rules that define what happens in each environment.
 ---
 

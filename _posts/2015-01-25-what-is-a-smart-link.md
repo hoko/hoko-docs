@@ -1,6 +1,6 @@
 ---
 title: What is a smart link?
-categories: basic
+categories: smartlinks
 layout: learning_center
 permalink: /:title
 description: A smart link is the most important deep linking real application, and the reason why it is important to build a powerful platform supporting them.

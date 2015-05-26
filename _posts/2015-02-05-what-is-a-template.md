@@ -1,6 +1,6 @@
 ---
 title: What is a template?
-categories: advanced
+categories: templates
 layout: learning_center
 permalink: /:title
 description: A template is a set of rules that are grouped together because they share a common configuration.

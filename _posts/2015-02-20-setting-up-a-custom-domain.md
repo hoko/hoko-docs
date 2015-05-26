@@ -2,7 +2,7 @@
 title: Setting up a custom domain
 categories: advanced
 layout: learning_center
-permalink: /:categories/:title
+permalink: /:title
 description: The Branded Short Domain is the domain that takes the place of “hoko.link” in a shortened URL.
 ---
 

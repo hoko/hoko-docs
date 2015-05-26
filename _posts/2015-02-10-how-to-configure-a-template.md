@@ -6,7 +6,7 @@ permalink: /:title
 description: For each available platform choose the appropriate route URL and its fallback.
 ---
 
-Templates use a special kind of rules called *routes*.  Routes are created by the SDK based on the deep links schemas that your app uses. Routes' URLs have variables that define the expressions that vary in each URL. These expressions are defined by a `:` followed by a `keyword`.
+Templates use a special kind of URLs called *routes*.  Routes are created by the SDK based on the deep links schemas that your app uses. Routes' URLs have variables that define the expressions that vary in each URL. These expressions are defined by a `:` followed by a `keyword`.
 
 When creating a template you will have to configure a route for every available platform. Doing so you will have to set the default URL and fallback.
 

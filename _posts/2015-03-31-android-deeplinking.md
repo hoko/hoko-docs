@@ -1,5 +1,5 @@
 ---
-title: Deeplinking
+title: Deep linking
 categories: android
 layout: documentation
 permalink: /:categories/:title

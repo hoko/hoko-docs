@@ -1,5 +1,5 @@
 ---
-title: Deeplinking
+title: Deep linking
 categories: ios
 layout: documentation
 permalink: /:categories/:title

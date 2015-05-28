@@ -9,3 +9,6 @@ github_base_url: https://github.com/hokolinks/hoko-docs/tree/master/
 
 # Build settings
 markdown: kramdown
+
+sass:
+  sass_dir: _sass

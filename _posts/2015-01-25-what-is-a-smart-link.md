@@ -14,5 +14,7 @@ Smart links are links that contain certain form of intelligence that allows the 
 
 Smart links are able to recognize the device that is opening the link, and check if the app is installed before trying to send a user there. They also have the ability to take different paths if the app is not there.
 
+<a href="http://support.hokolinks.com/how-to-create-a-smart-link/" class="btn-next">How to create a smart link &#8594;</a>
+
 
 

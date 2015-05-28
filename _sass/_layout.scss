@@ -8,6 +8,11 @@ h2 {
   margin-top: 40px;
 }
 
+code {
+    font-family: Menlo, monospace;
+    font-size: 13px;
+}
+
 
 .page-content {
 
@@ -531,5 +536,21 @@ h2 {
         p:before {
             display: none;
         }
+    }
+}
+
+.btn-next {
+    padding: 8px 16px;
+    border: 1px solid #496fdd;
+    border-radius: 4px;
+    font-size: 15px;
+    margin-top: 10px;
+    display: inline-block;
+    color: #496fdd;
+
+    &:hover {
+        color: #496fdd;
+        background: #f7f9fb;
+        text-decoration: none;
     }
 }

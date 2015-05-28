@@ -21,3 +21,5 @@ As you can see, there is a pattern in the both of these URLs: `products/` follow
 In addition, you want have the same set of rules and fallbacks for URLs that follow this pattern but have a different id.
 
 Templates are here to ease these common situations. A template is nothing else than a set of rules that are grouped together because they share a common configuration. Hence, saving you time when you manually create smart links using the dashboard or through our API.
+
+<a href="http://support.hokolinks.com/how-to-configure-a-template/" class="btn-next">How to configure a template &#8594;</a>

@@ -57,3 +57,6 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 {% endhighlight %}
 
 [cocoapods]: http://cocoapods.org/ "Cocoapods website"
+
+
+<a href="http://support.hokolinks.com/ios/ios-setup/" class="btn-next">Setup iOS app &#8594;</a>

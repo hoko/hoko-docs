@@ -74,3 +74,5 @@ public void onCreate() {
   Hoko.setup(this, "YOUR-APP-TOKEN");
 }
 {% endhighlight %}
+
+<a href="http://support.hokolinks.com/android/android-setup/" class="btn-next">Setup Android app &#8594;</a>

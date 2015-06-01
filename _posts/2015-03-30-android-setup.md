@@ -33,3 +33,5 @@ public void onCreate() {
 }
 {% endhighlight %}
 
+<a href="http://support.hokolinks.com/android/android-deeplinking/" class="btn-next">Add deep linking to your Android app &#8594;</a>
+

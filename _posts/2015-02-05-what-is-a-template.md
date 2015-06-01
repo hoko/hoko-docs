@@ -22,3 +22,4 @@ In addition, you want have the same set of rules and fallbacks for URLs that fol
 
 Templates are here to ease these common situations. A template is nothing else than a set of rules that are grouped together because they share a common configuration. Hence, it saves time when you manually create smart links using the dashboard or through our API.
 
+<a href="http://support.hokolinks.com/how-to-configure-a-template/" class="btn-next">How to configure a template &#8594;</a>

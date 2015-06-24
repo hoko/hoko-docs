@@ -569,11 +569,15 @@ code {
         cursor: pointer;
 
         &:hover {
-            color: #666;
+          color: #666;
         }
 
         &.on, &.on:hover {
-            color: #496fdd;
+          color: #496fdd;
+        }
+
+        &.last {
+          left: 120px;
         }
     }
 }
@@ -582,9 +586,9 @@ code {
     width: 32px;
     border-radius: 4px;
     height: 10px;
-    background-color: #DDD;
+    background-color: #D2DEFF;
     position: relative;
-    margin: 10px 34px;
+    margin: 10px 75px;
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
@@ -594,7 +598,7 @@ code {
 
 .flat-toggle:after {
     border-radius: 100%;
-    background-color: #ADADAD;
+    background-color: #496fdd;
     position: absolute;
     left: 0;
     top: -3px;
@@ -614,13 +618,11 @@ code {
 }
 
 .flat-toggle.on {
-    background-color: #D2DEFF;
     transform: translate3d(0,0,0);
 }
 
 
 .flat-toggle.on:after {
-    background-color: #496fdd;
     -webkit-transform: translate(17px);
     -ms-transform: translate(17px);
     transform: translateX(17px);

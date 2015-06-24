@@ -16,7 +16,7 @@ To integrate HOKO open source SDK in your app you just have to follow 3 simple s
 **2.** Open your Xcode project folder and create a file called `Podfile` with the following content:
 
 {% highlight ruby %}
-pod 'Hoko', '~> 1.2'
+pod 'Hoko', '~> 2.0'
 {% endhighlight %}
 
 **3.** Run `pod install` and wait for **CocoaPods** to install **HOKO SDK**. From this moment on, instead of using `.xcodeproj` file, you should start using `.xcworkspace`.
@@ -37,12 +37,12 @@ Next, we need to define our custom URL type. Remember, we want to open the app v
 
 # SDK Setup
 
-Add the following line to your `applicationDidFinishLaunching` method in your `AppDelegate` class.
+Add the following line to your `applicationDidFinishLaunching` method in your `AppDelegate` class (don't forget to import the HOKO class by using `#import <Hoko/Hoko.h>` if you're working with `Objective-C`).
 
 {% highlight objective-c %}
 #import <Hoko/Hoko.h>
 
-- (BOOL)application:(UIApplication *)application 
+- (BOOL)application:(UIApplication *)application
   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   [Hoko setupWithToken:@"YOUR-APP-TOKEN"];
   // The rest of your code goes here...

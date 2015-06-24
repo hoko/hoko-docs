@@ -6,37 +6,37 @@ permalink: /:categories/:title
 description: Learn how to make your app deep linkable and can you create smart links directly from the HOKO SDK.
 ---
 
-To allow an application to be deep linkable, aside from registering a **URL Scheme**, as seen on [quickstart](/quickstart/ios) and setting up the SDK, it needs to map **routes**. These **routes** should follow the convention `static/path/:variable/:another_variable`. 
+To allow an application to be deep linkable, aside from registering a **URL Scheme**, as seen on [quickstart](/quickstart/ios) and setting up the SDK, it needs to map **routes**. These **routes** should follow the convention `static/path/:variable/:another_variable`.
 
 ## Route mapping
 
 To map routes with HOKO you should call the **deep linking** module's `mapRoute:toTarget` method after setting up the SDK in your application's `AppDelegate` subclass on the `application:didFinishLaunchingWithOptions:` method.
 
-If an application which has a **product detail view controller** it should somehow map a product route by calling `mapRoute:toTarget:` to the **deep linking** module. 
+If an application which has a **product detail view controller** it should somehow map a product route by calling `mapRoute:toTarget:` to the **deep linking** module.
 
 {% highlight objective-c %}
-[[Hoko deeplinking] mapRoute:@"products/:product_id" 
-                    toTarget:^(HKDeeplink *deeplink) {
+[[Hoko deeplinking] mapRoute:@"products/:product_id"
+                    toTarget:^(HOKDeeplink *deeplink) {
   // Do something when deeplink is opened
 }];
 {% endhighlight %}
 
 {% highlight swift %}
-Hoko.deeplinking().mapRoute("products/:product_id", toTarget: { 
-  (deeplink: HKDeeplink!) -> Void in
+Hoko.deeplinking().mapRoute("products/:product_id", toTarget: {
+  (deeplink: HOKDeeplink!) -> Void in
     // Do something when deep link is opened
 })
 {% endhighlight %}
 
 This will map a `products/:product_id` route to an executable `target` block. This `target` will always be executed when a deep link matching the route is opened in the user's device. (e.g. opening `hoko://products/42?referrer=hokolinks.com`).
 
-### HKDeeplink
+### HOKDeeplink
 
-When a `target` block is executed a `HKDeeplink` object is passed as an argument. 
+When a `target` block is executed, a `HOKDeeplink` object is passed as an argument.
 
-This `HKDeeplink` object will contain 3 parameters. The `route` to which the deep linking was matched against (in this case `products/:product_id`). 
+This `HOKDeeplink` object will contain 3 parameters. The `route` to which the deep linking was matched against (in this case `products/:product_id`).
 
-The `routeParameters`, a dictionary containing all the route format variables which were mapped to the incoming deep link (in this case `{"product_id": 42}`). 
+The `routeParameters`, a dictionary containing all the route format variables which were mapped to the incoming deep link (in this case `{"product_id": 42}`).
 
 And finally the `queryParameters`, a dictionary which contains all the **optional** parameters which might passed through the query string in the deep link (in this example `{"referrer": "hokolinks.com"}`).
 
@@ -45,20 +45,20 @@ And finally the `queryParameters`, a dictionary which contains all the **optiona
 The main purpose of a `target` execution block is for the app to create the navigation path and instantiate the proper view controllers to create the designed user experience. If a `hoko://products/42?referrer=hokolinks.com` deep linking is opened the target should provide the user with a product detail view controller representing the product opened.
 
 {% highlight objective-c %}
-[[Hoko deeplinking] mapRoute:@"products/:product_id" 
-                    toTarget:^(HKDeeplink *deeplink) {
+[[Hoko deeplinking] mapRoute:@"products/:product_id"
+                    toTarget:^(HOKDeeplink *deeplink) {
   BLKProductViewController *productViewController = [[BLKProductViewController alloc] initWithProductId:deeplink.routeParameters[@"product_id"]]; // always exists
   productViewController.referrer = deeplink.queryParameters[@"referrer"]; // might not exist
-  [HKNavigation pushViewController:productViewController animated:YES];
+  [HOKNavigation pushViewController:productViewController animated:YES];
 }];
 {% endhighlight %}
 
 {% highlight swift %}
-Hoko.deeplinking().mapRoute("products/:product_id", toTarget: { 
-  (deeplink: HKDeeplink!) -> Void in
+Hoko.deeplinking().mapRoute("products/:product_id", toTarget: {
+  (deeplink: HOKDeeplink!) -> Void in
     let productViewController = BLKPRoductViewController(productId: deeplink.routeParameters["product_id"]) // always exists
     productViewController.referrer = deeplink.queryParameters["referrer"] // might not exist
-    HKNavigation.pushViewController(productViewController, animated: true)
+    HOKNavigation.pushViewController(productViewController, animated: true)
 })
 {% endhighlight %}
 
@@ -67,34 +67,34 @@ Hoko.deeplinking().mapRoute("products/:product_id", toTarget: {
 In case you want to provide a given behavior for when an unmapped deep linking opens the app you can do so by using the `mapDefaultRouteToTarget:` method. Only deep links that do not match any existing **routes** will trigger the default route.
 
 {% highlight objective-c %}
-[[Hoko deeplinking] mapDefaultRouteToTarget:^(HKDeeplink *deeplink) {
+[[Hoko deeplinking] mapDefaultRouteToTarget:^(HOKDeeplink *deeplink) {
   BLKLandingViewController *landingViewController = [BLKProductViewController new];
-  [HKNavigation setRootViewController:landingViewController];
+  [HOKNavigation setRootViewController:landingViewController];
 }];
 {% endhighlight %}
 
 {% highlight swift %}
-Hoko.deeplinking().mapDefaultRouteToTarget { (deeplink: HKDeeplink!) -> Void in
+Hoko.deeplinking().mapDefaultRouteToTarget { (deeplink: HOKDeeplink!) -> Void in
   let landingViewController = BLKLandingViewController()
-  HKNavigation.setRootViewController(landingViewController)
+  HOKNavigation.setRootViewController(landingViewController)
 }
 {% endhighlight %}
 
 ### Handlers
 
-In order to execute code that is common to any incoming deep link (e.g. analytics tracking, referrer tracking, etc), the **deeplinking** module allows delegating and block execution of **handlers**. 
+In order to execute code that is common to any incoming deep link (e.g. analytics tracking, referrer tracking, etc), the **deeplinking** module allows delegating and block execution of **handlers**.
 
-If a class object implements the `HKHandlerProtocol` interface and that object is added to the handler list, its `handleDeeplink:` method will be executed.
+If a class object implements the `HOKHandlerProtocol` interface and that object is added to the handler list, its `handleDeeplink:` method will be executed.
 
 {% highlight objective-c %}
 // Analytics.h
-@interface Analytics: NSObject <HKHandlerProtocol>
+@interface Analytics: NSObject <HOKHandlerProtocol>
 ...
 @end
 // Analytics.m
 @implementation Analytics
 ...
-- (void)handleDeeplink:(HKDeeplink *)deeplink
+- (void)handleDeeplink:(HOKDeeplink *)deeplink
 {
   [self track:"deeplink" parameters:@{@"route": deeplink.route}];
 }
@@ -105,9 +105,9 @@ If a class object implements the `HKHandlerProtocol` interface and that object i
 
 {% highlight swift %}
 // Analytics.swift
-class Analytics: HKHandlerProtocol {
+class Analytics: HOKHandlerProtocol {
 ...
-func handleDeeplink(deeplink: HKDeeplink!) {
+func handleDeeplink(deeplink: HOKDeeplink!) {
   track("deeplink", parameters: ["route": deeplink.route])
 }
 // AppDelegate.swift
@@ -115,16 +115,16 @@ func handleDeeplink(deeplink: HKDeeplink!) {
 Hoko.deeplinking().addHandler(Analytics.sharedInstance())
 {% endhighlight %}
 
-Aside from interface implementation, HOKO also allows adding `handler` blocks to be executed. 
+Aside from interface implementation, HOKO also allows adding `handler` blocks to be executed.
 
 {% highlight objective-c %}
-[[Hoko deeplinking] addHandlerBlock:^(HKDeeplink *deeplink) {
+[[Hoko deeplinking] addHandlerBlock:^(HOKDeeplink *deeplink) {
   [[Analytics sharedInstance] track:"deeplink" parameters:@{@"route": deeplink.route}];
 }];
 {% endhighlight %}
 
 {% highlight swift %}
-Hoko.deeplinking().addHandlerBlock { (deeplink: HKDeeplink!) -> Void in
+Hoko.deeplinking().addHandlerBlock { (deeplink: HOKDeeplink!) -> Void in
   Analytics.sharedInstance().track("deeplink", parameters: ["route": deeplink.route])
 }
 {% endhighlight %}
@@ -162,7 +162,7 @@ Smartlinks may be created on the dashboard or through the HOKO SDK, in order to 
 To generate Smartlinks through templates, the application needs a **route format**, the corresponding **route parameters** and optional **query parameters**.
 
 {% highlight objective-c %}
-HKDeeplink *deeplink = [HKDeeplink deeplinkWithRoute:@"products/:product_id"
+HOKDeeplink *deeplink = [HOKDeeplink deeplinkWithRoute:@"products/:product_id"
                                      routeParameters:@{@"product_id":@(self.product.identifier)}
                                      queryParameters:@{@"referrer": self.user.name}];
 [[Hoko deeplinking] generateSmartlinkForDeeplink:deeplink success:^(NSString *smartlink) {
@@ -174,8 +174,8 @@ HKDeeplink *deeplink = [HKDeeplink deeplinkWithRoute:@"products/:product_id"
 {% endhighlight %}
 
 {% highlight swift %}
-let deeplink = HKDeeplink("products/:product_id", routeParameters: ["product_id": product.identifier], 
-                                                 queryParameters:["referrer": user.name])        
+let deeplink = HOKDeeplink("products/:product_id", routeParameters: ["product_id": product.identifier],
+                                                 queryParameters:["referrer": user.name])
 Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink: String!) -> Void in
   Social.sharedInstance().shareProduct(product, link: smartlink)
 }) { (error: NSError!) -> Void in
@@ -186,14 +186,14 @@ Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink:
 
 ### Smartlinks from URLs
 
-To allow applications to link to content without the use of templates, the HOKO SDK allows the creation of `HKDeeplink` objects and the manual addition of platform dependent URLs.
+To allow applications to link to content without the use of templates, the HOKO SDK allows the creation of `HOKDeeplink` objects and the manual addition of platform dependent URLs.
 
 {% highlight objective-c %}
-HKDeeplink *deeplink = [HKDeeplink deeplinkWithRoute:@"products/:product_id"
+HOKDeeplink *deeplink = [HOKDeeplink deeplinkWithRoute:@"products/:product_id"
                                      routeParameters:@{@"product_id":@(self.product.identifier)}
                                      queryParameters:@{@"referrer": self.user.name}];
-[deeplink addURL:@"http://awesomeapp.com/the_perfect_product" forPlatform:HKDeeplinkPlatformWeb];
-[deeplink addURL:@"http://awesomeapp.com/no_android_app_yet" forPlatform:HKDeeplinkPlatformAndroid];
+[deeplink addURL:@"http://awesomeapp.com/the_perfect_product" forPlatform:HOKDeeplinkPlatformWeb];
+[deeplink addURL:@"http://awesomeapp.com/no_android_app_yet" forPlatform:HOKDeeplinkPlatformAndroid];
 
 [[Hoko deeplinking] generateSmartlinkForDeeplink:deeplink success:^(NSString *smartlink) {
   [[Social sharedInstance] shareProduct:self.product link:smartlink];
@@ -204,7 +204,7 @@ HKDeeplink *deeplink = [HKDeeplink deeplinkWithRoute:@"products/:product_id"
 {% endhighlight %}
 
 {% highlight swift %}
-let deeplink = HKDeeplink("products/:product_id", routeParameters: ["product_id": product.identifier], 
+let deeplink = HOKDeeplink("products/:product_id", routeParameters: ["product_id": product.identifier],
                                                  queryParameters:["referrer": user.name])
 deeplink.addURL("http://awesomeapp.com/the_perfect_product" forPlatform:.Web)
 deeplink.addURL("http://awesomeapp.com/no_android_app_yet" forPlatform:.Android)
@@ -216,3 +216,5 @@ Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink:
   Social.sharedInstance().shareProduct(product, link: self.product.webLink)
 }
 {% endhighlight %}
+
+<a href="http://support.hokolinks.com/ios/ios-utilities/" class="btn-next">View Hoko Utilities &#8594;</a>

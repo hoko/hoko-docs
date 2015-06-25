@@ -218,3 +218,5 @@ Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink:
 {% endhighlight %}
 
 <a href="http://support.hokolinks.com/ios/ios-utilities/" class="btn-next">View Hoko Utilities &#8594;</a>
+
+<a href="http://blackhoko.link/newsletter2" class="btn-next">Test</a>

@@ -37,7 +37,7 @@ Next, we need to define our custom URL type. Remember, we want to open the app v
 
 # Integrating the SDK with your Swift project
 
-Because the HOKO SDK is written in `Objective-C`, you'll have to manually add a `Bridging Header file` to your project in order to use it with your Swift code:
+Because the HOKO SDK is written in `Objective-C`, you'll have to manually add a `Bridging Header file` into your project in order to use it with your Swift code:
 
 * `File` > `New` > `File...` > `iOS` > `Source` > `Header File`
 

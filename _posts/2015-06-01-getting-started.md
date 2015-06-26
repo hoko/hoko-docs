@@ -6,7 +6,7 @@ permalink: /:categories/:title
 description: Learn how to use HOKO REST Api to automate smart links generation.
 ---
 
-TODO - What is the REST API for
+You can use our REST API to automate the process of creating smart links. This can be useful if you will like to create thousands of smart links directly from your back-end system or from your mobile app.
 
 If you haven't installed the SDK yet, please head over to the [iOS QuickStart](/quickstart/ios) or [Android QuickStart](/quickstart/android) guide to get our SDK up and running.
 
@@ -14,7 +14,9 @@ If you haven't installed the SDK yet, please head over to the [iOS QuickStart](/
 
 ## Authentication
 
-TODO - Where to go to get the platform tokens and how to set them.
+To interact with our REST API you need to authenticate each request with a token. You must use the appropriate token for the platform on which you are doing the request, e.g. if you are doing a request from your back-end you should use your ‘Web’ platform’s token, but if you are doing from your iOS app you should use the ‘iPhone’ platform’s token.
+
+You can find the individual tokens for each platform under the ‘Settings’ section of the dashboard.
 
 If you don't provide us with your platform token on each request, we will response with an error code 3.
 

@@ -8,7 +8,7 @@ description: Smart links endpoint.
 
 ## /smartlinks
 
-*POST https://api.hokolinks.com/v2/smartlinks*
+POST https://api.hokolinks.com/v2/smartlinks
 
 Create a smart link based on a URI. The API will process the URI and figure out if it follows a template or not and create the necessary routes automatically.
 
@@ -54,7 +54,7 @@ Create a smart link based on a URI. The API will process the URI and figure out 
 
 ## /smartlinks (with custom routes)
 
-*POST https://api.hokolinks.com/v2/smartlinks*
+POST https://api.hokolinks.com/v2/smartlinks
 
 Create a smart link based on a URI using a custom set of routes.
 
@@ -134,7 +134,7 @@ Create a smart link based on a URI using a custom set of routes.
 
 ## /smartlinks (lazy creation)
 
-*POST https://api.hoko.link/v2/smartlinks*
+POST https://api.hoko.link/v2/smartlinks
 
 Create a lazy smart link based on a URI that it will only be created on-demand, i.e. once there is an initial request to open the link.
 
@@ -196,7 +196,7 @@ Create a lazy smart link based on a URI that it will only be created on-demand, 
 
 ## /smartlinks/resolve
 
-*POST https://api.hokolinks.com/v2/smartlinks/resolve*
+POST https://api.hokolinks.com/v2/smartlinks/resolve
 
 Resolves a smart link into a mobile deep link for the platform associated with the token provided with in the request. This can be used when the developer needs to resolve the smart link from a push notification into a mobile deeplink.
 
@@ -241,7 +241,7 @@ Resolves a smart link into a mobile deep link for the platform associated with t
 
 ## /smartlinks/:code
 
-*GET https://api.hokolinks.com/v2/smartlinks/:code*
+GET https://api.hokolinks.com/v2/smartlinks/:code
 
 Request the details about a smart link and its routes.
 

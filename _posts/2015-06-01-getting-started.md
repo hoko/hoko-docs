@@ -3,10 +3,10 @@ title: Getting Started
 categories: api
 layout: documentation
 permalink: /:categories/:title
-description: Learn how to use HOKO REST Api to automate smart links generation.
+description: Learn how to use HOKO REST API to automate your smart links generation.
 ---
 
-You can use our REST API to automate the process of creating smart links. This can be useful if you will like to create thousands of smart links directly from your back-end system or from your mobile app.
+You can use our REST API to automate the process of creating smart links. This can be useful if you will need to automatically create thousands of smart links directly from your back-end system or mobile app.
 
 If you haven't installed the SDK yet, please head over to the [iOS QuickStart](/quickstart/ios) or [Android QuickStart](/quickstart/android) guide to get our SDK up and running.
 
@@ -16,7 +16,15 @@ If you haven't installed the SDK yet, please head over to the [iOS QuickStart](/
 
 To interact with our REST API you need to authenticate each request with a token. You must use the appropriate token for the platform on which you are doing the request, e.g. if you are doing a request from your back-end you should use your ‘Web’ platform’s token, but if you are doing from your iOS app you should use the ‘iPhone’ platform’s token.
 
-You can find the individual tokens for each platform under the ‘Settings’ section of the dashboard.
+You can find the individual tokens for each platform under the ‘Settings’ section of the dashboard. You must then set the authentication header with the following format `Token <YOUR_PLATFORM_TOKEN>` like such:
+
+{% highlight java %}
+curl -s
+  -H "Authorization: Token <YOUR_PLATFORM_TOKEN>"
+  -H "Content-Type: application/json"
+  -d '{ "uri": "/products/398291" }'
+  https://api.hokolinks.com/v2/smartlinks/
+{% endhighlight %}
 
 If you don't provide us with your platform token on each request, we will response with an error code 3.
 

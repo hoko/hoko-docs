@@ -239,9 +239,9 @@ Resolves a smart link into a mobile deep link for the platform associated with t
 }
 {% endhighlight %}
 
-## /smartlinks/:id
+## /smartlinks/:code
 
-*GET https://api.hokolinks.com/v2/smartlinks/:id*
+*GET https://api.hokolinks.com/v2/smartlinks/:code*
 
 Request the details about a smart link and its routes.
 
@@ -250,7 +250,7 @@ Request the details about a smart link and its routes.
 #### Request
 
 {% highlight java %}
-GET http://app.hoko.link/JZz97u6
+GET https://api.hokolinks.com/v2/smartlinks/JZz97u6
 {% endhighlight %}
 
 #### Response

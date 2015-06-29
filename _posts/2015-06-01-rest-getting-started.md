@@ -13,7 +13,7 @@ mobile app.
 If you haven't installed the SDK yet, please head over to the [iOS QuickStart](/quickstart/ios) or
 [Android QuickStart](/quickstart/android) guide to get our SDK up and running.
 
-<a href="http://support.hokolinks.com/api/smartlinks/" class="btn-next">Automate your smart links generation &#8594;</a>
+<a href="http://support.hokolinks.com/api/rest-smartlinks/" class="btn-next">Automate your smart links generation &#8594;</a>
 
 ## Authentication
 

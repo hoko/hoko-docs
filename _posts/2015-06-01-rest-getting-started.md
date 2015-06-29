@@ -18,10 +18,13 @@ up and running.
 
 To interact with our REST API you need to authenticate each request with a token. You must use the
 appropriate token for the platform on which you are doing the request, e.g. if you are doing a
-request from your back-end you should use your ‘Web’ platform’s token, but if you are doing from
-your iOS app you should use the ‘iPhone’ platform’s token.
+request from your back-end **you should use your 'Web' platform’s token**, but if you are doing from
+your iOS app you should use the 'iPhone' platform’s token.
 
-You can find the individual tokens for each platform under the ‘Settings’ section of the dashboard.
+You can find the individual tokens for each platform under the 'Settings' section of the dashboard:
+
+![Web token](https://s3-eu-west-1.amazonaws.com/hoko-docs/rest_token.png)
+
 You must then set the authentication header with the following format `Token <YOUR_PLATFORM_TOKEN>`
 like such:
 

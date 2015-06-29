@@ -114,15 +114,15 @@ h1 {
  * Links
  */
 a {
-    color: $brand-color;
+    color: #496fdd;
     text-decoration: none;
 
     &:visited {
-        color: darken($brand-color, 15%);
+        color: #496fdd;
     }
 
     &:hover {
-        color: $text-color;
+        color: #496fdd;
         text-decoration: underline;
     }
 }

@@ -7,13 +7,12 @@ description: Learn how to use HOKO REST API to automate your smart links generat
 ---
 
 You can use our REST API to automate the process of creating smart links. This can be useful if you
-will need to automatically create thousands of smart links directly from your back-end system or
-mobile app.
+will need to automatically create thousands of smart links directly from your back-end.
 
-If you haven't installed the SDK yet, please head over to the [iOS QuickStart](/quickstart/ios) or
-[Android QuickStart](/quickstart/android) guide to get our SDK up and running.
-
-<a href="http://support.hokolinks.com/api/smartlinks/" class="btn-next">Automate your smart links generation &#8594;</a>
+Of course the smart links are still dependent on mobile deep links so you have to route your apps
+first. If you haven't installed the SDK yet, please head over to the
+[iOS QuickStart](/quickstart/ios) or [Android QuickStart](/quickstart/android) guide to get our SDK
+up and running.
 
 ## Authentication
 
@@ -44,58 +43,22 @@ code 3.
 }
 {% endhighlight %}
 
-## HTTP Status Codes
+## Errors status codes
 
-You may experience the following HTTP status codes:
+In case of an error or warning, the response includes a JSON like the one in the previous section.
+Currently these are the errors codes and messages that you may get:
 
-<table>
-  <thead>
-    <tr>
-      <th>HTTP Status Code</th>
-      <th>Name</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>200</td>
-      <td>OK</td>
-      <td>Everything worked out successfully.</td>
-    </tr>
-    <tr>
-      <td>400</td>
-      <td>Bad request</td>
-      <td>We could not process the action.</td>
-    </tr>
-    <tr>
-      <td>404</td>
-      <td>Not found</td>
-      <td>We could not find the requested record.</td>
-    </tr>
-  </tbody>
-</table>
+| Status code | Description                                            |
+|:-----------:|:-------------------------------------------------------|
+| 1           | Replaced previously registered route                   |
+| 2           | Missing parameters                                     |
+| 3           | Unknown platform token                                 |
+| 4           | Unsupported method                                     |
+| 5           | There was a problem in the JSON you submitted          |
+| 6           | Could not save object                                  |
+| 7           | Could not find record                                  |
+| 8           | Could not save route                                   |
 
-In case of 400 and 404 requests we will return a JSON blob with the following format:
+You can now start using our REST API to create your smart links.
 
-{% highlight java %}
-{
-  "error": "Error description goes here",
-  "status": 1
-}
-{% endhighlight %}
-
-## Errors Status Codes
-
-Currently these are the errors codes and messages that we support:
-
-
-| Status | Description                                            |
-|:------:|:-------------------------------------------------------|
-| 1      | Replaced previously registered route                   |
-| 2      | Missing parameters                                     |
-| 3      | Unknown platform token                                 |
-| 4      | Unsupported method                                     |
-| 5      | There was a problem in the JSON you submitted          |
-| 6      | Could not save object                                  |
-| 7      | Could not find record                                  |
-| 8      | Could not save route                                   |
+<a href="http://support.hokolinks.com/api/smartlinks/" class="btn-next">Automate your smart links generation &#8594;</a>

@@ -10,9 +10,14 @@ description: Smart links endpoint.
 
 POST https://api.hokolinks.com/v2/smartlinks
 
-Create a smart link based on a URI. The API will process the URI and figure out if it follows a template or not and create the necessary routes automatically.
+Create a smart link based on a URI. The API will process the URI and figure out if it follows a
+template or not and create the necessary routes automatically.
 
 ### Fields
+
+| field | description                                                                 |
+|-------|-----------------------------------------------------------------------------|
+| uri   | The base URI for the smart link (full or relative HTTP or mobile deep link) |
 
 <table>
   <tbody>

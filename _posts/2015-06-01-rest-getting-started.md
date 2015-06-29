@@ -9,14 +9,10 @@ description: Learn how to use HOKO REST API to automate your smart links generat
 You can use our REST API to automate the process of creating smart links. This can be useful if you
 will need to automatically create thousands of smart links directly from your back-end.
 
-If you haven't installed the SDK yet, please head over to the [iOS QuickStart](/quickstart/ios) or
-[Android QuickStart](/quickstart/android) guide to get our SDK up and running.
-
 Of course the smart links are still dependent on mobile deep links so you have to route your apps
 first. If you haven't installed the SDK yet, please head over to the
 [iOS QuickStart](/quickstart/ios) or [Android QuickStart](/quickstart/android) guide to get our SDK
 up and running.
->>>>>>> c60c4fa949e7c42dbcf165c47e08730b20fa1336
 
 ## Authentication
 
@@ -27,7 +23,7 @@ your iOS app you should use the 'iPhone' platform’s token.
 
 You can find the individual tokens for each platform under the 'Settings' section of the dashboard:
 
-![Web token](https://s3-eu-west-1.amazonaws.com/hoko-docs/rest_token.png)
+![Web token](/assets/images/rest_token.png)
 
 You must then set the authentication header with the following format `Token <YOUR_PLATFORM_TOKEN>`
 like such:

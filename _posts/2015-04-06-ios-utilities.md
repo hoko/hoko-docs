@@ -8,7 +8,7 @@ description: To help your app on becoming deep linkable we provide a non-mandato
 
 To help your app on becoming deep linkable we provide a **non-mandatory** utility class to handle navigation on HOKO's deep link `target` block. To use it, you'll have to manually import `#import <Hoko/HOKNavigation.h>` into your implementation file (or `Bridging Header` file in case you're working with Swift - see [Integrating the SDK with your Swift project](http://support.hokolinks.com/quickstart/ios/#integrating-the-sdk-with-your-swift-project) section).
 
-## HOKNavigation
+### HOKNavigation
 
 `HOKNavigation` serves the purpose of easing the pushing, presenting and setting of `UIViewControllers` to whatever may be the current state of your application. This class handles all the logic of finding your current view controller and performing the chosen action over that view controller. This should work on most apps that rely only on `UINavigationControllers`, `UITabBarControllers` and modal view controllers to handle navigation.
 

@@ -153,13 +153,13 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
 }
 {% endhighlight %}
 
-## Smartlink Generation
+## Smart link Generation
 
-Smartlinks may be created on the dashboard or through the HOKO SDK, in order to allow users to share platform independent links directly to the relevant content.
+Smart links may be created on the dashboard or through the HOKO SDK, in order to allow users to share platform independent links directly to the relevant content.
 
-### Smartlinks from templates
+### Smart links from templates
 
-To generate Smartlinks through templates, the application needs a **route format**, the corresponding **route parameters** and optional **query parameters**.
+To generate Smart links through templates, the application needs a **route format**, the corresponding **route parameters** and optional **query parameters**.
 
 {% highlight objective-c %}
 HOKDeeplink *deeplink = [HOKDeeplink deeplinkWithRoute:@"products/:product_id"
@@ -217,9 +217,9 @@ Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink:
 }
 {% endhighlight %}
 
-### Resolving Smartlinks
+### Resolving Smart links
 
-Should you want to open a Smartlink (e.g. `https://yourapp.hoko.link/example`) and have it work as a deeplink that is processed by your `route handler`, you can call `openSmartlink:completion:`.
+Should you want to open a Smart link (e.g. `https://yourapp.hoko.link/example`) and have it work as a deeplink that is processed by your `route handler`, you can call `openSmartlink:completion:`.
 
 {% highlight objective-c %}
 [[Hoko deeplinking] openSmartlink: completion:^(HOKDeeplink *deeplink) {
@@ -237,7 +237,7 @@ Hoko.deeplinking().openSmartlink(deeplink, completion: { (deeplink: HOKDeeplink?
   if let link = deeplink {
     // deepling was opened
   } else {
-    // could not resolve Smartlink
+    // could not resolve Smart link
   }
 }
 {% endhighlight %}

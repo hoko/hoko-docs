@@ -1,23 +1,27 @@
 ---
-title: Smart Links
+title: Smart links
 categories: api
 layout: documentation
 permalink: /:categories/:title
 description: Smart links endpoint.
 ---
 
-## /smartlinks
+## Create smart links
 
+{% highlight bash %}
 POST https://api.hokolinks.com/v2/smartlinks
+{% endhighlight %}
 
 Create a smart link based on a URI. The API will process the URI and figure out if it follows a
-template or not and create the necessary routes automatically.
+template or not and use the necessary routes automatically.
 
-### Fields
+#### Required body fields
 
-| field | description                                                                 |
-|-------|-----------------------------------------------------------------------------|
-| uri   | The base URI for the smart link (full or relative HTTP or mobile deep link) |
+| field | description                                                                              |
+|-------|------------------------------------------------------------------------------------------|
+| uri   | The base URI for the smart link (full or relative HTTP or mobile deep link)              |
+
+#### Optional body fields
 
 <table>
   <tbody>

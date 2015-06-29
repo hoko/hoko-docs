@@ -90,7 +90,7 @@ Currently these are the errors codes and messages that we support:
 
 
 | Status | Description                                            |
-|--------|--------------------------------------------------------|
+|:------:|:-------------------------------------------------------|
 | 1      | Replaced previously registered route                   |
 | 2      | Missing parameters                                     |
 | 3      | Unknown platform token                                 |

@@ -55,16 +55,16 @@ code 3.
 In case of an error or warning, the response includes a JSON like the one in the previous section.
 Currently these are the errors codes and messages that you may get:
 
-| Status code | Description                                            |
-|:-----------:|:-------------------------------------------------------|
-| 1           | Replaced previously registered route                   |
-| 2           | Missing parameters                                     |
-| 3           | Unknown platform token                                 |
-| 4           | Unsupported method                                     |
-| 5           | There was a problem in the JSON you submitted          |
-| 6           | Could not save object                                  |
-| 7           | Could not find record                                  |
-| 8           | Could not save route                                   |
+| Status code | Error                                         | Description                                                         |
+|:-----------:|:----------------------------------------------|:--------------------------------------------------------------------|
+| 1           | Replaced previously registered route          | The route that was registered replaced another equivalent one       |
+| 2           | Missing parameters                            | There are missing parameters on the body                            |
+| 3           | Unknown platform token                        | You are using a wrong platform token in the 'Authorization' header  |
+| 4           | Unsupported method                            | The method you're trying to invoke is not supported                 |
+| 5           | There was a problem in the JSON you submitted | Errors on JSON format. Make sure your JSON is valid                 |
+| 6           | Could not save object                         | Some error occurred on the server and the object was not saved      |
+| 7           | Could not find record                         | The record you're trying to find does not exist                     |
+| 8           | Could not save route                          | Some error occurred on the server and the route was not saved       |
 
 You can now start using our REST API to create your smart links.
 

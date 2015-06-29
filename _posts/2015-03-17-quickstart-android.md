@@ -8,7 +8,7 @@ description: To integrate HOKO open source SDK in your app you just have to foll
 
 To integrate HOKO in your app, simply follow the 3 simple steps below.
 
-# Install HOKO in your project
+## Install HOKO in your project
 
 Download [the latest AAR](https://oss.sonatype.org/service/local/repositories/releases/content/com/hokolinks/hoko/1.2.1/hoko-1.2.1.aar) or grab via Maven:
 
@@ -26,7 +26,7 @@ or Gradle:
 compile 'com.hokolinks:hoko:2.0'
 {% endhighlight %}
 
-# Setting up the AndroidManifest.xml
+## Setting up the AndroidManifest.xml
 
 Add the following lines to your `AndroidManifest.xml` to make sure to have the following permissions:
 
@@ -72,7 +72,7 @@ The subdomain will be used to avoid request the user on which app to open the li
 
 More info on [Why do I need a subdomain](http://support.hokolinks.com/why-do-i-need-a-subdomain/)
 
-# SDK Setup
+## SDK Setup
 
 In your `Application` subclass setup the Hoko Framework in the `onCreate()` method:
 

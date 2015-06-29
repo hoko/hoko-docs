@@ -8,7 +8,7 @@ description: Full Android Setup Guide. Learn how to integrate HOKO SDK in your a
 
 If you haven't installed the SDK yet, please head over to the [QuickStart](/quickstart/android) guide to get our SDK up and running in Android Studio. Note that we support Android 1.6 (API level 4) and up.
 
-# HOKO
+## HOKO
 
 HOKO is an application-wide framework. To provide this behavior with a simple integration, HOKO works by setting up a singleton and accessing its modules through convenience accessors. The setup should occur on your `Application` subclass on the `onCreate()` method.
 

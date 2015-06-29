@@ -45,11 +45,18 @@ Now for the actual deeplinking, please add the `Activity` and `Receiver` to the 
   android:alwaysRetainTaskState="true"
   android:launchMode="singleTask"
   android:noHistory="true"
-  android:theme="@android:style/Theme.NoDisplay">
+  android:theme="@android:style/Theme.Translucent.NoTitleBar">
   <intent-filter>
     <data android:scheme="===YOUR-URL-SCHEME===" />
     <action android:name="android.intent.action.VIEW" />
     <category android:name="android.intent.category.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+  </intent-filter>
+  <intent-filter android:autoVerify="true">
+    <data android:scheme="http" android:host="===YOUR-APP-SUBDOMAIN===.hoko.link" />
+    <data android:scheme="https" android:host="===YOUR-APP-SUBDOMAIN===.hoko.link" />
+    <action android:name="android.intent.action.VIEW" />
     <category android:name="android.intent.category.DEFAULT" />
     <category android:name="android.intent.category.BROWSABLE" />
   </intent-filter>

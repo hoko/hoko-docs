@@ -35,6 +35,12 @@ Next, we need to define our custom URL type. Remember, we want to open the app v
 
 ![URL Scheme](/assets/images/ios_url_schemes.png)
 
+# Setup Associated Domains (Universal Links) - **iOS 9.0+**
+
+For your app to fully support the newly introduced `Universal Links` by Apple you'll have to enable and add a new entry in the `Associated Domains` section, inside your application target's `Capabilities` tab. Click on the '+' button and add a new entry with the following value: `applinks:your-subdomain.hoko.link`, being `your-subdomain` the Hoko subdomain you chose for your Hoko links (view the [Hoko Links Subdomains](google.pt) section).
+
+![URL Scheme](/assets/images/associated-domains.png)
+
 # Integrating the SDK with your Swift project
 
 Because the HOKO SDK is written in `Objective-C`, you'll have to manually add a `Bridging Header file` into your project in order to use it with your Swift code:

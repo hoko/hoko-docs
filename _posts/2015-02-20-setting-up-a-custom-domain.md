@@ -10,7 +10,7 @@ The Branded Short Domain is the domain that takes the place of "hoko.link" in a 
 
 **1.** Purchase the short domain you'd like to use. This domain can only be used for your shortened URLs*. We strongly recommend that you only use short domain names, e.g. 10 characters or less (including the dot).
 
-**2.** Tell HOKO about your domain. Sign in to your HOKO account, go to 'settings' from the left bar, and click on the 'Setup custome domain' button.
+**2.** Tell HOKO about your domain. Sign in to your HOKO account, go to 'settings' from the left bar, and click on the 'Setup custom domain' button.
 
 **3.** Create a DNS record for your domain.
 
@@ -28,16 +28,16 @@ The way you update DNS varies depending on your domain registrar, but should be 
 
 **4.** For a Short Domain:
 
-Edit the existing A record for your site and change the IP address to 54.171.203.47 If there is no existing A record, add a new one. The A record's "host name" should be either the character @ or your base domain. You should only have one A Record. If you have more than one, remove all others and leave only the one pointing to HOKO's IP.
+Edit the existing A record for your site and change the IP address to 54.171.203.47. If there is no existing A record, add a new one. The A record's "host name" should be either the character @ or your base domain. You should only have one A Record. If you have more than one, remove all others and leave only the one pointing to HOKO's IP.
 
 It can take up to 72 hours for domain changes to propagate. You’ll know the DNS has been set up correctly when you have the ability to default your short domain in your HOKO settings. When this feature is available, click on default to make sure all your links have your new brand.
 
+# Troubleshooting:
 
-Troubleshooting:
-
-I’ve followed instructions but my custom domain still isn’t working.
+> I’ve followed instructions but my custom domain still doesn't work.
 
 Things to check:
+
 **1.**  Have you waited up to 72 hours since you modified DNS? In some cases it can take that long before the DNS change fully takes effect.
 
 **2.** Log in to your registrar's web site and confirm the A and/or CNAME records(s) you entered match the instructions above.

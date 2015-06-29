@@ -265,3 +265,21 @@ Hoko.deeplinking().generateSmartlink(deeplink, new LinkGenerationListener() {
   }
 });
 {% endhighlight %}
+
+### Resolving Smartlinks
+
+Should you want to open a Smartlink (e.g. `https://yourapp.hoko.link/example`) and have it work as a deeplink in regards to the routing of Activities and Fragments, you can call openSmartlink(smartlink, smartlinkResolveListener). 
+
+{% highlight java %}
+Hoko.deeplinking().openSmartlink("https://yourapp.hoko.link/example", new SmartlinkResolveListener() {
+  @Override
+  public void onLinkResolved(String deeplink) {
+    // deeplink was opened
+  }
+
+  @Override
+  public void onError(Exception e) {
+    // could not resolve Smartlink
+  }
+})
+{% endhighlight %}

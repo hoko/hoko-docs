@@ -8,7 +8,7 @@ description: To integrate HOKO open source SDK in your app you just have to foll
 
 To integrate HOKO in your app, simply follow the 3 simple steps below.
 
-# Install HOKO in your project
+## Install HOKO in your project
 
 Download [the latest AAR](https://oss.sonatype.org/service/local/repositories/releases/content/com/hokolinks/hoko/1.2.1/hoko-1.2.1.aar) or grab via Maven:
 
@@ -16,19 +16,17 @@ Download [the latest AAR](https://oss.sonatype.org/service/local/repositories/re
 <dependency>
   <groupId>com.hokolinks</groupId>
   <artifactId>hoko</artifactId>
-  <version>1.2.1</version>
+  <version>2.0</version>
 </dependency>
 {% endhighlight %}
 
 or Gradle:
 
 {% highlight groovy %}
-compile 'com.hokolinks:hoko:1.2.1'
+compile 'com.hokolinks:hoko:2.0'
 {% endhighlight %}
 
-# Setting up the AndroidManifest.xml
-
-## Deep linking
+## Setting up the AndroidManifest.xml
 
 Add the following lines to your `AndroidManifest.xml` to make sure to have the following permissions:
 
@@ -45,11 +43,18 @@ Now for the actual deeplinking, please add the `Activity` and `Receiver` to the 
   android:alwaysRetainTaskState="true"
   android:launchMode="singleTask"
   android:noHistory="true"
-  android:theme="@android:style/Theme.NoDisplay">
+  android:theme="@android:style/Theme.Translucent.NoTitleBar">
   <intent-filter>
     <data android:scheme="===YOUR-URL-SCHEME===" />
     <action android:name="android.intent.action.VIEW" />
     <category android:name="android.intent.category.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+  </intent-filter>
+  <intent-filter android:autoVerify="true">
+    <data android:scheme="http" android:host="===YOUR-APP-SUBDOMAIN===.hoko.link" />
+    <data android:scheme="https" android:host="===YOUR-APP-SUBDOMAIN===.hoko.link" />
+    <action android:name="android.intent.action.VIEW" />
     <category android:name="android.intent.category.DEFAULT" />
     <category android:name="android.intent.category.BROWSABLE" />
   </intent-filter>
@@ -63,7 +68,11 @@ Now for the actual deeplinking, please add the `Activity` and `Receiver` to the 
 </receiver>
 {% endhighlight %}
 
-# SDK Setup
+The subdomain will be used to avoid request the user on which app to open the link and to avoid going through an HTML page redirect. Everytime a link with `http://yourapp.hoko.link` domain gets opened, it will automatically open your app and resolve the Smartlink into an actual `Deeplink`, redirecting the user to the proper `Activity` or `Fragment`.
+
+More info on [Why do I need a subdomain](http://support.hokolinks.com/why-do-i-need-a-subdomain/)
+
+## SDK Setup
 
 In your `Application` subclass setup the Hoko Framework in the `onCreate()` method:
 

@@ -7,23 +7,27 @@ description: Subdomains allow us to enclosure your app’s smart links and confi
 ---
 
 When you are creating an app, you will need to choose a unique subdomain name. This is necessary
-because behind the scenes we perform a series of operations that enable us to enclosure smart
+because behind the scenes we perform a series of operations to enclose the smart
 links and configuration files that concern each app.
 
-SCREENSHOT OF THE POPUP
+![Creating a subdomain](/assets/images/creating-subdomain.png)
 
 This segmentation allows us to individually generate, host and authenticate the necessary
 configuration files for each app and enable the
-underlying [Apple’s Universal Links](/PATH/APPLE/UNIVERSALLINKS) and
+underlying [Apple’s Universal Links](/ios/ios-deeplinking/#universal-links-nsuseractivity) and
 [Google’s App Links](/PATH/GOOGLE APP LINKS) mechanisms.
 
 Furthermore, subdomains provides you with a small branding label on every smart link that
 you generate, e.g. `http://black-is-the-new-app.hoko.link/TCw1RoX`. With this branding your
 readers will quickly identify your company and thus have a more personalized experience.
 
+At any time you can change your subdomain to something else by entering the *Settings*
+section of the *Dashboard* and choose a new name. This takes effect immediately and your
+next smart links will contain the new name automatically.
+
 You can take this customization further and completely re-brand your smart links with your own
 domain name, e.g. `http://blackapp.link/TCw1RoX`. All you need to do is to setup a
-[custom domain](/setting-up-a-custom-domain/) and add your domain name in the settings section.
+[custom domain](/setting-up-a-custom-domain/) and add your domain name in the *Settings* section.
 
 <a href="http://support.hokolinks.com/setting-up-a-custom-domain/" class="btn-next">Re-brand your smart links with a custom domain &#8594;</a>
 

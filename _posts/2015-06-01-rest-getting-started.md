@@ -25,18 +25,18 @@ You can find the individual tokens for each platform under the ‘Settings’ se
 You must then set the authentication header with the following format `Token <YOUR_PLATFORM_TOKEN>`
 like such:
 
-{% highlight java %}
+{% highlight bash %}
 curl -s
   -H "Authorization: Token <YOUR_PLATFORM_TOKEN>"
   -H "Content-Type: application/json"
-  -d '{ "uri": "/products/398291" }'
+  -d "{ 'uri': '/products/398291' }"
   https://api.hokolinks.com/v2/smartlinks/
 {% endhighlight %}
 
 If you don't provide us with your platform token on each request, we will response with an error
 code 3.
 
-{% highlight java %}
+{% highlight json %}
 {
   "error": "Unknown platform token",
   "status": 3

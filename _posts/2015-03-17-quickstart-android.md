@@ -16,19 +16,17 @@ Download [the latest AAR](https://oss.sonatype.org/service/local/repositories/re
 <dependency>
   <groupId>com.hokolinks</groupId>
   <artifactId>hoko</artifactId>
-  <version>1.2.1</version>
+  <version>2.0</version>
 </dependency>
 {% endhighlight %}
 
 or Gradle:
 
 {% highlight groovy %}
-compile 'com.hokolinks:hoko:1.2.1'
+compile 'com.hokolinks:hoko:2.0'
 {% endhighlight %}
 
 # Setting up the AndroidManifest.xml
-
-## Deep linking
 
 Add the following lines to your `AndroidManifest.xml` to make sure to have the following permissions:
 
@@ -69,6 +67,10 @@ Now for the actual deeplinking, please add the `Activity` and `Receiver` to the 
   </intent-filter>
 </receiver>
 {% endhighlight %}
+
+The subdomain will be used to avoid request the user on which app to open the link and to avoid going through an HTML page redirect. Everytime a link with `http://yourapp.hoko.link` domain gets opened, it will automatically open your app and resolve the Smartlink into an actual `Deeplink`, redirecting the user to the proper `Activity` or `Fragment`.
+
+More info on [Why do I need a subdomain](http://support.hokolinks.com/why-do-i-need-a-subdomain/)
 
 # SDK Setup
 

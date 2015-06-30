@@ -49,7 +49,7 @@ Next, we need to define our custom URL type. Remember, we want to open the app v
 
 # Setup Associated Domains (Universal Links) - **iOS 9.0+**
 
-For your app to fully support the newly introduced `Universal Links` by Apple you'll have to enable and add a new entry in the `Associated Domains` section, inside your application target's `Capabilities` tab. Click on the '+' button and add a new entry with the following value: `applinks:myapp.hoko.link`, being `your-subdomain` the Hoko subdomain you chose for your app's Hoko links. You can also have <u>your own link domain</u> ([learn more about this on the subdomains section](http://support.hokolinks.com/why-do-i-need-a-subdomain/)).
+For your app to fully support the newly introduced `Universal Links` by Apple you'll have to enable and add a new entry in the `Associated Domains` section, inside your application target's `Capabilities` tab. Click on the '+' button and add a new entry with the following value: `applinks:myapp.hoko.link`, being `myapp` the Hoko subdomain you chose for your app's Hoko links. You can also have <u>your own link domain</u> ([learn more about this on the subdomains section](http://support.hokolinks.com/why-do-i-need-a-subdomain/)).
 
 ![URL Scheme](/assets/images/associated-domains.png)
 

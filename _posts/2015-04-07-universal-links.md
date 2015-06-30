@@ -8,7 +8,7 @@ description: To help your app on becoming deep linkable we provide a non-mandato
 
 Apple is introducing Universal Links in iOS 9 to support native mobile deep linking using regular web links. It's one of the main mechanisms that act under the hood of every iOS 9 Search development.
 
-Universal Links will permit users to tap on a normal web link and to open a respective app in a specific section or to gracefully open the web page if the app is not installed. iOS 9 takes this further by quickly animating the process just like a normal page flip inside an app and by adding a back button in the top of the screen to enable the user to easily switch back and forth.
+Universal Links will permit users to tap on a normal web link and to open the respective app in a specific section or to gracefully open the web page if the app is not installed. iOS 9 takes this further by quickly animating the process just like a normal page flip inside an app and by adding a back button in the top of the screen to enable the user to easily switch back and forth.
 
 ![Universal Link's back button](/assets/images/universal-links-back-button.png)
 
@@ -28,7 +28,7 @@ Developers might be septic to change because they might actually be using the ol
 
 ## App and web site association
 
-> A trust relationship between the app and the website is established by adding a ‘com.apple.developer.associated-domains' entitlement to your app and an ‘apple-app-site-association' file to your website.
+> A trust relationship between the app and the website is established by adding a `com.apple.developer.associated-domains` entitlement to your app and an `apple-app-site-association` file to your website.
 
 HOKO generates and hosts the necessary configuration files automatically so you don't have to concern about them. Each subdomain holds the necessary files to enable mobile deep linking between your smart links and your app.
 
@@ -54,9 +54,9 @@ However, HOKO proprietary technology provides mobile deep linking for devices wi
 
 With Universal Links the web link must target a web page that actually exists so that the iOS can gracefully fall back if the user doesn't have the app installed. At the same time, the developer might want its mobile deep links to fall back to the web site homepage every time. Using Universal Links, that would imply that every link would look the same, e.g. `http://www.app-web.com` just in case some user that doesn't has the app installed could still open your website. The problem it's that this web link has no information related with the specific content. Therefore, the app will not know what to do with the link.
 
-The second scenario takes in consideration the mobile deep links that you want to catch with your app if it is installed or to fall back to a website that isn't associated with the app if it isn't installed, e.g. 'http://www.facebook.com/your-profile'. Achieving this would require some work by the developer, to configure a web page that could redirect its users to the destination page. Furthermore, the developer might not have a web site at all, turning this into a impossible solution.
+The second scenario takes in consideration the mobile deep links that you want to catch with your app if it is installed or to fall back to a website that isn't associated with the app if it isn't installed, e.g. `http://www.facebook.com/your-profile`. Achieving this would require some work by the developer, to configure a web page that could redirect its users to the destination page. Furthermore, the developer might not have a web site at all, turning this into a impossible solution.
 
-The developer can easily solve both use cases using HOKO smart links and their adaptive fall back. For each smart link created, you can choose on each platform ‘what' will happen if the app is not installed. Independently you can set the fall back to your web site, iTunes store page or any other external web site.
+The developer can easily solve both use cases using HOKO smart links and their adaptive fall back. For each smart link created, you can choose on each platform 'what' will happen if the app is not installed. Independently you can set the fall back to your web site, iTunes store page or any other external web site.
 
 > With Universal Links the developer must host a website that will be associated with an app. This could be bad news for small developers that can't claim, afford or maintain a website for their apps, but still want incoming traffic to their apps through web links.
 

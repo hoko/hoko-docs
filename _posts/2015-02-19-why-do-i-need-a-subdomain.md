@@ -14,8 +14,8 @@ links and configuration files that concern each app.
 
 This segmentation allows us to individually generate, host and authenticate the necessary
 configuration files for each app and enable the
-underlying [Apple’s Universal Links](/ios/ios-deeplinking/#universal-links-nsuseractivity) and
-[Google’s App Links](/PATH/GOOGLE APP LINKS) mechanisms.
+underlying [Apple’s Universal Links](/ios/universal-links) and
+[Google’s App Links](/android/app-links) mechanisms.
 
 Furthermore, subdomains provides you with a small branding label on every smart link that
 you generate, e.g. `http://black-is-the-new-app.hoko.link/TCw1RoX`. With this branding your

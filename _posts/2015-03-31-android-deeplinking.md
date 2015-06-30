@@ -185,11 +185,11 @@ To save time integrating HOKO in an application, HOKO **does not require** deleg
 Hoko.deeplinking().openURL(deeplink);
 {% endhighlight %}
 
-## Smart link Generation
+## Smart link generation
 
 Smart links may be created on the dashboard or through the HOKO SDK, in order to allow users to share platform independent links directly to the relevant content.
 
-### Smartlinks from templates
+### Smart links from templates
 
 To generate Smart links through templates, the application needs a **route format**, the corresponding **route parameters** and optional **query parameters**.
 
@@ -212,7 +212,7 @@ Hoko.deeplinking().generateSmartlink(this, new LinkGenerationListener() {
 });
 {% endhighlight %}
 
-#### From Deeplink
+#### From deep link
 
 Another way is to generate Smart links from a `Deeplink` object.
 

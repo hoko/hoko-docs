@@ -1,59 +1,50 @@
 ---
 layout: documentation
-title: Integrate iOS SDK
+title: Documentation
 permalink: /documentation/
 ---
-To integrate HOKO open source SDK in your app you just have to follow 3 simple steps (either using
-[cocoapods][cocoapods] or doing it manually).
 
-## Using cocoapods
+# Quickstart
 
-**1.** Install [CocoaPods][cocoapods] in your system
+<ul class="index-list">
+  {% for page in site.categories.quickstart reversed %}
+    <li>
+      <a href="{{page.url}}">{{ page.title }}</a>
+      <p>{{ page.description }}</p>
+    </li>
+  {% endfor %}
+</ul>
 
-**2.** Open your Xcode project folder and create a file called `Podfile` with the following content:
+# iOS
 
-{% highlight ruby %}
-pod 'Hoko', '~> 2.0'
-{% endhighlight %}
+<ul class="index-list">
+  {% for page in site.categories.ios reversed %}
+    <li>
+      <a href="{{page.url}}">{{ page.title }}</a>
+      <p>{{ page.description }}</p>
+    </li>
+  {% endfor %}
+</ul>
 
-**3.** Run `pod install` and wait for **CocoaPods** to install **HOKO SDK**. From this moment on, instead of using `.xcodeproj` file, you should start using `.xcworkspace`.
+# Android
 
-## Manual integration
+<ul class="index-list">
+  {% for page in site.categories.android reversed %}
+    <li>
+      <a href="{{page.url}}">{{ page.title }}</a>
+      <p>{{ page.description }}</p>
+    </li>
+  {% endfor %}
+</ul>
 
-**1.** Download the [Hoko SDK](https://github.com/hokolinks/hoko-ios/archive/master.zip).
+# REST API
 
-**2.** Drag the `Hoko` folder to your project.
+<ul class="index-list">
+  {% for page in site.categories.api reversed %}
+    <li>
+      <a href="{{page.url}}">{{ page.title }}</a>
+      <p>{{ page.description }}</p>
+    </li>
+  {% endfor %}
+</ul>
 
-**3.** Be sure to also add `SystemConfiguration.framework` and `zlib.dylib` in case your project does not include it already.
-
-# Add a URL Scheme to your App
-
-Next, we need to define our custom URL type. Remember, we want to open the app via **"hoko://"**, so that will be our URL scheme. We also need to assign an unique identifier to the scheme. Apple recommends that you use reverse DNS notation to ensure that there are no name collisions on the platform, so we’ll use **"com.hoko.app"** for this example.
-
-![URL Scheme](/assets/images/ios_url_schemes.png)
-
-# SDK Setup
-
-Add the following line to your `applicationDidFinishLaunching` method in your `AppDelegate` class (don't forget to import the HOKO class by using `#import <Hoko/Hoko.h>` if you're working with `Objective-C`).
-
-{% highlight objective-c %}
-#import <Hoko/Hoko.h>
-
-- (BOOL)application:(UIApplication *)application
-  didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  [Hoko setupWithToken:@"YOUR-APP-TOKEN"];
-  // The rest of your code goes here...
-}
-{% endhighlight %}
-
-{% highlight swift %}
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-  Hoko.setupWithToken("YOUR-APP-TOKEN")
-  // The rest of your code goes here...
-}
-{% endhighlight %}
-
-[cocoapods]: http://cocoapods.org/ "Cocoapods website"
-
-
-<a href="http://support.hokolinks.com/ios/ios-setup/" class="btn-next">Setup iOS app &#8594;</a>

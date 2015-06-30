@@ -244,9 +244,4 @@ Hoko.deeplinking().openSmartlink(deeplink, completion: { (deeplink: HOKDeeplink?
 
 If you choose not to have a completion block, you can use the `openSmartlink:` method without the 2nd parameter.
 
-## Universal Links (NSUserActivity)
-
-With iOS 9, Apple introduced Universal Links that allows an app to be opened directly when a link with a specific host (specified in the `Associated Domains`) is tapped on the user's device. With this, Apple generates a `NSUserActivity` object with the property `webpageURL` filled with that URL and passes it to your application's App Delegate by calling the `application:continueUserActivity:restorationHandler:` delegate method. Hoko listens to this call (via swizzling) and automatically does the hard work for you: converts that link into a deeplink and calls your `route handler` that processes it.
-Keep in mind that Hoko won't do anything if the `host` of the `NSUserActivity's webpageURL` doesn't contain `"hoko.link"`. If that's the case, `application:continueUserActivity:restorationHandler:` is then passed to your App Delegate, like it normally would.
-
 <a href="http://support.hokolinks.com/ios/ios-utilities/" class="btn-next">View Hoko Utilities &#8594;</a>

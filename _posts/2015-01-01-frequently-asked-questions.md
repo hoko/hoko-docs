@@ -8,23 +8,25 @@ description: Which platforms does HOKO support? What type of metrics/data can i 
 
 ## Which platforms does HOKO support?
 
-Currently HOKO supports **iOS**, **Android** and **Desktop web** applications. Yet we are also
-working on other platforms, so we are ready to grow at the speed of your requirements.
+Currently, HOKO supports iOS, Android, and Desktop Web applications. Yet we are also expanding our SDK to other frameworks, so if you are really looking forward to using HOKO let us know which framework you use!
 
-## What type of metrics / data can I get from HOKO?
+## What type of metrics can I get from HOKO?
 
-After you integrate your application with HOKO, we will offer you the following set of metrics so
-you can better understand your traffic and engagement:
+After integration, you will be ready to track all your incoming traffic and measure the performance of all your smart links. The HOKO dashboard focuses on two set of metrics - installs (growth) and re-engagement (retention). You will have access to the following data:
 
-* The total number and unique clicks on your smart links;
+* Total number of opens,
 
-* The number of installs generated from users clicking your smart links;
+* Total number of unique clicks,
 
-* Channels from where the users are coming from;
+* Total number of installs,
 
-* Coming soon, we are building a track system that recognizes which users are generating and sharing
-your links; therefore you can get much closer to your advocates, and release the most powerful
-marketing channel of all. And do it without spending a penny!
+* Total number of re-engagements,
+
+* Geographic and device information about the users,
+
+* Coming soon: we are building a tracking system that recognizes which users are generating and sharing your links; therefore you can get much closer to your advocates, and release the most powerful marketing channel of all. And do it without spending a penny!
+
+You are able to inspect links individually, filter them by tags, and sort them by time, performance, and source/channel.
 
 ## What about privacy?
 
@@ -56,11 +58,9 @@ poor engagement experiences, and hello to the power of organic growth through re
 
 ## Can I add multiple apps to the same HOKO Dashboard?
 
-Yes, you can! Using a PRO plan, you can have up to three apps under your same account. Switching
-from one app to the other is easy and completely transparent to you. Every app that is added to
-HOKO has its own dashboard to analyse and respond to traffic and setup custom smart links. At this
-time we have no plans to build a single dashboard for all your apps - but if it is something our
-users start asking for, we’ll definitely do it for you!
+Yes, you can!  You can have as many apps as you want under the same account. Switching from one app to the other is easy and completely transparent to you. Every app that is added to HOKO has its own dashboard to analyze their to traffic and create custom smart links.
+
+At this time, we have no plans to build a single dashboard for all your apps - but if it is something our users start asking for, we’ll definitely do it for you!
 
 ## Will HOKO slow my app down?
 

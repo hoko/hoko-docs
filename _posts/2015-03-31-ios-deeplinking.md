@@ -222,7 +222,7 @@ Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink:
 Should you want to open a Smart link (e.g. `https://yourapp.hoko.link/example`) and have it work as a deeplink that is processed by your `route handler`, you can call `openSmartlink:completion:`.
 
 {% highlight objective-c %}
-[[Hoko deeplinking] openSmartlink: completion:^(HOKDeeplink *deeplink) {
+[[Hoko deeplinking] openSmartlink:slink completion:^(HOKDeeplink *deeplink) {
   if (!deeplink) {
     // deepling was opened
   } else {
@@ -233,7 +233,7 @@ Should you want to open a Smart link (e.g. `https://yourapp.hoko.link/example`) 
 {% endhighlight %}
 
 {% highlight swift %}
-Hoko.deeplinking().openSmartlink(deeplink, completion: { (deeplink: HOKDeeplink?) -> Void in
+Hoko.deeplinking().openSmartlink(slink, completion: { (deeplink: HOKDeeplink?) -> Void in
   if let link = deeplink {
     // deepling was opened
   } else {

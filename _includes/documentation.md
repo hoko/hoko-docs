@@ -1,8 +1,4 @@
----
-layout: documentation
-title: Documentation
-permalink: /documentation/
----
+
 
 # Quickstart
 
@@ -47,4 +43,3 @@ permalink: /documentation/
     </li>
   {% endfor %}
 </ul>
-

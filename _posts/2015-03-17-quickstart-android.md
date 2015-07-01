@@ -51,7 +51,8 @@ Now for the actual deeplinking, please add the `Activity` and `Receiver` to the 
     <category android:name="android.intent.category.DEFAULT" />
     <category android:name="android.intent.category.BROWSABLE" />
   </intent-filter>
-  <intent-filter android:autoVerify="true">
+  
+  <intent-filter> <!-- Android M Users add android:autoVerify="true" for AppLinks on this intent-filter-->
     <data android:scheme="http" android:host="===YOUR-APP-SUBDOMAIN===.hoko.link" />
     <data android:scheme="https" android:host="===YOUR-APP-SUBDOMAIN===.hoko.link" />
     <action android:name="android.intent.action.VIEW" />

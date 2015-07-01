@@ -137,7 +137,7 @@ To save time integrating HOKO in an application, HOKO **does not require** deleg
 // AppDelegate.m
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-  if ([FBAppCall handleOpenURL:url sourceApplication:sourceApplication])
+  if ([[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation])
     return YES;
   return [[Hoko deeplinking] openURL:url sourceApplication:sourceApplication annotation:annotation];
 }
@@ -146,7 +146,7 @@ To save time integrating HOKO in an application, HOKO **does not require** deleg
 {% highlight swift %}
 // AppDelegate.swift
 func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-  if FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication) {
+  if FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication annotation: annotation) {
     return true
   }
   return Hoko.deeplinking().openURL(url, sourceApplication: sourceApplication, annotation: annotation)

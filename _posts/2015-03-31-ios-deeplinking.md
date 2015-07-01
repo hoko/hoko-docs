@@ -146,7 +146,7 @@ To save time integrating HOKO in an application, HOKO **does not require** deleg
 {% highlight swift %}
 // AppDelegate.swift
 func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-  if FBSession.activeSession().handleOpenUrl(url) {
+  if FBSession.activeSession().handleOpenURL(url) {
     return true
   }
   return Hoko.deeplinking().openURL(url, sourceApplication:sourceApplication, annotation: annotation)

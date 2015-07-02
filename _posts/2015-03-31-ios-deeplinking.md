@@ -155,7 +155,7 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
 
 ## Universal Links Delegation (NSUserActivity)
 
-HOKO is all about saving your development time and, with that in mind, our SDK also **does not require** you to delegate the `application:continueUserActivity:restorationHandler` method from the `AppDelegate` in order to work with Apple's Universal Links (HOKO handles all of this is automatically done via method swizzling). Although that delegate method is used for Universal Links, keep in mind that it is also used for `Handoff` and `iOS 9's` search.  
+HOKO is all about saving your development time and, with that in mind, our SDK also **does not require** you to delegate the `application:continueUserActivity:restorationHandler` method from the `AppDelegate` in order to work with Apple's Universal Links (HOKO handles all of this automatically done via method swizzling). Although that delegate method is used for Universal Links, keep in mind that it is also used for `Handoff` and `iOS 9's` search.  
 When this method is called, HOKO verifies that the link associated with the `NSUserActivity`, generated and passed by `iOS`, is a proper HOKO link. If it's not, the SDK will redirect the method's call to your `AppDelegate`, if implemented.  
 Should you choose to delegate manually, you must make sure to return `true` in case the `NSUserActivity` was handled, by either HOKO or by any framework/method and `false` otherwise.
 

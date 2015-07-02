@@ -153,6 +153,37 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
 }
 {% endhighlight %}
 
+## Universal Links Delegation (NSUserActivity)
+
+HOKO is all about saving your development time and, with that in mind, our SDK also **does not require** you to delegate the `application:continueUserActivity:restorationHandler` method from the `AppDelegate` in order to work with Apple's Universal Links (HOKO handles all of this is automatically done via method swizzling). Although that delegate method is used for Universal Links, keep in mind that it is also used for `Handoff` and `iOS 9's` search.  
+When this method is called, HOKO verifies that the link associated with the `NSUserActivity`, generated and passed by `iOS`, is a proper HOKO link. If it's not, the SDK will redirect the method's call to your `AppDelegate`, if implemented.  
+Should you choose to delegate manually, you must make sure to return `true` in case the `NSUserActivity` was handled, by either HOKO or by any framework/method and `false` otherwise.
+
+{% highlight objective-c %}
+// AppDelegate.m
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *))restorationHandler
+{
+    // 'processUserActivity:' would be one of your methods that
+    // would check if the activity received is what you're expecting.
+    if ([self processUserActivity:userActivity]) {
+        return YES;
+    }
+    return [[Hoko deeplinking] continueUserActivity:userActivity restorationHandler:restorationHandler];
+}
+{% endhighlight %}
+
+{% highlight swift %}
+// AppDelegate.swift
+func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+    // 'processUserActivity()' would be one of your methods that
+    // would check if the activity received is what you're expecting.
+    if (processUserActivity(userActivity)) {
+        return true
+    }
+    return Hoko.deeplinking().continueUserActivity(userActivity, restorationHandler:restorationHandler)
+}
+{% endhighlight %}
+
 ## Smart link Generation
 
 Smart links may be created on the dashboard or through the HOKO SDK, in order to allow users to share platform independent links directly to the relevant content.

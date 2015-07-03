@@ -16,14 +16,14 @@ Download [the latest AAR](https://oss.sonatype.org/service/local/repositories/re
 <dependency>
   <groupId>com.hokolinks</groupId>
   <artifactId>hoko</artifactId>
-  <version>2.0</version>
+  <version>2.0.1</version>
 </dependency>
 {% endhighlight %}
 
 or Gradle:
 
 {% highlight groovy %}
-compile 'com.hokolinks:hoko:2.0'
+compile 'com.hokolinks:hoko:2.0.1'
 {% endhighlight %}
 
 ## Setting up the AndroidManifest.xml
@@ -45,7 +45,7 @@ Now for the actual deeplinking, please add the `Activity` and `Receiver` to the 
   android:noHistory="true"
   android:theme="@android:style/Theme.Translucent.NoTitleBar">
   <intent-filter>
-    <data android:scheme="===YOUR-URL-SCHEME===" />
+    <data android:scheme="bananas" />
     <action android:name="android.intent.action.VIEW" />
     <category android:name="android.intent.category.VIEW" />
     <category android:name="android.intent.category.DEFAULT" />
@@ -53,8 +53,8 @@ Now for the actual deeplinking, please add the `Activity` and `Receiver` to the 
   </intent-filter>
   
   <intent-filter> <!-- Android M Users add android:autoVerify="true" for AppLinks on this intent-filter-->
-    <data android:scheme="http" android:host="===YOUR-APP-SUBDOMAIN===.hoko.link" />
-    <data android:scheme="https" android:host="===YOUR-APP-SUBDOMAIN===.hoko.link" />
+    <data android:scheme="http" android:host="bananas.hoko.link" /> <!-- Or your own custom domain -->
+    <data android:scheme="https" android:host="bananas.hoko.link" />
     <action android:name="android.intent.action.VIEW" />
     <category android:name="android.intent.category.DEFAULT" />
     <category android:name="android.intent.category.BROWSABLE" />
@@ -84,5 +84,7 @@ public void onCreate() {
   Hoko.setup(this, "YOUR-APP-TOKEN");
 }
 {% endhighlight %}
+
+Note: Check the Logs for your device token so you can upload routes into HOKO!
 
 <a href="http://support.hokolinks.com/android/android-setup/" class="btn-next">Setup Android app &#8594;</a>

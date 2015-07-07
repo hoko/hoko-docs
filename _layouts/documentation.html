@@ -12,7 +12,15 @@
             {% if page.categories %}
               <li><a href="/documentation">Documentation</a></li>
               {% for category in page.categories %}
-                <li><a href="/{{category}}">{{ category | capitalize }}</a></li>
+                <li>
+                  <a href="/{{category}}">
+                    {% if category == 'ios' %}
+                      iOS
+                    {% else %}
+                      {{ category | capitalize }}
+                    {% endif %}
+                  </a>
+                </li>
               {% endfor %}
             {% endif %}
             <li class="active">{{ page.title }}</li>

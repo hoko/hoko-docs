@@ -25,12 +25,12 @@ You can find the individual tokens for each platform under the 'Settings' sectio
 
 ![Web token](/assets/images/rest_token.png)
 
-You must then set the authentication header with the following format `Token <YOUR_PLATFORM_TOKEN>`
+You must then set the authentication header with the following format `Token c466541181db7fa84fd6b12a8a0b48995d01af1d`
 like such:
 
 {% highlight bash %}
 curl -s
-  -H "Authorization: Token <YOUR_PLATFORM_TOKEN>"
+  -H "Authorization: Token c466541181db7fa84fd6b12a8a0b48995d01af1d"
   -H "Content-Type: application/json"
   -d "{ 'uri': '/products/398291' }"
   https://api.hokolinks.com/v2/smartlinks/
@@ -64,4 +64,4 @@ Currently these are the errors codes and messages that you may get:
 
 You can now start using our REST API to create your smart links.
 
-<a href="http://support.hokolinks.com/api/rest-smartlinks/" class="btn-next">Automate your smart links generation &#8594;</a>
+<a href="http://support.hokolinks.com/api/rest-creating-smartlinks/" class="btn-next">Automate your smart links generation &#8594;</a>

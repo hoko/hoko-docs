@@ -90,29 +90,3 @@ Example response:
 
 In this example we overrode three different platforms, if we had done it only for one of them the
 rest would be based on defaults.
-
-### Lazy links
-
-Create a lazy smart link based on a URI that it will only be created on-demand, i.e. once there is
-an initial request to open the link. You should use this approach if you're creating a lot of links
-that may not be clicked and you don't care how the link looks (newsletters for example).
-
-Example request:
-
-{% highlight json %}
-{
-  "uri": "/products/398291",
-  "lazy": true
-}
-{% endhighlight %}
-
-Example response:
-
-{% highlight json %}
-{
-  "smartlink": "http://app.hoko.link/Ft8Mzkg/%2Fproducts%2F398291"
-}
-{% endhighlight %}
-
-It works exactly like the "normal" ones but the URL will include the original URI and the link
-won't be saved until it is clicked.

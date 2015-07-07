@@ -207,9 +207,9 @@ HOKDeeplink *deeplink = [HOKDeeplink deeplinkWithRoute:@"products/:product_id"
 {% highlight swift %}
 let deeplink = HOKDeeplink("products/:product_id", routeParameters: ["product_id": product.identifier],
                                                  queryParameters:["referrer": user.name])
-Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink: String!) -> Void in
+Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink: String) -> Void in
   Social.sharedInstance().shareProduct(product, link: smartlink)
-}) { (error: NSError!) -> Void in
+}) { (error: NSError) -> Void in
   // Share web link instead
   Social.sharedInstance().shareProduct(product, link: self.product.webLink)
 }
@@ -240,9 +240,9 @@ let deeplink = HOKDeeplink("products/:product_id", routeParameters: ["product_id
 deeplink.addURL("http://awesomeapp.com/the_perfect_product" forPlatform:.Web)
 deeplink.addURL("http://awesomeapp.com/no_android_app_yet" forPlatform:.Android)
 
-Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink: String!) -> Void in
+Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink: String) -> Void in
   Social.sharedInstance().shareProduct(product, link: smartlink)
-}) { (error: NSError!) -> Void in
+}) { (error: NSError) -> Void in
   // Share web link instead
   Social.sharedInstance().shareProduct(product, link: self.product.webLink)
 }

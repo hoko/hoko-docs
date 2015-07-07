@@ -23,7 +23,7 @@ If an application which has a **product detail view controller** it should someh
 
 {% highlight swift %}
 Hoko.deeplinking().mapRoute("products/:product_id", toTarget: {
-  (deeplink: HOKDeeplink!) -> Void in
+  (deeplink: HOKDeeplink) -> Void in
     // Do something when deep link is opened
 })
 {% endhighlight %}
@@ -55,7 +55,7 @@ The main purpose of a `target` execution block is for the app to create the navi
 
 {% highlight swift %}
 Hoko.deeplinking().mapRoute("products/:product_id", toTarget: {
-  (deeplink: HOKDeeplink!) -> Void in
+  (deeplink: HOKDeeplink) -> Void in
     let productViewController = BLKPRoductViewController(productId: deeplink.routeParameters["product_id"]) // always exists
     productViewController.referrer = deeplink.queryParameters["referrer"] // might not exist
     HOKNavigation.pushViewController(productViewController, animated: true)
@@ -74,7 +74,7 @@ In case you want to provide a given behavior for when an unmapped deep linking o
 {% endhighlight %}
 
 {% highlight swift %}
-Hoko.deeplinking().mapDefaultRouteToTarget { (deeplink: HOKDeeplink!) -> Void in
+Hoko.deeplinking().mapDefaultRouteToTarget { (deeplink: HOKDeeplink) -> Void in
   let landingViewController = BLKLandingViewController()
   HOKNavigation.setRootViewController(landingViewController)
 }
@@ -107,7 +107,7 @@ If a class object implements the `HOKHandlerProtocol` interface and that object 
 // Analytics.swift
 class Analytics: HOKHandlerProtocol {
 ...
-func handleDeeplink(deeplink: HOKDeeplink!) {
+func handleDeeplink(deeplink: HOKDeeplink) {
   track("deeplink", parameters: ["route": deeplink.route])
 }
 // AppDelegate.swift
@@ -124,7 +124,7 @@ Aside from interface implementation, HOKO also allows adding `handler` blocks to
 {% endhighlight %}
 
 {% highlight swift %}
-Hoko.deeplinking().addHandlerBlock { (deeplink: HOKDeeplink!) -> Void in
+Hoko.deeplinking().addHandlerBlock { (deeplink: HOKDeeplink) -> Void in
   Analytics.sharedInstance().track("deeplink", parameters: ["route": deeplink.route])
 }
 {% endhighlight %}

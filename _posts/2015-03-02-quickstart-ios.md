@@ -39,7 +39,7 @@ Because the HOKO SDK is written in `Objective-C`, you'll have to manually add a 
 
 **3.** Inside that header file, import `#import <Hoko/Hoko.h>"`
 
-**4.** Go to your project > `Build Settings` > `Objective-C Bridging Header` > add the path to your bridging header file, from your root folder (e.g. `MyApp/MyApp-Bridging-Header.h`)
+**4.** Go to your project > `Build Settings` > Search for `Objective-C Bridging Header` > Add the path to your bridging header file, from your root folder (e.g. `MyApp/MyApp-Bridging-Header.h`)
 
 ## Add a URL Scheme to your App
 
@@ -68,8 +68,31 @@ Add the following line to your `applicationDidFinishLaunching` method in your `A
 {% endhighlight %}
 
 {% highlight swift %}
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+func application(application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
   Hoko.setupWithToken("YOUR-APP-TOKEN")
+  // The rest of your code goes here...
+}
+{% endhighlight %}
+
+If you wish to use your own domain(s) on your HOKO smart links ([see "Setting up a custom domain"](http://support.hokolinks.com/setting-up-a-custom-domain/)), setup the iOS SDK using `setupWithToken:customDomains:` as following:
+
+{% highlight objective-c %}
+#import <Hoko/Hoko.h>
+
+- (BOOL)application:(UIApplication *)application
+  didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  [Hoko setupWithToken:@"YOUR-APP-TOKEN"
+         customDomains:@[@"your.custom.domain.com"]];
+  // The rest of your code goes here...
+}
+{% endhighlight %}
+
+{% highlight swift %}
+func application(application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  Hoko.setupWithToken("YOUR-APP-TOKEN",
+      customDomains: ["your.custom.domain.com"])
   // The rest of your code goes here...
 }
 {% endhighlight %}

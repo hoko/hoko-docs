@@ -190,12 +190,13 @@ Smart links may be created on the dashboard or through the HOKO SDK, in order to
 
 ### Smart links from templates
 
-To generate Smart links through templates, the application needs a **route format**, the corresponding **route parameters** and optional **query parameters**.
+To generate Smart links through templates, the application needs a **route format**, the corresponding **route parameters** and optional **query parameters** and **metadata**.
 
 {% highlight objective-c %}
 HOKDeeplink *deeplink = [HOKDeeplink deeplinkWithRoute:@"products/:product_id"
-                                     routeParameters:@{@"product_id":@(self.product.identifier)}
-                                     queryParameters:@{@"referrer": self.user.name}];
+                                       routeParameters:@{@"product_id": @(self.product.identifier)}
+                                       queryParameters:@{@"referrer": self.user.name}
+                                              metadata:@{@"coupon": @"20"}];
 [[Hoko deeplinking] generateSmartlinkForDeeplink:deeplink success:^(NSString *smartlink) {
   [[Social sharedInstance] shareProduct:self.product link:smartlink];
 } failure:^(NSError *error) {
@@ -206,7 +207,8 @@ HOKDeeplink *deeplink = [HOKDeeplink deeplinkWithRoute:@"products/:product_id"
 
 {% highlight swift %}
 let deeplink = HOKDeeplink("products/:product_id", routeParameters: ["product_id": product.identifier],
-                                                 queryParameters:["referrer": user.name])
+                                                 queryParameters:["referrer": user.name],
+                                                 metadata: ["coupon": "20"])
 Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink: String) -> Void in
   Social.sharedInstance().shareProduct(product, link: smartlink)
 }) { (error: NSError) -> Void in
@@ -221,8 +223,9 @@ To allow applications to link to content without the use of templates, the HOKO 
 
 {% highlight objective-c %}
 HOKDeeplink *deeplink = [HOKDeeplink deeplinkWithRoute:@"products/:product_id"
-                                     routeParameters:@{@"product_id":@(self.product.identifier)}
-                                     queryParameters:@{@"referrer": self.user.name}];
+                                       routeParameters:@{@"product_id": @(self.product.identifier)}
+                                       queryParameters:@{@"referrer": self.user.name}
+                                              metadata:@{@"coupon": @"20"}];
 [deeplink addURL:@"http://awesomeapp.com/the_perfect_product" forPlatform:HOKDeeplinkPlatformWeb];
 [deeplink addURL:@"http://awesomeapp.com/no_android_app_yet" forPlatform:HOKDeeplinkPlatformAndroid];
 
@@ -236,7 +239,8 @@ HOKDeeplink *deeplink = [HOKDeeplink deeplinkWithRoute:@"products/:product_id"
 
 {% highlight swift %}
 let deeplink = HOKDeeplink("products/:product_id", routeParameters: ["product_id": product.identifier],
-                                                 queryParameters:["referrer": user.name])
+                                                 queryParameters:["referrer": user.name],
+                                                 metadata: ["coupon": "20"])
 deeplink.addURL("http://awesomeapp.com/the_perfect_product" forPlatform:.Web)
 deeplink.addURL("http://awesomeapp.com/no_android_app_yet" forPlatform:.Android)
 

@@ -8,7 +8,7 @@ description: Lazy smart links endpoint
 
 ## Lazy smart links
 
-Lazy smart links are links that will only be created on-demand, i.e. once there is a first
+Lazy smart links are links that are created on-demand, i.e. once there is a first
 request to resolve a link. This is very handy method to create smart links if you need to quickly
 create a links based on a URL or if you need a lot of links that may not be clicked by your users, e.g. actionable buttons in newsletters.
 

@@ -37,7 +37,7 @@ HOKO works by injecting deep link parameters into `Activity` or `Fragment` varia
 
 ##### DeeplinkRoute
 
-On classes annotated with `@DeeplinkRoute`, the injection will look for variables annotated `@DeeplinkRouteParameter` and `@DeeplinkQueryParameter`.
+On classes annotated with `@DeeplinkRoute`, the injection will look for variables annotated `@DeeplinkRouteParameter`, `@DeeplinkQueryParameter` and a `JSONObject` annotated with `@DeeplinkMetadata`.
 
 {% highlight java %}
 @DeeplinkRoute("products/:product_id")
@@ -49,12 +49,18 @@ public class ProductActivity extends Activity {
   @DeeplinkQueryParameter("referrer")
   public String mReferrer;
 
+  @DeeplinkMetadata
+  public JSONObject metadata;
+
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     if (!Hoko.deeplinking().inject(this)) {
       // This code will be executed if the activity was not started by Hoko
       mProductId = getIntent().getIntExtra("product_id", 0);
+    } else {
+      String coupon = metadata.optString("coupon");
+      useCoupon(coupon);
     }
   }
 }
@@ -67,6 +73,8 @@ The difference between **route parameters** and **query parameters** is how they
 **Route parameters** must always be matched and as such, if an `Activity` was injected with a deep link, a `@DeeplinkRouteParameter` variable will always have a value.
 
 **Query parameters** are completly optional and may be `null` or `0`, even if the `Activity` was injected with a given deep link.
+
+Additionally we provide you with `Metadata` which consists on invisible information transfered from the Smartlink creation onto the actual opening of the contained deep link. This object is represented by a `JSONObject` and may contain whatever information you provided beforehand. This type of data is especially useful to guarantee data integrity (e.g. coupons, rewards, discounts) in order to avoid harmful users from exploiting visible deeplinking mechanics in your app.
 
 ##### DeeplinkFragmentActivity
 
@@ -136,7 +144,9 @@ Hoko.deeplinking().mapRoute("invite/:user_id", new DeeplinkCallback() {
   @Override
   public void deeplinkOpened(Deeplink deeplink) {
     String userId = deeplink.getRouteParameters().get("user_id");
-    Social.getInstance().showInvitePopup(userId);
+    String inviteMessage = deeplink.getQueryParameters().get("invite_message");
+    String friendCoupon = deeplink.getMetadata().optString("coupon_code")
+    Social.getInstance().showInvitePopup(userId, inviteMessage, friendCoupon);
   }
 })
 {% endhighlight %}
@@ -223,7 +233,14 @@ routeParameters.put("product_id", mProduct.getId());
 HashMap queryParameters = new HashMap();
 queryParameters.put("referrer", "app");
 
-Deeplink deeplink = Deeplink.deeplink("products/:product_id", routeParameters, queryParameters);
+JSONObject metadata = new JSONObject();
+try {
+  metadata.putOpt("coupon_code", "hokosale30");
+} catch (JSONException e) {
+  e.printStackTrace();
+}
+
+Deeplink deeplink = Deeplink.deeplink("products/:product_id", routeParameters, queryParameters, metadata);
 Hoko.deeplinking().generateSmartlink(deeplink, new LinkGenerationListener() {
   @Override
   public void onLinkGenerated(String smartlink) {

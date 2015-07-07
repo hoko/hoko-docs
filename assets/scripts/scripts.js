@@ -17,4 +17,9 @@ $(function() {
       highlightSwift.hide();
     }
   });
-})
+
+  $('#breadcrumb li a').each(function() {
+    var text = $(this).text();
+    $(this).text(text.replace('Ios', 'iOS'));
+  });
+});

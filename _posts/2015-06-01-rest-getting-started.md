@@ -23,6 +23,8 @@ your iOS app you should use the 'iPhone' platform’s token.
 
 You can find the individual tokens for each platform under the 'Settings' section of the dashboard:
 
+[http://gcapp.link/download](http://gcapp.link/download)
+
 ![Web token](/assets/images/rest_token.png)
 
 You must then set the authentication header with the following format `Token c466541181db7fa84fd6b12a8a0b48995d01af1d`

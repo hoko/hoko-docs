@@ -21,7 +21,7 @@ In the body of the request you should send a JSON that has the following fields:
 |:----------|:-------------------------------------------------------------------------------------|
 | **uri**   | The base URI for the smart link (full or relative HTTP or mobile deep link)          |
 | routes    | Custom links and fallback for each platform                                          |
-| lazy      | Boolean value indicating if this should be a lazy smart link                         |
+| unique    | Boolean value indicating if this should be an unique smart link                      |
 
 Bold parameter `uri` is the only mandatory one, that you have to include in every request. The
 other ones are optional and you'll see when you can use them in the examples below.
@@ -88,5 +88,29 @@ Example response:
 }
 {% endhighlight %}
 
-In this example we overrode three different platforms, if we had done it only for one of them the
-rest would be based on defaults.
+In this example we are overriding every platform’s default route. You could always just override a sub set of routes and all but those would adopt the default route value.
+
+### Unique smart links
+
+Create an unique smart link based on a URI, i.e. only one smart link will be created and returned
+for multiple requests using the same URI. 
+
+Example of multiple requests with:
+
+{% highlight json %}
+{
+  "uri": "/products/398291",
+  "unique": true
+}
+{% endhighlight %}
+
+Example response for every request:
+
+{% highlight json %}
+{
+  "smartlink": "http://app.hoko.link/JZz97u6"
+}
+{% endhighlight %}
+
+Without this option, we will create smart links with different codes for each request, even if every
+request have the same URI.

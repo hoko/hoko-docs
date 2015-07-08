@@ -12,19 +12,15 @@ To integrate HOKO in your app, simply follow the 3 simple steps below.
 
 Download [the latest AAR](https://oss.sonatype.org/service/local/repositories/releases/content/com/hokolinks/hoko/1.2.1/hoko-1.2.1.aar) or grab via Maven:
 
-{% highlight xml %}
-<dependency>
-  <groupId>com.hokolinks</groupId>
-  <artifactId>hoko</artifactId>
-  <version>2.0.1</version>
-</dependency>
-{% endhighlight %}
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>com.hokolinks<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>hoko<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span><span class="android-version">...</span><span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></div>
 
 or Gradle:
 
-{% highlight groovy %}
-compile 'com.hokolinks:hoko:2.0.1'
-{% endhighlight %}
+<div class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="n">compile</span> <span class="s1">'com.hokolinks:hoko:<span class="android-version">...</span>'</span></code></pre></div>
 
 ## Setting up the AndroidManifest.xml
 
@@ -51,7 +47,7 @@ Now for the actual deeplinking, please add the `Activity` and `Receiver` to the 
     <category android:name="android.intent.category.DEFAULT" />
     <category android:name="android.intent.category.BROWSABLE" />
   </intent-filter>
-  
+
   <intent-filter> <!-- Android M Users add android:autoVerify="true" for AppLinks on this intent-filter-->
     <data android:scheme="http" android:host="bananas.hoko.link" /> <!-- Or your own custom domain -->
     <data android:scheme="https" android:host="bananas.hoko.link" />

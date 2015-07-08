@@ -17,4 +17,12 @@ $(function() {
       highlightSwift.hide();
     }
   });
+
+  $('.ios-version').load('https://hokolinks.com/versions/ios', function(data) {} );
+
+  $('.android-version').load('https://hokolinks.com/versions/android', function(data) {} );
 });
+
+// $.getJSON( "https://hokolinks.com/versions/ios", function(data) {
+//   console.log(data.responseText);
+// });

@@ -15,9 +15,7 @@ To integrate HOKO open source SDK in your app you just have to follow 3 simple s
 
 **2.** Open your Xcode project folder and create a file called `Podfile` with the following content:
 
-{% highlight ruby %}
-pod 'Hoko', '~> 2.0.3'
-{% endhighlight %}
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">pod</span> <span class="s1">'Hoko'</span><span class="p">,</span> <span class="s1">'~&gt; <span class="ios-version">...</span>'</span></code></pre></div>
 
 **3.** Run `pod install` and wait for **CocoaPods** to install **HOKO SDK**. From this moment on, instead of using `.xcodeproj` file, you should start using `.xcworkspace`.
 

@@ -10,7 +10,7 @@ You can personalize your smart links URLs with custom domains. Thus your smart l
 
 **1.** Purchase the short domain you'd like to use. This domain can only be used for your shortened URLs*. We strongly recommend that you only use short domain names, e.g. 10 characters or less (including the dot).
 
-**2.** Tell HOKO about your custom domain. **UPDATE: This is currently under work. Send an e-mail to <a href="mailto:support@hokolinks.com">support@hokolinks.com</a> and tell us what is your custom domain and we will manually set it up.**
+**2.** Tell HOKO about your custom domain. **UPDATE: This is work in progress. Send an e-mail to <a href="mailto:support@hokolinks.com">support@hokolinks.com</a> and tell us what is your custom domain and we will manually set it up.**
 
 **3.** Create a DNS record for your domain.
 

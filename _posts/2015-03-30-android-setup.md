@@ -6,7 +6,7 @@ permalink: /:categories/:title
 description: Full Android Setup Guide. Learn how to integrate HOKO SDK in your app.
 ---
 
-If you haven't installed the SDK yet, please head over to the [QuickStart](/quickstart/android) guide to get our SDK up and running in Android Studio. **Note** that we support <u>Android 1.6</u> (API level 4) <u>and up</u>.
+If you haven't installed the SDK yet, please head over to the [QuickStart](/quickstart/android) guide to get our SDK up and running in Android Studio. Note that we support <u>Android 1.6</u> (API level 4) <u>and up</u>.
 
 ## HOKO
 

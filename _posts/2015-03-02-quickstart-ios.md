@@ -35,7 +35,7 @@ Because the HOKO SDK is written in `Objective-C`, you'll have to manually add a 
 
 **2.** Name that header file `YourAppName-Bridging-Header.h`
 
-**3.** Inside that header file, import `#import <Hoko/Hoko.h>"`
+**3.** Inside that header file, import `#import <Hoko/Hoko.h>`
 
 **4.** Go to your project > `Build Settings` > Search for `Objective-C Bridging Header` > Add the path to your bridging header file, from your root folder (e.g. `MyApp/MyApp-Bridging-Header.h`)
 

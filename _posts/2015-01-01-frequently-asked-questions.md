@@ -13,9 +13,9 @@ Currently, HOKO supports iOS, Android, and Desktop Web applications. Yet we are 
 ## What are the sizes of the SDKs?
 
 We aim to make the most complete and light SDKs possible.  
-With that in mind, the SDK sizes for the latest version ( <span class="ios-version">...</span> ) are:  
-- **iOS** &#8594; *approx.* 99 KB  
-- **Android** &#8594; *approx.* 72 KB
+With that in mind, the SDK sizes for the latest versions are:  
+- **iOS** &#8594; *approx.* 99 KB (2.1.0)  
+- **Android** &#8594; *approx.* 72 KB (2.1.0)
 
 ## What type of metrics can I get from HOKO?
 

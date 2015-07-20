@@ -98,4 +98,4 @@ func application(application: UIApplication,
 [cocoapods]: http://cocoapods.org/ "Cocoapods website"
 
 
-<a href="http://support.hokolinks.com/ios/ios-setup/" class="btn-next">Setup iOS app &#8594;</a>
+<a href="http://support.hokolinks.com/ios/ios-deeplinking/" class="btn-next">Setup your mobile deep linking &#8594;</a>

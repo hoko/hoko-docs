@@ -83,4 +83,4 @@ public void onCreate() {
 
 Note: Check the Logs for your device token so you can upload routes into HOKO!
 
-<a href="http://support.hokolinks.com/android/android-setup/" class="btn-next">Setup Android app &#8594;</a>
+<a href="http://support.hokolinks.com/android/android-deeplinking/" class="btn-next">Setup your mobile deep linking &#8594;</a>

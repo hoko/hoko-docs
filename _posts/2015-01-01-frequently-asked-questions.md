@@ -10,6 +10,13 @@ description: Which platforms does HOKO support? What type of metrics/data can i 
 
 Currently, HOKO supports iOS, Android, and Desktop Web applications. Yet we are also expanding our SDK to other frameworks, so if you are really looking forward to using HOKO let us know which framework you use!
 
+## What are the sizes of the SDKs?
+
+We aim to make the most complete and light SDKs possible.  
+With that in mind, the SDK sizes for the latest versions are:  
+- **iOS** &#8594; *approx.* 99 KB (2.1.1)  
+- **Android** &#8594; *approx.* 72 KB (2.1.1)
+
 ## What type of metrics can I get from HOKO?
 
 After integration, you will be ready to track all your incoming traffic and measure the performance of all your smart links. The HOKO dashboard focuses on two set of metrics - installs (growth) and re-engagement (retention). You will have access to the following data:

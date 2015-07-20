@@ -6,7 +6,7 @@ permalink: /:title
 description: A smart link is the most important deep linking real application, and the reason why it is important to build a powerful platform supporting them.
 ---
 
-Smart links are links that allows the link to take the user into different paths depending on the
+Smart links are links that take the user into different paths depending on the
 environment where the link is opened thus making the user move forward without breaking the
 experience. For instance, what would happen if a user clicks on a deep link that is supposed to
 take him to a specific section of an app, but that app hasn't been downloaded in this device?

@@ -6,8 +6,6 @@ permalink: /:categories/:title
 description: Lazy smart links endpoint
 ---
 
-## Lazy smart links
-
 Smart links are links that take the user into different paths depending on the
 environment where the link is opened thus making the user move forward without breaking the
 experience. You can create smart links in advance using the dashboard or the mobile SDK and they will

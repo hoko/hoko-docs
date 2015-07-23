@@ -41,7 +41,14 @@ Because the HOKO SDK is written in `Objective-C`, you'll have to manually add a 
 
 ## Add a URL Scheme to your App
 
-Next, we need to define our custom URL type. Remember, we want to open the app via **"hoko://"**, so that will be our URL scheme. We also need to assign an unique identifier to the scheme. Apple recommends that you use reverse DNS notation to ensure that there are no name collisions on the platform, so we’ll use **"com.hoko.app"** for this example.
+Next, we need to define your app’s custom URL type, if you don’t have one already. **Open your Xcode project settings and under the "Info" tab expand the "URL Types" section.** You can skip this step if you already configured a URL type.
+
+If this section is empty, click in the "+" icon to add a new URL type. Let's say that we want to open the app via *"hoko://"*. Hence we need to enter *"hoko"* in *URL Schemes*.
+
+We also should assign a unique *Identifier* to this URL type. Apple recommends that you use reverse DNS notation to ensure that there are no name collisions between types. In this example we are going to use "com.hoko.app".
+
+Take note of your URL Scheme because we will ask you for it, when you are creating an app through the dashboard, e.g. "hoko".
+
 
 ![URL Scheme](/assets/images/ios_url_schemes.png)
 

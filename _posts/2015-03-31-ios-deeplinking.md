@@ -279,4 +279,4 @@ Hoko.deeplinking().openSmartlink(slink, completion: { (deeplink: HOKDeeplink?) -
 
 If you choose not to have a completion block, you can use the `openSmartlink:` method without the 2nd parameter.
 
-<a href="http://support.hokolinks.com/ios/use-cases/" class="btn-next">View Possible Use Cases &#8594;</a>
+<a href="http://support.hokolinks.com/ios/use-cases/" class="btn-next">View possible use cases &#8594;</a>

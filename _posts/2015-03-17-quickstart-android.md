@@ -10,7 +10,7 @@ To integrate HOKO in your app (only <u>Android 1.6</u> — API level 4 — <u>an
 
 ## Install HOKO in your project
 
-Download [the latest AAR](https://oss.sonatype.org/service/local/repositories/releases/content/com/hokolinks/hoko/1.2.1/hoko-1.2.1.aar) or grab via Maven:
+Download [the latest AAR](https://oss.sonatype.org/service/local/repositories/releases/content/com/hokolinks/hoko/2.2/hoko-2.2.aar) or grab via Maven:
 
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>com.hokolinks<span class="nt">&lt;/groupId&gt;</span>
@@ -43,11 +43,16 @@ Now for the actual deeplinking, please add the `Activity` and `Receiver` to the 
   <intent-filter>
     <data android:scheme="bananas" />
     <action android:name="android.intent.action.VIEW" />
-    <category android:name="android.intent.category.VIEW" />
     <category android:name="android.intent.category.DEFAULT" />
     <category android:name="android.intent.category.BROWSABLE" />
   </intent-filter>
-
+</activity>
+<activity
+  android:name="com.hokolinks.activity.HokoAppLinksActivity"
+  android:alwaysRetainTaskState="true"
+  android:launchMode="singleTask"
+  android:noHistory="true"
+  android:theme="@android:style/Theme.Translucent.NoTitleBar">
   <intent-filter> <!-- Android M Users add android:autoVerify="true" for AppLinks on this intent-filter-->
     <data android:scheme="http" android:host="bananas.hoko.link" /> <!-- Or your own custom domain -->
     <data android:scheme="https" android:host="bananas.hoko.link" />
@@ -56,7 +61,6 @@ Now for the actual deeplinking, please add the `Activity` and `Receiver` to the 
     <category android:name="android.intent.category.BROWSABLE" />
   </intent-filter>
 </activity>
-
 <receiver android:name="com.hokolinks.deeplinking.DeferredDeeplinkingBroadcastReceiver"
   android:exported="true">
   <intent-filter>

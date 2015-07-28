@@ -18,7 +18,7 @@ Download [the latest AAR](https://oss.sonatype.org/service/local/repositories/re
   <span class="nt">&lt;version&gt;</span><span class="android-version">...</span><span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></div>
 
-or **Gradle** ( *in order to install using Gradle, you will need to add the following line in your `build.gradle` file from your "Module: app" inside the `dependencies { }` block* ):
+or **Gradle** ( *in order to install using Gradle, you will need to add the following line in your `build.gradle` file from your "(Module: app)" inside the `dependencies { }` block* ):
 
 <div class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="n">compile</span> <span class="s1">'com.hokolinks:hoko:<span class="android-version">...</span>'</span></code></pre></div>
 

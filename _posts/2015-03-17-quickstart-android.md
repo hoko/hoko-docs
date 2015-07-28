@@ -18,7 +18,7 @@ Download [the latest AAR](https://oss.sonatype.org/service/local/repositories/re
   <span class="nt">&lt;version&gt;</span><span class="android-version">...</span><span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></div>
 
-or **Gradle** ( *in order to install using Gradle, you will need to add the following line in your `build.gradle` file from your "(Module: app)" inside the `dependencies { }` block* ):
+or **Gradle** ( *in order to install using Gradle, you will need to add the following line in your `build.gradle (Module: app)` file inside the `dependencies { }` block* ):
 
 <div class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="n">compile</span> <span class="s1">'com.hokolinks:hoko:<span class="android-version">...</span>'</span></code></pre></div>
 
@@ -41,7 +41,7 @@ Now for the actual deeplinking, please add the `Activity` and `Receiver` to the 
   android:noHistory="true"
   android:theme="@android:style/Theme.Translucent.NoTitleBar">
   <intent-filter>
-    <data android:scheme="bananas" />
+    <data android:scheme="yourapp" />
     <action android:name="android.intent.action.VIEW" />
     <category android:name="android.intent.category.DEFAULT" />
     <category android:name="android.intent.category.BROWSABLE" />
@@ -54,8 +54,8 @@ Now for the actual deeplinking, please add the `Activity` and `Receiver` to the 
   android:noHistory="true"
   android:theme="@android:style/Theme.Translucent.NoTitleBar">
   <intent-filter> <!-- Android M Users add android:autoVerify="true" for AppLinks on this intent-filter-->
-    <data android:scheme="http" android:host="bananas.hoko.link" /> <!-- Or your own custom domain -->
-    <data android:scheme="https" android:host="bananas.hoko.link" />
+    <data android:scheme="http" android:host="yourapp.hoko.link" /> <!-- Or your own custom domain -->
+    <data android:scheme="https" android:host="yourapp.hoko.link" />
     <action android:name="android.intent.action.VIEW" />
     <category android:name="android.intent.category.DEFAULT" />
     <category android:name="android.intent.category.BROWSABLE" />
@@ -71,7 +71,7 @@ Now for the actual deeplinking, please add the `Activity` and `Receiver` to the 
 
 The subdomain will be used to avoid request the user on which app to open the link and to avoid going through an HTML page redirect. Everytime a link with `http://yourapp.hoko.link` domain gets opened, it will automatically open your app and resolve the Smartlink into an actual `Deeplink`, redirecting the user to the proper `Activity` or `Fragment`.
 
-More info on [Why do I need a subdomain](http://support.hokolinks.com/why-do-i-need-a-subdomain/)
+Want to use your own custom domains for HOKO links? Check [Why do I need a subdomain](http://support.hokolinks.com/why-do-i-need-a-subdomain/) for more information.
 
 ## SDK Setup
 
@@ -84,6 +84,8 @@ public void onCreate() {
   Hoko.setup(this, "YOUR-APP-TOKEN");
 }
 {% endhighlight %}
+
+We advise you to setup the SDK on your `Application's` subclass `onCreate()` method because it guarantees that the SDK will be initialized when the application is launched.  
 
 Note: Check the Logs for your device token so you can upload routes into HOKO!
 

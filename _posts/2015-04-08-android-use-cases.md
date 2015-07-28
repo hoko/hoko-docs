@@ -70,7 +70,7 @@ public class MyProductActivity extends Activity {
                                   + "' and received a discount of $"
                                   + couponDiscount
                     );
-            }
+                }
 
             // Your code here to process the Activity, whether there
             // was a coupon in the deep link's metadata or not

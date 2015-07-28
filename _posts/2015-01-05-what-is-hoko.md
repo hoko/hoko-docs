@@ -3,7 +3,7 @@ title: What is HOKO?
 categories: basic
 layout: learning_center
 permalink: /:title
-description: HOKO is a deep linking management platform + open source SDK for apps, coupled with an advance tracking dashboard to monitor the performance of every link you share.
+description: HOKO is a full deep linking solution for iOS, Android and web apps in a single platform, coupled with an advance tracking dashboard to monitor the performance of every link you share.
 ---
 
 HOKO is a full deep linking solution for iOS, Android and web apps in a single platform. We have committed to simplifying developers’ life, and to do so, we have taken away the pain of building your own deep linking technology from scratch and we provide you a smarter deep linking solution so you can focus on building great app features and better UX.

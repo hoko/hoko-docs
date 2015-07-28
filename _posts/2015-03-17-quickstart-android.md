@@ -10,7 +10,7 @@ To integrate HOKO in your app (only <u>Android 1.6</u> — API level 4 — <u>an
 
 ## Install HOKO in your project
 
-Download [the latest AAR](https://oss.sonatype.org/service/local/repositories/releases/content/com/hokolinks/hoko/2.2/hoko-2.2.aar) or grab via Maven:
+Download [the latest AAR](https://oss.sonatype.org/service/local/repositories/releases/content/com/hokolinks/hoko/2.2/hoko-2.2.aar) or grab via **Maven**:
 
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>com.hokolinks<span class="nt">&lt;/groupId&gt;</span>
@@ -18,7 +18,7 @@ Download [the latest AAR](https://oss.sonatype.org/service/local/repositories/re
   <span class="nt">&lt;version&gt;</span><span class="android-version">...</span><span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></div>
 
-or Gradle:
+or **Gradle** ( *in order to install using Gradle, you will need to add the following line in your `build.gradle` file from your "Module: app" inside the `dependencies { }` block* ):
 
 <div class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="n">compile</span> <span class="s1">'com.hokolinks:hoko:<span class="android-version">...</span>'</span></code></pre></div>
 

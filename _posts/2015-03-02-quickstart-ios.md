@@ -9,7 +9,7 @@ description: To integrate HOKO open source SDK in your app you just have to foll
 To integrate HOKO open source SDK in your app (only <u>iOS 5 and higher</u>) you just have to follow 3 simple steps (either using
 [cocoapods][cocoapods] or doing it manually).
 
-### Using cocoapods
+### Using CocoaPods
 
 **1.** Install [CocoaPods][cocoapods] in your system
 

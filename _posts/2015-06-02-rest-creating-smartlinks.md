@@ -55,8 +55,9 @@ It will return the full address of the created smart link.
 
 ### Custom routes
 
-Create a smart link based on a URI using a custom set of routes. These given routes will override
-any of the default ones (either given by a template or based on the same path).
+Create a smart link with a custom set of routes. These given routes will override
+any normal platform configuration. The platforms that we currently accept are:
+`web`, `iphone`, `ipad`, `universal`, and `android`.
 
 Example request:
 
@@ -88,12 +89,12 @@ Example response:
 }
 {% endhighlight %}
 
-In this example we are overriding every platform’s default route. You could always just override a sub set of routes and all but those would adopt the default route value.
+In this example we are overriding the `web`, `iphone` and `android` platform's default routes. You can always just override a sub set of routes and all but those will adopt the default route values.
 
 ### Unique smart links
 
 Create an unique smart link based on a URI, i.e. only one smart link will be created and returned
-for multiple requests using the same URI. 
+for multiple requests using the same URI.
 
 Example of multiple requests with:
 

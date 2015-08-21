@@ -21,6 +21,7 @@ In the body of the request you should send a JSON that has the following fields:
 |:----------|:-------------------------------------------------------------------------------------|
 | **uri**   | The base URI for the smart link (full or relative HTTP or mobile deep link)          |
 | routes    | Custom links and fallback for each platform                                          |
+| metadata  | Custom metadata associated with the smart link                                       |
 | unique    | Boolean value indicating if this should be an unique smart link                      |
 
 Bold parameter `uri` is the only mandatory one, that you have to include in every request. The
@@ -35,7 +36,7 @@ of the link on any of your configured platforms. If you have a
 [template](http://support.hokolinks.com/what-is-a-template/) it will use the route mapping for the
 matching template, otherwise it will copy the exact same path to every platform.
 
-Example request:
+Request example:
 
 {% highlight json %}
 {
@@ -43,7 +44,7 @@ Example request:
 }
 {% endhighlight %}
 
-Example response:
+Response example:
 
 {% highlight json %}
 {
@@ -59,7 +60,7 @@ Create a smart link with a custom set of routes. These given routes will overrid
 any normal platform configuration. The platforms that we currently accept are:
 `web`, `iphone`, `ipad`, `universal`, and `android`.
 
-Example request:
+Request example:
 
 {% highlight json %}
 {
@@ -81,7 +82,7 @@ Example request:
 }
 {% endhighlight %}
 
-Example response:
+Response example:
 
 {% highlight json %}
 {
@@ -90,6 +91,34 @@ Example response:
 {% endhighlight %}
 
 In this example we are overriding the `web`, `iphone` and `android` platform's default routes. You can always just override a sub set of routes and all but those will adopt the default route values.
+
+### Metadata
+
+A smart link can hold a custom set of metadata that is going to be available to your app later on. Metadata is a JSON object, i.e. a set of key-value elements that can hold a key and an associated string, number or array of other elements.
+
+This can be very handy if you need to save some custom data regarding each smart link, e.g. the value of a coupon or the referral’s id. Have a look some at use cases that use metadata in [iOS](http://support.hokolinks.com/ios/use-cases/) and [Android](http://support.hokolinks.com/android/android-use-cases/) to know more.
+
+Request example:
+
+{% highlight json %}
+{
+  "uri": "/products/398291",
+  "metadata": {
+    "referral": "user1",
+    "coupon": 10
+  }
+}
+{% endhighlight %}
+
+Response example:
+
+{% highlight json %}
+{
+  "smartlink": "http://app.hoko.link/atZy1ui"
+}
+{% endhighlight %}
+
+You can change the posted metadata by editing the smart link at any time in the dashboard through the Tree editor or the Text Editor.
 
 ### Unique smart links
 
@@ -105,7 +134,7 @@ Example of multiple requests with:
 }
 {% endhighlight %}
 
-Example response for every request:
+Example of a response for each request:
 
 {% highlight json %}
 {

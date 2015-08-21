@@ -264,7 +264,6 @@ Should you want to open a Smart link (e.g. `https://yourapp.hoko.link/example`) 
     // could not resolve Smartlink
   }
 }];
-
 {% endhighlight %}
 
 {% highlight swift %}
@@ -278,5 +277,67 @@ Hoko.deeplinking().openSmartlink(slink, completion: { (deeplink: HOKDeeplink?) -
 {% endhighlight %}
 
 If you choose not to have a completion block, you can use the `openSmartlink:` method without the 2nd parameter.
+
+## Deep link filtering (optional)
+
+A filter allows you to explicitly control if a deep link should be open right now or not. Simply add a new filter block using `[[Hoko deeplinking] addFilterBlock:]` for any kind of validation that you may need.  
+Each of your `filter blocks` will be called by the SDK when a deep link is about to open (passing that deep link object as the block's parameter) and you should return `YES` if that deep link should be processed or `NO` otherwise.
+
+For instance, a deep link for a friend’s profile page in a chat app should not be open if the user is not logged in at the moment. To delay the link’s opening, you would just need to add a filter that returns `YES` if the current user is signed in and `NO` otherwise stopping the deep link from being opened.  
+After the user signed up, you can retrieve the latest deep link, processed by SDK, by calling `[[Hoko deeplinking] currentDeeplink]` and check if it `wasOpened`. If it was not, simply call `[[Hoko deeplinking] openCurrentDeeplink]` to open it.
+
+If **all** of your `filter blocks` return a truthy response it means that your application is ready to open the deep link (and consequently that deep link's route will be called as usual), otherwise the deep link will be saved in the SDK's `currentDeeplink` which can be manually accessed and opened later on.  
+
+{% highlight objective-c %}
+[[Hoko deeplinking] addFilterBlock:^BOOL (HOKDeeplink *deeplink) {
+  // check if the filtered deep link's route is the friends' route
+  if ([deeplink.route isEqualToString:@"friends/:friend_id"]) {
+    // if so, return YES if your user is logged in, NO otherwise
+    return currentUser.isLoggedIn;
+  } else {
+    // otherwise, since we're not interested in filtering a deep link that
+    // does not match the friends' route, simply return YES
+    return YES;
+  }
+}];
+
+...
+
+// after the user logged in, check if the latest deep link processed by
+// the SDK was opened or not
+if ([[Hoko deeplinking] currentDeeplink] &&
+    ![[Hoko deeplinking] currentDeeplink].wasOpened) {
+
+  //if not, tell HOKO to open it
+  [[Hoko deeplinking] openCurrentDeeplink];
+}
+{% endhighlight %}
+
+{% highlight swift %}
+Hoko.deeplinking().addFilterBlock { (deeplink: HOKDeeplink) -> Bool in
+  // check if the filtered deep link's route is the friends' route
+  if deeplink.route == "friends/:friend_id" {
+    // if so, return YES if your user is logged in, NO otherwise
+    return currentUser.isLoggedIn
+  } else {
+    // otherwise, since we're not interested in filtering a deep link that
+    // does not match the friends' route, simply return YES
+    return true
+  }
+}
+
+...
+
+// after the user logged in, check if the latest deep link processed by
+// the SDK was opened or not
+if let deeplink = Hoko.deeplinking().currentDeeplink()
+    where !deeplink.wasOpened {
+
+  //if not, tell HOKO to open it
+  Hoko.deeplinking().openCurrentDeeplink()
+}
+{% endhighlight %}
+
+**NOTE:** filters are completely optional, you don't need to use them to achieve HOKO's deep linking power.
 
 <a href="http://support.hokolinks.com/ios/use-cases/" class="btn-next">View possible use cases &#8594;</a>

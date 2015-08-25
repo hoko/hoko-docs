@@ -1,16 +1,13 @@
 ---
-title: Use Cases
-categories: android
+title: Coupons
+categories:
 layout: documentation
-permalink: /:categories/:title
+permalink: /benefits/android/coupons
 description: Learn more about using HOKO smart links to enhance your user experience.
 ---
 
-In this section, we will highlight some use cases that you can fully implement in your app to **enhance your user experience**.
-
-## Coupons / Discounts
-
-![](/assets/images/use-case-coupon.png)
+<a href="http://support.hokolinks.com/benefits/ios/coupons/" class="tab">iOS</a>
+<a href="#" class="tab active">Android</a>
 
 One way to take advantage of HOKO is by embedding your own **coupons or discounts** on your links. To do this, start by creating a new smart link and adding a new `metadata` entry to it, like the following:
 

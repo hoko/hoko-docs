@@ -280,13 +280,13 @@ If you choose not to have a completion block, you can use the `openSmartlink:` m
 
 ## Deep link filtering (optional)
 
-A filter allows you to explicitly control if a deep link should be open right now or not. Simply add a new filter block using `[[Hoko deeplinking] addFilterBlock:]` for any kind of validation that you may need.  
-Each of your `filter blocks` will be called by the SDK when a deep link is about to open (passing that deep link object as the block's parameter) and you should return `YES` if that deep link should be processed or `NO` otherwise.
+A filter allows you to explicitly control if a deep link should be open right away or not. Simply add a new filter block calling `addFilterBlock` for any kind of validation that you may need.  
+Each of your **filter blocks** will be called by the SDK when a deep link is about to open (passing that deep link object as the block's parameter) and you should return `true` if that deep link should be processed or `false` otherwise.
 
-For instance, a deep link for a friend’s profile page in a chat app should not be open if the user is not logged in at the moment. To delay the link’s opening, you would just need to add a filter that returns `YES` if the current user is signed in and `NO` otherwise stopping the deep link from being opened.  
-After the user signed up, you can retrieve the latest deep link, processed by SDK, by calling `[[Hoko deeplinking] currentDeeplink]` and check if it `wasOpened`. If it was not, simply call `[[Hoko deeplinking] openCurrentDeeplink]` to open it.
+For instance, a deep link for a friend’s profile page in a chat app should not be open if the user is not logged in at the moment. To accomplish this behavior, you should check if the user is not signed in and return `false` to stop the opening of the deep link or return `true` to open it right away.
+After the user signed up, you can retrieve the latest deep link, processed by SDK, by accessing the `currentDeeplink` property in `HOKDeeplinking` and check if it `wasOpened`. If it was not, simply call `[[Hoko deeplinking] openCurrentDeeplink]` to open it.
 
-If **all** of your `filter blocks` return a truthy response it means that your application is ready to open the deep link (and consequently that deep link's route will be called as usual), otherwise the deep link will be saved in the SDK's `currentDeeplink` which can be manually accessed and opened later on.  
+If **all** of your filter blocks return a truthy response it means that your application is ready to open the deep link (and consequently that deep link's route will be called as usual), otherwise the deep link will be saved in the SDK's `currentDeeplink` which can be manually accessed and opened later on.  
 
 {% highlight objective-c %}
 [[Hoko deeplinking] addFilterBlock:^BOOL (HOKDeeplink *deeplink) {

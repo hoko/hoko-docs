@@ -9,4 +9,42 @@ description: Learn more about using HOKO smart links to enhance your user experi
 <a href="http://support.hokolinks.com/benefits/ios/one-click-login/" class="tab">iOS</a>
 <a href="#" class="tab active">Android</a>
 
-**Coming soon…**
+Nowadays, most modern apps and APIs use some sort of OAuth or another token-based login session. With HOKO you can leverage it to the next level. Let's take an approach similar to Slack's Magical Link login.
+
+![](/assets/images/slack-one-click-login.png)
+
+After inputting your email you are presented with a **Send Magic Link** button and a **Type password instead** button. Let's focus on the first one. What this does is request the server to send an email to the user's account, which contains a link carrying the user's token to be passed to the app through their deep linking logic.
+
+For this to work on your app you need to integrate with HOKO on both your back-end and your app. First you need to add a "request one click login" API, which will most likely receive the user's email and some other meta-data. Then, when a request comes in, the server will email the user's email with a lazy smart link (e.g. `http://app.hoko.link/lazy?uri=%2Flogin%2F<user-authentication-token>`). Learn more about lazy smart links <a href="http://support.hokolinks.com/api/rest-creating-lazy-smartlinks" target="_blank">here</a>.
+
+For the application itself, all we need to do is map a `login/:auth_token` route and set the user's token without ever needing the user's password.
+
+{% highlight java %}
+// Start by adding the DeeplinkRoute annotation that tells the SDK that this
+// Activity will map the "login/:auth_token" route
+@DeeplinkRoute("login/:auth_token")
+public class AuthTokenLoginActivity extends Activity {
+
+  // Your String variable that will automatically receive the auth token from
+  // the HOKO deep link after calling the inject() method
+  @DeeplinkRouteParameter("auth_token")
+  private String mAuthToken;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.auth_token_login_view); // your view ID here
+
+    if (!Hoko.deeplinking().inject(this)) {
+      // Your code here to process the user login with your mAuthToken
+      // variable already holding the information from the deep link
+      . . .
+
+    } else {
+      // Looks like this Activity was not launched from a HOKO deep link
+      // fail gracefully or process the auth login action in another way
+      . . .
+    }
+  }
+}
+{% endhighlight %}

@@ -69,8 +69,9 @@ public class MyProductActivity extends Activity {
                     );
                 }
 
-            // Your code here to process the Activity, whether there
-            // was a coupon in the deep link's metadata or not
+              // Your code here to process the Activity, whether there
+              // was a coupon in the deep link's metadata or not
+            }
         }
     }
 }

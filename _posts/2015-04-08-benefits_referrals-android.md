@@ -66,3 +66,54 @@ private void setupInviteButton() {
 }
 
 {% endhighlight %}
+<br>  
+
+### Personalized Landing Page
+
+Now that you know how to create your referral smart links, getting the referrer name out of them, so you can present a better onboarding experience for your users (which can **greatly improve** your user **signup rate**), is dead simple.  
+The following code shows how you can decode the newly opened deep link into showing your custom invitation view controller for the onboarding.
+
+{% highlight java %}
+// Start by mapping the invite route so your Activity gets called every time
+// a new referral deep link is opened
+@DeeplinkRoute("invite")
+public class InviteSignUpActivity extends Activity {
+  // This variable will automatically receive the deep link's
+  // referrer query parameter when a smart link is opened.
+  @DeeplinkQueryParameter("referrer")
+  private String mReferrerName;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    // We need to check whether this Activity was started via a HOKO smart
+    // link or manually. To do that, we call the 'inject()' method.
+    // If that returns false, it means that this Activity was
+    // not called through a smart link.
+    if (!Hoko.deeplinking().inject(this)) {
+      // This Activity was not called from a HOKO smart link
+      // Your code here to process the Activity ...
+
+    } else {
+      // This block of code will _only_ be executed if a smart link
+      // was opened.
+
+      // Verify if the invite link has a referrer in the query parameters
+      if (mReferrerName != null) {
+        // If so, present your personalized landing page with the referrer name
+        showInviteSignUpViewControllerWithReferrer(mReferrerName);
+      } else {
+        // The deep link does not contain any information about the referrer.
+        // Fail gracefully or show the default sign up view
+        showSignUpViewController();
+      }
+    }
+  }
+
+  . . .
+
+}
+{% endhighlight %}
+
+Your users will appreciate the gesture. Trust us.

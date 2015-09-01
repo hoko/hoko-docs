@@ -126,7 +126,7 @@ The following code shows how you can decode the newly opened deep link into show
 
 . . .
 
-Hoko.deeplinking().mapRoute("login/:auth_token", toTarget: { deeplink in
+Hoko.deeplinking().mapRoute("invite", toTarget: { deeplink in
   // Verify if the invite link has a referrer in the query parameters
   if let referrerName = deeplink.queryParameters?["referrer"] {
     // If so, present your personalized landing page with the referrer name

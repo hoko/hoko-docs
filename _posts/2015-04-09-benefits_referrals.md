@@ -120,6 +120,8 @@ The following code shows how you can decode the newly opened deep link into show
   }
 }];
 {% endhighlight %}
+
+{% highlight swift %}
 // AppDelegate.swift
 
 . . .
@@ -135,8 +137,6 @@ Hoko.deeplinking().mapRoute("login/:auth_token", toTarget: { deeplink in
     showSignUpViewController()
   }
 })
-{% highlight swift %}
-
 {% endhighlight %}
 
 Your users will appreciate the gesture. Trust us.

@@ -36,14 +36,14 @@ public class AuthTokenLoginActivity extends Activity {
     setContentView(R.layout.auth_token_login_view); // your view ID here
 
     if (!Hoko.deeplinking().inject(this)) {
-      // Your code here to process the user login with your mAuthToken
-      // variable already holding the information from the deep link
-      . . .
-
-    } else {
       // Looks like this Activity was not launched from a HOKO deep link
       // fail gracefully or process the auth login action in another way
       . . .
+
+    } else {
+      // Your code here to process the user login with your mAuthToken
+      // variable already holding the information from the deep link
+      . . .  
     }
   }
 }

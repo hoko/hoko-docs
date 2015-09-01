@@ -38,36 +38,9 @@ After setting up your application, your notifications' `JSON` data should contai
 
 To decode and process your notifications on the user's device, make sure you have the `application:didReceiveRemoteNotification:` delegate method implemented and the rest is easy as pie! The following code shows you how:
 
-{% highlight objective-c %}
-// AppDelegate.m
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-  // check if the push notification has the key "smartlink"
-  if (userInfo[@"smartlink"]) {
-    // if so, call HOKO's openSmartlink: and we'll take care of it for you
-    // by sending the request to the appropriate route for that smartlink
-    [[Hoko deeplinking] openSmartlink:userInfo[@"smartlink"]];
-  } else {
-    // otherwise, process the notification with your own code
-    // in this case, processUserActivity: would be one of your methods
-    [self processPushNotification:userInfo];
-  }
-}
+{% highlight java %}
+me need help
 {% endhighlight %}
 
-{% highlight swift %}
-// AppDelegate.swift
-func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-  // check if the push notification has the key "smartlink"
-  if let smartlink = userInfo["smartlink"] as? String {
-    // if so, call HOKO's openSmartlink() and we'll take care of it for you
-    // by sending the request to the appropriate route for that smartlink
-    Hoko.deeplinking().openSmartlink(smartlink)
-  } else {
-    // otherwise, process the notification with your own code
-    // in this case, processUserActivity() would be one of your methods
-    processPushNotification(userInfo)
-  }
-}
-{% endhighlight %}
 
 After this, you're finally ready to become a Push Notifications Sensei.

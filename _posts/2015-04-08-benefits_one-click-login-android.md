@@ -36,8 +36,8 @@ public class AuthTokenLoginActivity extends Activity {
     setContentView(R.layout.auth_token_login_view); // your view ID here
 
     if (!Hoko.deeplinking().inject(this)) {
-      // Looks like this Activity was not launched from a HOKO deep link
-      // fail gracefully or process the auth login action in another way
+      // Looks like this Activity was not launched from a HOKO deep link.
+      // Fail gracefully or process the auth login action in another way
       . . .
 
     } else {

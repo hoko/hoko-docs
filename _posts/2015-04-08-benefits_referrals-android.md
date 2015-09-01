@@ -9,7 +9,7 @@ description: Learn more about using HOKO smart links to enhance your user experi
 <a href="http://support.hokolinks.com/benefits/ios/referrals/" class="tab">iOS</a>
 <a href="#" class="tab active">Android</a>
 
-Inviting or referring someone to use your app is the best way to increase installs and HOKO can definitely help you with that. Using our SDK, you will just need to generate a smart link for your invitations using custom `query parameters` and/or `metadata` and it's fully ready to be shared with the world.
+Inviting or referring someone to use your app is the best way to **increase installs** and HOKO can definitely help you with that. Using our SDK, you will just need to generate a smart link for your invitations using custom `query parameters` and/or `metadata` and it's fully ready to be shared with the world.
 
 {% highlight java %}
 // This private method would be called inside your Activity's onCreate()

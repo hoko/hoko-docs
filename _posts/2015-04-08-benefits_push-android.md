@@ -34,13 +34,4 @@ After setting up your application, your notifications' `JSON` data should contai
 {"mp_message": "Hi! This is my super awesome notification title.", "mp_cta": "https://yourapp.hoko.link/superawesomelink"}}
 {% endhighlight %}
 
-### Finally, for both services:
-
-To decode and process your notifications on the user's device, make sure you have the `application:didReceiveRemoteNotification:` delegate method implemented and the rest is easy as pie! The following code shows you how:
-
-{% highlight java %}
-me need help
-{% endhighlight %}
-
-
 After this, you're finally ready to become a Push Notifications Sensei.

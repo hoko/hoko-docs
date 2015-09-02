@@ -34,7 +34,7 @@ Check out <a href="https://mixpanel.com/help/reference/ios-push-notifications" t
 After setting up your application, your notifications' `JSON` data should contain, at least, the following `key / value` entries (note that you can use your own custom domain on `smartlink`):
 
 {% highlight json %}
-{"aps": {"alert": "Hi! This is my super awesome notification title.", "smartlink": "https://yourapp.hoko.link/superawesomelink"}}
+{"aps": {"alert": "Hi! This is my super awesome notification title.", "uri": "https://yourapp.hoko.link/superawesomelink"}}
 {% endhighlight %}
 
 ### Finally, for both services:

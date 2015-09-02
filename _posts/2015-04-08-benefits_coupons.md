@@ -27,8 +27,8 @@ As soon as you do it, your link will be ready to transmit metadata to your users
 // AppDelegate.m
 
 // addHandlerBlock: is going to be called every time your application opens a
-// deep link. if you prefer, you can focus on specific deep link routes, to give
-// a coupon/discount, by using mapRoute:toTarget:
+// deep link. if you prefer, you can focus on specific deep link routes,
+// to give a coupon/discount, by using mapRoute:toTarget:
 [[Hoko deeplinking] addHandlerBlock:^(HOKDeeplink *deeplink) {
     // check if the deeplink has metadata for coupons
     if (deeplink.metadata[@"coupon"] && deeplink.metadata[@"value"]) {

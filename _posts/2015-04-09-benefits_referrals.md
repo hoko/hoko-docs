@@ -9,7 +9,7 @@ description: Inviting or referring someone to use your app is the best way to in
 <a href="#" class="tab active">iOS</a>
 <a href="http://support.hokolinks.com/benefits/android/referrals/" class="tab">Android</a>
 
-Inviting or referring someone to use your app is the best way to increase installs and HOKO can definitely help you with that. Using our SDK, you will just need to generate a smart link for your invitations using custom `query parameters` and/or `metadata` and it's fully ready to be shared with the world.
+Inviting or referring someone to use your app is the best way to **increase installs** and HOKO can definitely help you with that. Using our SDK, you will just need to generate a smart link for your invitations using custom `query parameters` and/or `metadata` and it's fully ready to be shared with the world.
 
 {% highlight objective-c %}
 #import <Hoko/Hoko.h>
@@ -91,3 +91,52 @@ Inviting or referring someone to use your app is the best way to increase instal
   }
 }
 {% endhighlight %}
+<br>  
+
+### Personalized Landing Page
+
+Now that you know how to create your referral smart links, getting the referrer name out of them, so you can present a better onboarding experience for your users (which can **greatly improve** your user **signup rate**), is dead simple.  
+The following code shows how you can decode the newly opened deep link into showing your custom invitation view controller for the onboarding.
+
+{% highlight objective-c %}
+// AppDelegate.m
+#import <Hoko/Hoko.h>
+
+. . .
+
+// Start by mapping the invite route so your code gets called every time
+// a new referral deep link is opened
+[[Hoko deeplinking] mapRoute:@"invite" toTarget:^(HOKDeeplink *deeplink) {
+  // Verify if the invite link has a referrer in the query parameters
+  if (deeplink.queryParameters[@"referrer"]) {
+    // If so, present your personalized landing page with the referrer name
+    NSString *referrerName = deeplink.queryParameters[@"referrer"];
+    [self showInviteSignUpViewControllerWithReferrer:referrerName];
+
+  } else {
+    // The deep link does not contain any information about the referrer.
+    // Fail gracefully or show the default sign up view
+    [self showSignUpViewController];
+  }
+}];
+{% endhighlight %}
+
+{% highlight swift %}
+// AppDelegate.swift
+
+. . .
+
+Hoko.deeplinking().mapRoute("invite", toTarget: { deeplink in
+  // Verify if the invite link has a referrer in the query parameters
+  if let referrerName = deeplink.queryParameters?["referrer"] {
+    // If so, present your personalized landing page with the referrer name
+    showInviteSignUpViewControllerWithReferrer(referrerName)
+  } else {
+    // The deep link does not contain any information about the referrer.
+    // Fail gracefully or show the default sign up view
+    showSignUpViewController()
+  }
+})
+{% endhighlight %}
+
+Your users will appreciate the gesture. Trust us.

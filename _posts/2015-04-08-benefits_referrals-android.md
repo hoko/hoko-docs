@@ -102,11 +102,11 @@ public class InviteSignUpActivity extends Activity {
       // Verify if the invite link has a referrer in the query parameters
       if (mReferrerName != null) {
         // If so, present your personalized landing page with the referrer name
-        showInviteSignUpViewControllerWithReferrer(mReferrerName);
+        showInviteSignUpWithReferrer(mReferrerName);
       } else {
         // The deep link does not contain any information about the referrer.
         // Fail gracefully or show the default sign up view
-        showSignUpViewController();
+        showRegularSignUp();
       }
     }
   }

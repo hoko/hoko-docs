@@ -69,6 +69,8 @@ Add the following line to your `applicationDidFinishLaunching` method in your `A
   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   [Hoko setupWithToken:@"YOUR-APP-TOKEN"];
   // The rest of your code goes here...
+
+  return YES;
 }
 {% endhighlight %}
 
@@ -77,6 +79,8 @@ func application(application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
   Hoko.setupWithToken("YOUR-APP-TOKEN")
   // The rest of your code goes here...
+
+  return true
 }
 {% endhighlight %}
 
@@ -90,6 +94,8 @@ If you wish to use your own domain(s) on your HOKO smart links (<a href="http://
   [Hoko setupWithToken:@"YOUR-APP-TOKEN"
          customDomains:@[@"your.custom.domain.com"]];
   // The rest of your code goes here...
+
+  return YES;
 }
 {% endhighlight %}
 
@@ -99,8 +105,12 @@ func application(application: UIApplication,
   Hoko.setupWithToken("YOUR-APP-TOKEN",
       customDomains: ["your.custom.domain.com"])
   // The rest of your code goes here...
+
+  return true
 }
 {% endhighlight %}
+
+**NOTE:** make sure to return `YES` in the `application:didFinishLaunchingWithOptions:` delegate method to allow incoming deep links that open your app to be processed. Returning `NO` will block the requests.
 
 [cocoapods]: http://cocoapods.org/ "Cocoapods website"
 

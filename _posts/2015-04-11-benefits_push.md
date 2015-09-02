@@ -37,6 +37,20 @@ After setting up your application, your notifications' `JSON` data should contai
 {"aps": {"alert": "Hi! This is my super awesome notification title.", "uri": "https://yourapp.hoko.link/superawesomelink"}}
 {% endhighlight %}
 
+### With your own custom server:
+
+If you have your own server and want to use it to manually send push notifications to your users, we strongly recommend you to take a look at these great guides, created by the folks at Ray Wenderlich, to help you set up your server and application: <a href="http://www.raywenderlich.com/32960/apple-push-notification-services-in-ios-6-tutorial-part-1" target="_blank">Part 1</a> and <a href="http://www.raywenderlich.com/32963/apple-push-notification-services-in-ios-6-tutorial-part-2" target="_blank">Part 2</a>.
+
+After setting up the app, your push notification's data should look like the following:
+
+{% highlight json %}
+{
+  "aps": {"alert": "Hi! This is my super awesome notification title."},
+  "uri": "https://yourapp.hoko.link/superawesomelink"
+}
+{% endhighlight %}
+
+
 ### Finally, for both services:
 
 To decode and process your notifications on the user's device, make sure you have the `application:didReceiveRemoteNotification:` delegate method implemented and the rest is easy as pie! The following code shows you how:
@@ -44,11 +58,11 @@ To decode and process your notifications on the user's device, make sure you hav
 {% highlight objective-c %}
 // AppDelegate.m
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-  // check if the push notification has the key "smartlink"
-  if (userInfo[@"smartlink"]) {
+  // check if the push notification has the key "uri" (the smart link)
+  if (userInfo[@"uri"]) {
     // if so, call HOKO's openSmartlink: and we'll take care of it for you
     // by sending the request to the appropriate route for that smartlink
-    [[Hoko deeplinking] openSmartlink:userInfo[@"smartlink"]];
+    [[Hoko deeplinking] openSmartlink:userInfo[@"uri"]];
   } else {
     // otherwise, process the notification with your own code
     // in this case, processUserActivity: would be one of your methods
@@ -60,8 +74,8 @@ To decode and process your notifications on the user's device, make sure you hav
 {% highlight swift %}
 // AppDelegate.swift
 func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-  // check if the push notification has the key "smartlink"
-  if let smartlink = userInfo["smartlink"] as? String {
+  // check if the push notification has the key "uri" (the smart link)
+  if let smartlink = userInfo["uri"] as? String {
     // if so, call HOKO's openSmartlink() and we'll take care of it for you
     // by sending the request to the appropriate route for that smartlink
     Hoko.deeplinking().openSmartlink(smartlink)

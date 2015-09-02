@@ -20,9 +20,11 @@ $(function() {
 
   $('.ios-version').load('https://hokolinks.com/versions/ios', function(data) {} );
 
-  $('.android-version').load('https://hokolinks.com/versions/android', function(data) {} );
-});
+  $('.android-version').load('https://hokolinks.com/versions/android', function(data) {
+    var av = $('.android-version:first').text();
 
-// $.getJSON( "https://hokolinks.com/versions/ios", function(data) {
-//   console.log(data.responseText);
-// });
+    $('#aar-download').attr("href", 'https://oss.sonatype.org/service/local/repositories/releases/content/com/hokolinks/hoko/' + av +'/hoko-' + av +'.aar')
+  } );
+
+
+});

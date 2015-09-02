@@ -10,7 +10,8 @@ To integrate HOKO in your app (only <u>Android 1.6</u> — API level 4 — <u>an
 
 ## Install HOKO in your project
 
-Download [the latest AAR](https://oss.sonatype.org/service/local/repositories/releases/content/com/hokolinks/hoko/2.2/hoko-2.2.aar) or grab via **Maven**:
+Download <a href="#" id="aar-download">the latest AAR</a> or grab via **Maven**:
+
 
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>com.hokolinks<span class="nt">&lt;/groupId&gt;</span>

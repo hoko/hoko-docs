@@ -23,7 +23,7 @@ After setting up your application, your notifications' `JSON` data should contai
 {% highlight json %}
 {
   "alert": "Hi! This is my super awesome notification title.",
-  "smartlink": "https://yourapp.hoko.link/superawesomelink"
+  "uri": "https://yourapp.hoko.link/superawesomelink"
 }
 {% endhighlight %}  
 

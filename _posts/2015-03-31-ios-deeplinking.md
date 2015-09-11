@@ -339,5 +339,3 @@ if let deeplink = Hoko.deeplinking().currentDeeplink()
 {% endhighlight %}
 
 **NOTE:** filters are completely optional, you don't need to use them to achieve HOKO's deep linking power.
-
-<a href="http://support.hokolinks.com/ios/use-cases/" class="btn-next">View possible use cases &#8594;</a>

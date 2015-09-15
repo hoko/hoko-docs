@@ -12,9 +12,10 @@ To allow an application to be deep linkable, aside the mandatory additions to th
 
 One way to start mapping your routes with HOKO is to use our simple and straightforward **annotations** at the beginning of your `Activities` and `Fragments` (we will talk about each one of them later in this page):  
 
-- `@DeeplinkRoute()`
-- `@DeeplinkDefaultRoute()`
-- `@DeeplinkFragmentActivity()`
+- `@DeeplinkRoute`
+- `@DeeplinkDefaultRoute`
+- `@DeeplinkFragmentActivity`
+- `@DeeplinkMultipleRoute`
 
 ### Variable Injection
 
@@ -22,16 +23,16 @@ HOKO works by injecting deep link parameters into your `Activity/Fragment` varia
 
 *(We will use the route `"products/:product_id"` and the link `yourapp://products/42?referrer=hokolinks.com` for demonstration purposes)*
 
-- `@DeeplinkRouteParameter()` &#8594; marks your variable to receive the deep link's route parameter (in this example, `product_id` is a route parameter)
-- `@DeeplinkQueryParameter()` &#8594; marks your variable to receive the deep link's query parameter (in this example, `referrer` is a query parameter)
-- `@DeeplinkMetadata()` &#8594; marks your `JSONObject` variable to receive the deep link's metadata
+- `@DeeplinkRouteParameter` &#8594; marks your variable to receive the deep link's route parameter (in this example, `product_id` is a route parameter)
+- `@DeeplinkQueryParameter` &#8594; marks your variable to receive the deep link's query parameter (in this example, `referrer` is a query parameter)
+- `@DeeplinkMetadata` &#8594; marks your `JSONObject` variable to receive the deep link's metadata
 
 In order to tell HOKO to give the annotated variables the values from the opened deep links, you will need to call the `Hoko.deeplinking().inject(this)` method.  
 This method returns a boolean value that indicates whether the Activity was activated through a deep link (`true`) or not (`false`).
 
 ### DeeplinkRoute
 
-The DeeplinkRoute annotation (`@DeeplinkRoute()`) receives a String parameter that describes which **route** a deep link must conform in order for the current `Activity/Fragment` to be automatically shown by HOKO.  
+The DeeplinkRoute annotation (`@DeeplinkRoute`) receives a String parameter that describes which **route** a deep link must conform in order for the current `Activity/Fragment` to be automatically shown by HOKO.  
 The following code shows an example of this:
 
 {% highlight java %}
@@ -65,7 +66,7 @@ When `inject(...)` is called, and the `ProductActivity` was started from a deep 
 
 The difference between **route parameters** and **query parameters** is how they appear in the actual deep link and if they are required or not for a route to be triggered.
 
-**Route parameters** must always be matched and as such, if an `Activity` was injected with a deep link, a `@DeeplinkRouteParameter()` variable will always have a value.
+**Route parameters** must always be matched and as such, if an `Activity` was injected with a deep link, a `@DeeplinkRouteParameter` variable will always have a value.
 
 **Query parameters** are completely optional and may be `null` or `0`, even if the `Activity` was injected with a given deep link.
 
@@ -75,7 +76,7 @@ Additionally we provide you with **Metadata** which consists on invisible inform
 
 ### DeeplinkFragmentActivity
 
-In order to be able to deep link into fragments, HOKO has a `@DeeplinkFragmentActivity()`. This annotation serves the purpose of identifying which `View` to replace with which possible `DeeplinkRoute` annotated `Fragments`.
+In order to be able to deep link into fragments, HOKO has a `@DeeplinkFragmentActivity`. This annotation serves the purpose of identifying which `View` to replace with which possible `DeeplinkRoute` annotated `Fragments`.
 
 {% highlight java %}
 @DeeplinkFragmentActivity(id = R.id.frame_layout, fragments = {WishlistFragment.class, ProductFragment.class})
@@ -114,14 +115,34 @@ public class ProductFragment extends Fragment {
 
 ### DeeplinkDefaultRoute
 
-In case you want to provide a given behavior for when an unmapped deep link opens your app you can do so by using the `@DeeplinkDefaultRoute()` annotation (this annotation does not have any parameters). Only deep links that do not match any existing **routes** will trigger the default route.
+In case you want to provide a given behavior for when an unmapped deep link opens your app you can do so by using the `@DeeplinkDefaultRoute` annotation (this annotation does not have any parameters). Only deep links that do not match any existing **routes** will trigger the default route.
 
 {% highlight java %}
-@DeeplinkDefaultRoute()
+@DeeplinkDefaultRoute
 public class SplashActivity extends Activity {
 
   @DeeplinkQueryParameter("referrer")
   String mReferrer;
+
+  @Override
+    public void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      Hoko.deeplinking().inject(this);
+    }
+
+}
+{% endhighlight %}
+
+### DeeplinkMultipleRoute
+
+In order to map several routes to the same `Activity`, we provide you with a `DeeplinkMultipleRoute` annotation. This annotation should receive an array of strings corresponding to the `routes` parameter.
+
+{% highlight java %}
+@DeeplinkMultipleRoute(routes = {"landing", "splash", "splash/:invite_id"})
+public class SplashActivity extends Activity {
+
+  @DeeplinkRouteParameter("invite_id")
+  String mInviteId;
 
   @Override
     public void onCreate(Bundle savedInstanceState) {

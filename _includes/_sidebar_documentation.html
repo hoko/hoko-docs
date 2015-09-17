@@ -51,4 +51,14 @@
     {% endfor %}
     </ul>
   </li>
+  <li>
+    Integrations
+    <ul>
+    {% for page in site.categories.integrations reversed %}
+      <li>
+        <a href="{{page.url}}">{{ page.title }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+  </li>
 </ul>

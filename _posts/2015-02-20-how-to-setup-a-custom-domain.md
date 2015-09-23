@@ -17,8 +17,8 @@ This domain can only be used for your shortened URLs. We strongly recommend that
 
 You can either setup an **A** record (if you're using the full domain as the links domain) or a **CNAME** if you're using a subdomain:
 
-* if it's an **A** record it should point to `52.18.77.36`.
-* if it's a **CNAME** it should point to `hoko.link`.
+* if it's a root domain (like mydomain.com) create an **A** record pointing to `52.18.77.36`.
+* if it's a subdomain (like link.myd.co) create a **CNAME** record pointing to `hoko.link`.
 
 Either way, you should see a screen like this when visiting your address on your browser:
 
@@ -36,12 +36,12 @@ That's it!
 
 If the domain is not working here's a list of thinkgs to keep in mind:
 
-1. Have you waited up to 72 hours since you modified DNS? In some cases it can take that long before the DNS change fully takes effect.
+1. Have you waited up to 72 hours since you modified DNS? In some cases it can take that long before
+the DNS change fully takes effect.
 
-2. Log in to your registrar's web site and confirm the A and/or CNAME records(s) you entered match the instructions above.
+2. Log in to your registrar's web site and confirm the **A** or **CNAME** record you entered match
+the instructions above.
 
-3. Go to Settings -> Advanced and look in the "Branded Short Domain" section. Does the entry in the Custom domain field match the one you used?
-
-4. If none of these steps work:  if you added or changed CNAME records, some registrars require that the CNAME value ends with a dot (.). Try changing the values of your CNAME records from on.fred.me to on.fred.me. (note the trailing dot).
-
-5. If you want to redirect requests from both `yourdomain.com` and `www.yourdomain.com` you might need to to create just one record with `*.yourdomain.com`.
+4. If none of these steps work: if you added or changed a CNAME record, some registrars require that
+the CNAME value ends with a dot (.). Try changing the values of your CNAME records from
+`l.mydomain.com` to `l.mydomain.com.` (note the trailing dot).

@@ -1,7 +1,12 @@
 body, html {
-    background: #2f3e64;
-    background-image: url('/assets/images/bg.png');
-    font-family: 'proxima-nova', Helvetica, sans-serif;
+  background: #2f3e64;
+  background-image: url('/assets/images/bg.png');
+  font-family: 'proxima-nova', Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: 2.2em;
+  font-weight: 400;
 }
 
 h2 {
@@ -10,10 +15,6 @@ h2 {
   font-weight: 400;
   padding-top: 30px;
   border-top: 1px solid #ededed;
-}
-
-h1 {
-  font-weight: 20px;
 }
 
 code {
@@ -440,17 +441,17 @@ code {
 }
 
 .post-title {
-    font-size: 42px;
-    letter-spacing: -1px;
-    line-height: 1;
-    color: #1B182A;
-    font-weight: 500;
-    margin-top: 0px;
-    margin-bottom: 35px;
+  font-size: 46px;
+  letter-spacing: -1px;
+  line-height: 1;
+  color: #1B182A;
+  font-weight: 500;
+  margin-top: 0px;
+  margin-bottom: 35px;
 
-    @include media-query($on-laptop) {
-        font-size: 36px;
-    }
+  @include media-query($on-laptop) {
+    font-size: 36px;
+  }
 }
 
 .content .toc {

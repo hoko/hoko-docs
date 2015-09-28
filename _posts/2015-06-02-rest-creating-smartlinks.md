@@ -120,6 +120,31 @@ Response example:
 
 You can change the posted metadata by editing the smart link at any time in the dashboard through the Tree editor or the Text Editor.
 
+### Redeems
+
+Creating smart links with a limit of times for reading its metadata is critic for some use cases, e.g. when you’re creating a smart link to be used once as a coupon.
+
+When you create a smart link with metadata, you can specify the maximum number of times for its metadata to be redeem through the `redeem_limit` parameter.
+
+Request example:
+
+{% highlight json %}
+{
+  "uri": "/products/398291",
+  "redeem_limit": 1
+}
+{% endhighlight %}
+
+Response example:
+
+{% highlight json %}
+{
+  "smartlink": "http://app.hoko.link/JcqTZ2U"
+}
+{% endhighlight %}
+
+After creating the smart link, you can redeem its metadata through the SDK.
+
 ### Unique smart links
 
 Create an unique smart link based on a URI, i.e. only one smart link will be created and returned

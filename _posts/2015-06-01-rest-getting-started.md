@@ -61,6 +61,8 @@ Currently these are the errors codes and messages that you may get:
 | 6           | Could not save object                         | Some error occurred on the server and the object was not saved      |
 | 7           | Could not find record                         | The record you're trying to find does not exist                     |
 | 8           | Could not save route                          | Some error occurred on the server and the route was not saved       |
+| 9           | Could not create a smart link                 | The smart link you're trying to create is invalid                   |
+| 10          | Too many redeems                              | The redeem limit of your smart link's metadata has been reached    |
 
 You can now start using our REST API to create your smart links.
 

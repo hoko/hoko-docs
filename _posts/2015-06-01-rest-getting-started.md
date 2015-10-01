@@ -63,6 +63,7 @@ Currently these are the errors codes and messages that you may get:
 | 8           | Could not save route                          | Some error occurred on the server and the route was not saved       |
 | 9           | Could not create a smart link                 | The smart link you're trying to create is invalid                   |
 | 10          | Too many redeems                              | The redeem limit of your smart link's metadata has been reached    |
+| 11          | Wrong platform token                          | You are not using the appropriate authorization token in your requests |
 
 You can now start using our REST API to create your smart links.
 

@@ -19,6 +19,6 @@ For each integration that you activate we'll asynchronously send every event tha
 - **Installs** – when the user installs your app
 - **Deferrers** – when the user is taken through the app store to install your app
 
-You will find these events in your third-party solution hence you can then perform analytics actions using them. We are working on further and better integrations as times goes by, so keep checking the integrations page for new additions.
+You will find these events as they occur in your third-party solution. We are working on further and better integrations as times goes by, so keep checking the integrations page for new additions.
 
 ![List of integrations](/assets/images/integrations.png)

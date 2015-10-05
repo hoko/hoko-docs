@@ -176,14 +176,14 @@ Using this method, if you would like to show something to the user, you will nee
 
 In order to execute code that is common to any incoming deep link (e.g. analytics tracking, referrer tracking, etc), the **deeplinking** module allows delegating and block execution of **handlers**.
 
-If a class object implements the `Handler` interface and that object is added to the handler list, its `handle(deeplink)` method will be executed.
+If a class object implements the `DeeplinkCallback` interface and that object is added to the handler list, its `deeplinkOpened(deeplink)` method will be executed.
 
 {% highlight java %}
 // Analytics.java
-public class Analytics implements Handler {
+public class Analytics implements DeeplinkCallback {
   ...
   @Override
-  public void handle(Deeplink deeplink) {
+  public void deeplinkOpened(Deeplink deeplink) {
     trackEvent("deeplink", deeplink.getRoute());
   }
 }
@@ -198,9 +198,9 @@ Hoko.deeplinking().addHandler(Analytics.getInstance());
 You can also use `Handler` as an anonymous class.
 
 {% highlight java %}
-Hoko.deeplinking().addHandler(new Handler() {
+Hoko.deeplinking().addHandler(new DeeplinkCallback() {
   @Override
-  public void handle(HokoDeeplink deeplink) {
+  public void deeplinkOpened(Deeplink deeplink) {
     Analytics.getInstance().trackEvent("deeplink", deeplink.getRoute());
   }
 });

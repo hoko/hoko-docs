@@ -319,3 +319,50 @@ Hoko.deeplinking().openSmartlink("https://yourapp.hoko.link/example", new Smartl
   }
 })
 {% endhighlight %}
+
+## Metadata
+
+The passing of `metadata` through **Smartlinks** involves securely saving data on the HOKO platform and retrieving it when the smartlink is opened in the application. This allows the developer to pass sensitive information through deeplink.
+
+To make sure that developers have greater control on how this metadata is consumed, upon generating a Smartlink through a `Deeplink` object, you can specify the `redeemLimit` of a given `Deeplink` object.
+This allows you to control how many times a given Smartlink is opened and can actually retrieve sensitive information saved in the metadata field.
+
+## Deep link filtering (optional)
+
+A filter allows you to explicitly control if a deep link should be open right away or not. Simply add a new filter block calling `addFilter(FilterCallback)` for any kind of validation that you may need.  
+Each of your **filters** will be called by the SDK when a deep link is about to open (passing that deep link object as the block's parameter) and you should return `true` if that deep link should be processed or `false` otherwise.
+
+For instance, a deep link for a friend’s profile page in a chat app should not be open if the user is not logged in at the moment. To accomplish this behavior, you should check if the user is not signed in and return `false` to stop the opening of the deep link or return `true` to open it right away.
+After the user signed up, you can retrieve the latest deep link, processed by SDK, by accessing the `getCurrentDeeplink()` property in `Hoko.deeplinking()` and check if it `wasOpened()`. If it was not, simply call `Hoko.deeplinking().openCurrentDeeplink()` to open it.
+
+If **all** of your filters return a truthy response it means that your application is ready to open the deep link (and consequently that deep link's route will be called as usual), otherwise the deep link will be saved in the SDK's `getCurrentDeeplink()` which can be manually accessed and opened later on.  
+
+{% highlight java %}
+Hoko.deeplinking().addFilter(new FilterCallback() {
+  public boolean openDeeplink(Deeplink deeplink) {
+    // check if the filtered deep link's route is the friends' route
+    if (deeplink.getRoute() == "friends/:friend_id") {
+      // if so, return true if your user is logged in, false otherwise
+      return user.isLoggedIn();
+    } else {
+      // otherwise, since we're not interested in filtering a deep link that
+      // does not match the friends' route, simply return true
+      return true
+    }
+}});
+
+...
+
+
+// after the user logged in, check if the latest deep link processed by
+// the SDK was opened or not
+if (Hoko.deeplinking().getCurrentDeeplink() != null &&
+    !Hoko.deeplinking().getCurrentDeeplink().wasOpened()) {
+
+  //if not, tell HOKO to open it
+  Hoko.deeplinking().openCurrentDeeplink()
+}
+
+{% endhighlight %}
+
+**NOTE:** filters are completely optional, you don't need to use them to achieve HOKO's deep linking power.

@@ -38,7 +38,9 @@ This `HOKDeeplink` object will contain 3 parameters. The `route` to which the de
 
 The `routeParameters`, a dictionary containing all the route format variables which were mapped to the incoming deep link (in this case `{"product_id": 42}`).
 
-And finally the `queryParameters`, a dictionary which contains all the **optional** parameters which might passed through the query string in the deep link (in this example `{"referrer": "hokolinks.com"}`).
+The `queryParameters`, a dictionary which contains all the **optional** parameters which might passed through the query string in the deep link (in this example `{"referrer": "hokolinks.com"}`).
+
+And finally the `metadata`, a dictionary which contains all the privately passed parameters when the **Smartlink** was generated.
 
 ### Target
 
@@ -277,6 +279,13 @@ Hoko.deeplinking().openSmartlink(slink, completion: { (deeplink: HOKDeeplink?) -
 {% endhighlight %}
 
 If you choose not to have a completion block, you can use the `openSmartlink:` method without the 2nd parameter.
+
+## Metadata
+
+The passing of `metadata` through **Smartlinks** involves securely saving data on the HOKO platform and retrieving it when the smartlink is opened in the application. This allows the developer to pass sensitive information through deeplink.
+
+To make sure that developers have greater control on how this metadata is consumed, upon generating a Smartlink through a `HOKDeeplink` object, you can specify the `redeemLimit` of a given `HOKDeeplink` object.
+This allows you to control how many times a given Smartlink is opened and can actually retrieve sensitive information saved in the metadata field.
 
 ## Deep link filtering (optional)
 

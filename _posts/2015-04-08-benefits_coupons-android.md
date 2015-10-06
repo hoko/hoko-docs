@@ -78,3 +78,8 @@ public class MyProductActivity extends Activity {
 {% endhighlight %}
 
 <a href="https://github.com/hokolinks/HOKOStore-Android" class="btn-next" target="_blank">Demo app using coupons &#8594;</a>
+
+### Limit the number of redeems (optional)
+
+As an added bonus, HOKO allows you to set a limit to how many times the metadata field can be accessed while opening a deeplink.
+Please check our [Smartlink generation API documentation](http://support.hokolinks.com/android/android-deeplinking/#smart-link-generation) on how to limit this. 

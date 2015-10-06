@@ -287,6 +287,52 @@ The passing of `metadata` through **Smartlinks** involves securely saving data o
 To make sure that developers have greater control on how this metadata is consumed, upon generating a Smartlink through a `HOKDeeplink` object, you can specify the `redeemLimit` of a given `HOKDeeplink` object.
 This allows you to control how many times a given Smartlink is opened and can actually retrieve sensitive information saved in the metadata field.
 
+{% highlight objective-c %}
+HOKDeeplink *deeplink = [HOKDeeplink deeplinkWithRoute:@"products/:product_id"
+                                       routeParameters:@{@"product_id": @(self.product.identifier)}
+                                       queryParameters:@{@"referrer": self.user.name}
+                                              metadata:@{@"coupon": @"20"}
+                                           redeemLimit:3];
+[[Hoko deeplinking] generateSmartlinkForDeeplink:deeplink success:^(NSString *smartlink) {
+  [[Social sharedInstance] shareProduct:self.product link:smartlink];
+} failure:^(NSError *error) {
+  // Share web link instead
+  [[Social sharedInstance] shareProduct:self.product link:self.product.webLink];
+}];
+{% endhighlight %}
+
+{% highlight swift %}
+let deeplink = HOKDeeplink("products/:product_id", routeParameters: ["product_id": product.identifier],
+                                                 queryParameters:["referrer": user.name],
+                                                 metadata: ["coupon": "20"],
+                                                 redeemLimit: 3)
+Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink: String) -> Void in
+  Social.sharedInstance().shareProduct(product, link: smartlink)
+}) { (error: NSError) -> Void in
+  // Share web link instead
+  Social.sharedInstance().shareProduct(product, link: self.product.webLink)
+}
+{% endhighlight %}
+
+When a deeplink with metadata is opened you can `redeem` it to make sure the redeem limit is respected upon opening a deeplink.
+
+{% highlight objective-c %}
+[[Hoko deeplinking] mapRoute:@"products/:product_id"
+                    toTarget:^(HOKDeeplink *deeplink) {
+  // View controller presenting logic
+  [deeplink redeem];
+}];
+{% endhighlight %}
+
+{% highlight swift %}
+Hoko.deeplinking().mapRoute("products/:product_id", toTarget: {
+  (deeplink: HOKDeeplink) -> Void in
+    // View controller presenting logic
+    deeplink.redeem()
+})
+{% endhighlight %}
+
+
 ## Deep link filtering (optional)
 
 A filter allows you to explicitly control if a deep link should be open right away or not. Simply add a new filter block calling `addFilterBlock` for any kind of validation that you may need.  

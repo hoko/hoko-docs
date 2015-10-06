@@ -67,3 +67,8 @@ Hoko.deeplinking().addHandlerBlock { (deeplink: HOKDeeplink) -> Void in
 {% endhighlight %}
 
 <a href="https://github.com/hokolinks/HOKOstore" class="btn-next" target="_blank">Demo app using coupons (Swift) &#8594;</a>
+
+### Limit the number of redeems (optional)
+
+As an added bonus, HOKO allows you to set a limit to how many times the metadata field can be accessed while opening a deeplink.
+Please check our [Smartlink generation API documentation](http://support.hokolinks.com/ios/ios-deeplinking/#smart-link-generation) on how to limit this. 

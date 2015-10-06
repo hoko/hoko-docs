@@ -327,6 +327,46 @@ The passing of `metadata` through **Smartlinks** involves securely saving data o
 To make sure that developers have greater control on how this metadata is consumed, upon generating a Smartlink through a `Deeplink` object, you can specify the `redeemLimit` of a given `Deeplink` object.
 This allows you to control how many times a given Smartlink is opened and can actually retrieve sensitive information saved in the metadata field.
 
+{% highlight java %}
+HashMap routeParameters = new HashMap();
+routeParameters.put("product_id", mProduct.getId());
+
+HashMap queryParameters = new HashMap();
+queryParameters.put("referrer", "app");
+
+JSONObject metadata = new JSONObject();
+try {
+  metadata.putOpt("coupon_code", "hokosale30");
+} catch (JSONException e) {
+  e.printStackTrace();
+}
+
+Deeplink deeplink = Deeplink.deeplink("products/:product_id", routeParameters, queryParameters, metadata, 3);
+
+Hoko.deeplinking().generateSmartlink(deeplink, new LinkGenerationListener() {
+  @Override
+  public void onLinkGenerated(String smartlink) {
+    Social.getInstance().shareProduct(mProduct.getName(), smartlink);
+  }
+
+  @Override
+  public void onError(Exception e) {
+    Social.getInstance().shareProduct(mProduct.getName(), mProduct.getLink());
+  }
+});
+
+When a deeplink with metadata is opened you can `redeem` it to make sure the redeem limit is respected upon opening a deeplink.
+
+{% highlight objective-c %}
+Hoko.deeplinking().mapRoute("products/:product_id", , new DeeplinkCallback() {
+  @Override
+  public void deeplinkOpened(Deeplink deeplink) {
+    // Show your desired activity
+    deeplink.redeem();
+  }
+})
+{% endhighlight %}
+
 ## Deep link filtering (optional)
 
 A filter allows you to explicitly control if a deep link should be open right away or not. Simply add a new filter block calling `addFilter(FilterCallback)` for any kind of validation that you may need.  

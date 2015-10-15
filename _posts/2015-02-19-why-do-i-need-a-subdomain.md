@@ -27,9 +27,9 @@ next smart links will contain the new name automatically.
 
 You can take this customization further and completely re-brand your smart links with your own
 domain name, e.g. `http://blackapp.link/TCw1RoX`. All you need to do is to setup a
-[custom domain](/setting-up-a-custom-domain/) and add your domain name in the *Settings* section.
+[custom domain](/how-to-setup-a-custom-domain/) and add your domain name in the *Settings* section.
 
-<a href="http://support.hokolinks.com/setting-up-a-custom-domain/" class="btn-next">Re-brand your smart links with a custom domain &#8594;</a>
+<a href="http://support.hokolinks.com/how-to-setup-a-custom-domain/" class="btn-next">Re-brand your smart links with a custom domain &#8594;</a>
 
 # Name requirements
 
@@ -42,4 +42,3 @@ For a subdomain name to be valid, it needs to follow a series of rules:
 **3.** Must not begin or end with a hyphen or underscore
 
 **4.** Must not contain consecutive hyphens or underscores, e.g. black___app (it’s ugly)
-

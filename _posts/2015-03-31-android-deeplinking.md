@@ -399,6 +399,7 @@ Hoko.deeplinking().generateSmartlink(deeplink, new LinkGenerationListener() {
     Social.getInstance().shareProduct(mProduct.getName(), mProduct.getLink());
   }
 });
+{% endhighlight %}
 
 When a deeplink with metadata is opened you can `redeem` it to make sure the redeem limit is respected upon opening a deeplink.
 

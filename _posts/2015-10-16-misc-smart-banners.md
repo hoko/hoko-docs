@@ -84,4 +84,5 @@ generate the correct link for each page visited.
 </script>
 {% endhighlight %}
 
-Be careful to replace the **[STORE_ID]** and **[URL_SCHEME]** for your app ones.
+Be careful to replace the **[STORE_ID]** and **[URL_SCHEME]** variables with your application's app
+store ID and url scheme.

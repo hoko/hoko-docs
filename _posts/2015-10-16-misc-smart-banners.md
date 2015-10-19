@@ -29,9 +29,9 @@ One thing to keep in mind is that the banner will stay closed for a period of ti
 
 ![Smart Banner Snippet](/assets/images/banner-design.png)
 
-## Manually controll the banner
+## Manually control the banner
 
-If you want to take full controll of your banner you can manually show and hide as well as customize it in runtime.
+If you want to take full control of your banner you can manually show and hide as well as customize it in runtime.
 
 After initializing the script (make sure you have set "Show automatically" to false if you don't want the banner to automatically pop) you can show the banner and hide it when you want.
 

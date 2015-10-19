@@ -349,7 +349,9 @@ Hoko.deeplinking().generateSmartlink(deeplink, new LinkGenerationListener() {
 
 ### Resolving Smart links
 
-Should you want to manually open a Smart link by code (e.g. `https://yourapp.hoko.link/example`) and have it work as a deeplink in regards to the routing of `Activities` and `Fragments`, you can call the method `openSmartlink(smartlink, smartlinkResolveListener)`.
+Should you want to manually open a Smart link by code (e.g. `https://yourapp.hoko.link/example`)
+and have it work as a deeplink in regards to the routing of `Activities` and `Fragments`, you can
+call the method `openSmartlink(smartlink, smartlinkResolveListener)`.
 
 {% highlight java %}
 Hoko.deeplinking().openSmartlink("https://yourapp.hoko.link/example", new SmartlinkResolveListener() {
@@ -367,10 +369,16 @@ Hoko.deeplinking().openSmartlink("https://yourapp.hoko.link/example", new Smartl
 
 ## Metadata
 
-The passing of `metadata` through **Smartlinks** involves securely saving data on the HOKO platform and retrieving it when the smartlink is opened in the application. This allows the developer to pass sensitive information through deeplink.
+The passing of `metadata` through **Smartlinks** involves securely saving data on the HOKO platform
+and retrieving it when the smart link is opened in the application. This allows the developer to
+pass sensitive information through deep link.
 
-To make sure that developers have greater control on how this metadata is consumed, upon generating a Smartlink through a `Deeplink` object, you can specify the `redeemLimit` of a given `Deeplink` object.
-This allows you to control how many times a given Smartlink is opened and can actually retrieve sensitive information saved in the metadata field.
+To make sure that developers have greater control on how this metadata is consumed, upon generating
+a smart link through a `Deeplink` object, you can specify the `redeemLimit` of a given `Deeplink`
+object.
+
+This allows you to control how many times a given smart link is opened and can actually retrieve
+sensitive information saved in the metadata field.
 
 {% highlight java %}
 HashMap routeParameters = new HashMap();

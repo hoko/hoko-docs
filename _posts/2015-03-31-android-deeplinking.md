@@ -232,7 +232,7 @@ If your class implements the interface you can then add it to the deep linking m
 Hoko.deeplinking().addHandler(Analytics.getInstance());
 {% endhighlight %}
 
-You can also use `Handler` as an anonymous class.
+You can also use `DeeplinkCallback` as an anonymous class.
 
 {% highlight java %}
 Hoko.deeplinking().addHandler(new DeeplinkCallback() {

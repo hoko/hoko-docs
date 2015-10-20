@@ -394,6 +394,7 @@ try {
   e.printStackTrace();
 }
 
+// Redeem limit is 3
 Deeplink deeplink = Deeplink.deeplink("products/:product_id", routeParameters, queryParameters, metadata, 3);
 
 Hoko.deeplinking().generateSmartlink(deeplink, new LinkGenerationListener() {
@@ -416,7 +417,15 @@ Hoko.deeplinking().mapRoute("products/:product_id", , new DeeplinkCallback() {
   @Override
   public void deeplinkOpened(Deeplink deeplink) {
     // Show your desired activity
-    deeplink.redeem();
+    if (deeplink.getMetadata() != null) {
+      String coupon = deeplink.getMetadata().optString("coupon_code");
+      if (coupon != null) {
+        MyCoupon.apply(coupon);
+        deeplink.redeem();
+        return;
+      }
+    }
+    MyCoupon.couldNotApply();
   }
 })
 {% endhighlight %}

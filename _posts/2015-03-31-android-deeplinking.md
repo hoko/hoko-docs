@@ -403,7 +403,7 @@ Hoko.deeplinking().generateSmartlink(deeplink, new LinkGenerationListener() {
 
 When a deeplink with metadata is opened you can `redeem` it to make sure the redeem limit is respected upon opening a deeplink.
 
-{% highlight objective-c %}
+{% highlight java %}
 Hoko.deeplinking().mapRoute("products/:product_id", , new DeeplinkCallback() {
   @Override
   public void deeplinkOpened(Deeplink deeplink) {

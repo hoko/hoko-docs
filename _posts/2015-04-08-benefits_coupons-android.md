@@ -81,5 +81,8 @@ public class MyProductActivity extends Activity {
 
 ### Limit the number of redeems (optional)
 
-As an added bonus, HOKO allows you to set a limit to how many times the metadata field can be accessed while opening a deeplink.
-Please check our [Smartlink generation API documentation](http://support.hokolinks.com/android/android-deeplinking/#smart-link-generation) on how to limit this. 
+As an added bonus, HOKO allows you to set a limit to how many times the metadata field can be accessed while opening a deeplink. This can be set through a `redeemLimit` when generating a smartlink. This will make sure that whenever a smartlink is opened it will only be able to retrieve the `metadata` field if the redeem limit has not been reached.
+
+Please check our Metadata documentation on how to limit the number of coupon redeems.
+
+<a href="http://support.hokolinks.com/android/android-deeplinking/#metadata" class="btn-next">Metadata documentation &#8594;</a>

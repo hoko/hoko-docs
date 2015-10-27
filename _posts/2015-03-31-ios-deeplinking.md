@@ -320,7 +320,13 @@ When a deeplink with metadata is opened you can `redeem` it to make sure the red
 [[Hoko deeplinking] mapRoute:@"products/:product_id"
                     toTarget:^(HOKDeeplink *deeplink) {
   // View controller presenting logic
-  [deeplink redeem];
+  if (deeplink.metadata) {
+    [deeplink redeem];
+    [MyCoupon apply:deeplink.metadata[@"coupon"]];
+  } else {
+    [MyCoupon couldNotApply];
+    // Could not redeem because it was already redeem 3 times!!
+  }
 }];
 {% endhighlight %}
 
@@ -328,10 +334,14 @@ When a deeplink with metadata is opened you can `redeem` it to make sure the red
 Hoko.deeplinking().mapRoute("products/:product_id", toTarget: {
   (deeplink: HOKDeeplink) -> Void in
     // View controller presenting logic
-    deeplink.redeem()
+    if let coupon = deeplink.metadata["coupon"] as? String {
+      deeplink.redeem()
+      MyCoupon.apply(coupon)
+    } else {
+      MyCoupon.couldNotApply()
+    }
 })
 {% endhighlight %}
-
 
 ## Deep link filtering (optional)
 

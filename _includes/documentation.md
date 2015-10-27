@@ -1,6 +1,6 @@
 
 
-# Quickstart
+### Quickstart
 
 <ul class="index-list">
   {% for page in site.categories.quickstart reversed %}
@@ -11,7 +11,7 @@
   {% endfor %}
 </ul>
 
-# iOS
+### iOS
 
 <ul class="index-list">
   {% for page in site.categories.ios reversed %}
@@ -22,7 +22,7 @@
   {% endfor %}
 </ul>
 
-# Android
+### Android
 
 <ul class="index-list">
   {% for page in site.categories.android reversed %}
@@ -33,7 +33,7 @@
   {% endfor %}
 </ul>
 
-# REST API
+### REST API
 
 <ul class="index-list">
   {% for page in site.categories.api reversed %}
@@ -44,7 +44,7 @@
   {% endfor %}
 </ul>
 
-# Integrations
+### Integrations
 
 <ul class="index-list">
   {% for page in site.categories.integrations reversed %}

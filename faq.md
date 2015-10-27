@@ -23,7 +23,7 @@ app, providing you in one click the possibility to buy that beloved product.
 
 In HOKO we refer to mobile deep linking technology as ‚Äúthe internet of apps.‚Äù The same doors internet opened to interconnect networks, is the door we have in front of us for the app world. We are building more and more tools around mobile deep linking that can help you make the most out of this new technology.
 
-# Basic
+### Basic
 
 <ul class="index-list">
   {% for page in site.categories.basic reversed %}
@@ -34,7 +34,7 @@ In HOKO we refer to mobile deep linking technology as ‚Äúthe internet of apps.‚Ä
   {% endfor %}
 </ul>
 
-# Deep linking
+### Deep linking
 
 <ul class="index-list">
   {% for page in site.categories.deeplinking reversed %}
@@ -45,7 +45,7 @@ In HOKO we refer to mobile deep linking technology as ‚Äúthe internet of apps.‚Ä
   {% endfor %}
 </ul>
 
-# Smart links
+### Smart links
 
 <ul class="index-list">
   {% for page in site.categories.smartlinks reversed %}
@@ -56,7 +56,7 @@ In HOKO we refer to mobile deep linking technology as ‚Äúthe internet of apps.‚Ä
   {% endfor %}
 </ul>
 
-# Templates
+### Templates
 
 <ul class="index-list">
   {% for page in site.categories.templates reversed %}
@@ -67,7 +67,7 @@ In HOKO we refer to mobile deep linking technology as ‚Äúthe internet of apps.‚Ä
   {% endfor %}
 </ul>
 
-# Advanced
+### Advanced
 
 <ul class="index-list">
   {% for page in site.categories.advanced reversed %}

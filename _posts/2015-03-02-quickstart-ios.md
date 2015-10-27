@@ -11,33 +11,33 @@ To integrate HOKO open source SDK in your app (only <u>iOS 5 and higher</u>) you
 
 ### Using CocoaPods
 
-**1.** Install [CocoaPods][cocoapods] in your system
+1- Install [CocoaPods][cocoapods] in your system
 
-**2.** Open your Xcode project folder and create a file called `Podfile` with the following content:
+2- Open your Xcode project folder and create a file called `Podfile` with the following content:
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">pod</span> <span class="s1">'Hoko'</span><span class="p">,</span> <span class="s1">'~&gt; <span class="ios-version">...</span>'</span></code></pre></div>
 
-**3.** Run `pod install` and wait for **CocoaPods** to install **HOKO SDK**. From this moment on, instead of using `.xcodeproj` file, you should start using `.xcworkspace`.
+3- Run `pod install` and wait for **CocoaPods** to install **HOKO SDK**. From this moment on, instead of using `.xcodeproj` file, you should start using `.xcworkspace`.
 
 ### Manual integration
 
-**1.** Download the [Hoko SDK](https://github.com/hokolinks/hoko-ios/archive/master.zip).
+1- Download the [Hoko SDK](https://github.com/hokolinks/hoko-ios/archive/master.zip).
 
-**2.** Drag the `Hoko` folder to your project.
+2- Drag the `Hoko` folder to your project.
 
-**3.** Be sure to also add `SystemConfiguration.framework` and `zlib.dylib` in case your project does not include it already.
+3- Be sure to also add `SystemConfiguration.framework` and `zlib.dylib` in case your project does not include it already.
 
 ### Integrating the SDK with your Swift project
 
 Because the HOKO SDK is written in `Objective-C`, you'll have to manually add a `Bridging Header file` into your project in order to use it with your Swift code:
 
-**1.** `File` > `New` > `File...` > `iOS` > `Source` > `Header File`
+1- `File` > `New` > `File...` > `iOS` > `Source` > `Header File`
 
-**2.** Name that header file `YourAppName-Bridging-Header.h`
+2- Name that header file `YourAppName-Bridging-Header.h`
 
-**3.** Inside that header file, import `#import <Hoko/Hoko.h>`
+3- Inside that header file, import `#import <Hoko/Hoko.h>`
 
-**4.** Go to your project > `Build Settings` > Search for `Objective-C Bridging Header` > Add the path to your bridging header file, from your root folder (e.g. `MyApp/MyApp-Bridging-Header.h`)
+4- Go to your project > `Build Settings` > Search for `Objective-C Bridging Header` > Add the path to your bridging header file, from your root folder (e.g. `MyApp/MyApp-Bridging-Header.h`)
 
 ## Add a URL Scheme to your App
 
@@ -52,7 +52,7 @@ Take note of your URL Scheme because we will ask you for it, when you are creati
 
 ![URL Scheme](/assets/images/ios_url_schemes.png)
 
-# Setup Associated Domains (Universal Links) - **iOS 9.0+**
+### Setup Associated Domains (Universal Links) - **iOS 9.0+**
 
 For your app to fully support the newly introduced `Universal Links` by Apple you'll have to enable and add a new entry in the `Associated Domains` section, inside your application target's `Capabilities` tab. Click on the '+' button and add a new entry with the following value: `applinks:myapp.hoko.link`, being `myapp` the Hoko subdomain you chose for your app's Hoko links. You can also have <u>your own link domain</u> ([learn more about this on the subdomains section](http://support.hokolinks.com/why-do-i-need-a-subdomain/)).
 

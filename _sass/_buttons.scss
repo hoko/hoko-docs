@@ -1,0 +1,61 @@
+.btn {
+  border: 2px solid white;
+  border-radius: 4px;
+  padding: 8px 10px;
+  letter-spacing: 0.06em;
+  font-size: 12px;
+  color: white!important;
+  text-transform: none;
+  &:hover {
+    color: black!important;
+    background: white;
+    text-decoration: none;
+  }
+  &.primary {
+    color: #79c237!important;
+    border-color: #79c237;
+    &:hover {
+      color: white!important;
+      background: #79c237;
+    }
+  }
+  @include media-query($on-palm) {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+.suggest-edits {
+  float: right;
+}
+.suggest-edits-btn {
+  background-color: transparent;
+  padding: 6px 20px 6px 35px;
+  color: #333!important;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
+  background-image: url("/assets/images/pencil.svg");
+  background-size: 12px 12px;
+  background-position: 15px 9px;
+  background-repeat: no-repeat;
+  border: 1px solid #999;
+  &:hover {
+    background-color: #ddd;
+    text-decoration: none;
+  }
+}
+.btn-next {
+  padding: 8px 16px;
+  border: 1px solid #496fdd;
+  border-radius: 4px;
+  font-size: 15px;
+  margin-top: 10px;
+  display: inline-block;
+  color: #496fdd;
+  &:hover {
+    color: #496fdd;
+    background: #f7f9fb;
+    text-decoration: none;
+  }
+}

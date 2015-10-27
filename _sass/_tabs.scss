@@ -1,0 +1,23 @@
+.tab {
+  padding: 5px 15px;
+  border: 1px solid #ececec;
+  color: #aaa;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  display: inline-block;
+  &:hover {
+    text-decoration: none;
+    color: #666;
+    border-color: #666;
+  }
+  &:focus {
+    text-decoration: none;
+  }
+  &.active {
+    border-color: #496fdd;
+    color: #496fdd;
+  }
+}

@@ -1,0 +1,62 @@
+.toggle-container {
+  text-align: center;
+  position: relative;
+  .toggle-label {
+    font-size: 12px;
+    color: #aaa;
+    position: absolute;
+    left: 0;
+    top: -5px;
+    cursor: pointer;
+    &:hover {
+      color: #666;
+    }
+    &.on,
+    &.on:hover {
+      color: #496fdd;
+    }
+    &.last {
+      left: 120px;
+    }
+  }
+}
+.flat-toggle {
+  width: 32px;
+  border-radius: 4px;
+  height: 10px;
+  background-color: #d2deff;
+  position: relative;
+  margin: 10px 75px;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.flat-toggle:after {
+  border-radius: 100%;
+  background-color: #496fdd;
+  position: absolute;
+  left: 0;
+  top: -3px;
+  width: 15px;
+  height: 15px;
+  content: '';
+  -webkit-transform: translate(0);
+  -ms-transform: translate(0);
+  transform: translateX(0);
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+}
+.flat-toggle:hover {
+  cursor: pointer;
+}
+.flat-toggle.on {
+  transform: translate3d(0,0,0);
+}
+.flat-toggle.on:after {
+  -webkit-transform: translate(17px);
+  -ms-transform: translate(17px);
+  transform: translateX(17px);
+}

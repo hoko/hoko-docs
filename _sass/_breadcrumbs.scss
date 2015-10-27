@@ -1,0 +1,26 @@
+.breadcrumb {
+  display: inline-block;
+  width: 100%;
+  background: #f0f0f0;
+  padding: 13px 13px 11px 30px;
+  border-radius: 6px 6px 0 0;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: -7px;
+  ul {
+    line-height: 2.3em;
+  }
+  li {
+    margin-right: 13px;
+    font-size: 15px;
+    font-weight: 400;
+    &:after {
+      content: '/';
+      padding-left: 13px;
+      color: #aaa;
+      font-weight: 600;
+    }
+    &:last-of-type:after {
+      content: '';
+    }
+  }
+}

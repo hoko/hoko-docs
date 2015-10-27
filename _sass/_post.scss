@@ -1,0 +1,54 @@
+.post-header {
+  margin-bottom: 10px;
+}
+.post-title {
+  font-size: 39px;
+  letter-spacing: -1px;
+  line-height: 1;
+  color: #1b182a;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 35px;
+  @include media-query($on-laptop) {
+    font-size: 36px;
+  }
+}
+.content .toc {
+  list-style: none;
+  margin: 0 0 35px;
+  border-radius: 6px;
+  padding: 0;
+  li {
+    background: #f7f9fb;
+    padding: 0 20px;
+    &:first-of-type {
+      padding-top: 20px;
+      border-radius: 6px 6px 0 0;
+    }
+    &:last-of-type {
+      padding-bottom: 20px;
+      border-radius: 0 0 6px 6px;
+    }
+  }
+}
+.post-content {
+  margin-bottom: $spacing-unit;
+}
+.content .index-list {
+  margin: 0;
+  padding: 0;
+  li {
+    background: #f7f9fb;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    a {
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 2.5;
+    }
+    p:before {
+      display: none;
+    }
+  }
+}

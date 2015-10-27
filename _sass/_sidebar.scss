@@ -1,0 +1,26 @@
+.sidebar {
+  width: 270px;
+  float: left;
+  padding: 47px 30px;
+  ul {
+    li {
+      float: none;
+      display: block;
+      font-size: 19px;
+      font-weight: 400;
+      color: #2b2b2b;
+      li {
+        font-size: 14px;
+        padding-left: 15px;
+        font-weight: 300;
+      }
+    }
+  }
+  @include media-query($on-palm) {
+    display: none;
+  }
+}
+.sidebar > ul > li,
+.sidebar > div > ul > li {
+  margin-bottom: 14px;
+}

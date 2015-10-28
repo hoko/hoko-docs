@@ -46,38 +46,4 @@ $(function() {
         $('#search-results').hide();
       }
   });
-
-  var $listItems = $('.search-result');
-
-$('input').keydown(function(e)
-{
-    var key = e.keyCode,
-        $selected = $listItems.filter('.selected'),
-        $current;
-
-    if ( key != 40 && key != 38 ) return;
-
-    $listItems.removeClass('selected');
-
-    if ( key == 40 ) // Down key
-    {
-        if ( ! $selected.length || $selected.is(':last-child') ) {
-            $current = $listItems.eq(0);
-        }
-        else {
-            $current = $selected.next();
-        }
-    }
-    else if ( key == 38 ) // Up key
-    {
-        if ( ! $selected.length || $selected.is(':first-child') ) {
-            $current = $listItems.last();
-        }
-        else {
-            $current = $selected.prev();
-        }
-    }
-
-    $current.addClass('selected');
-});
 });

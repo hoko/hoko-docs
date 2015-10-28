@@ -18,13 +18,13 @@ Google’s new mobile deep link standards. Last but not least, HOKO also offers 
 dashboard, which gives you a way to monitor the performance of all deep links driving your incoming
 traffic.
 
-# Which platforms does HOKO support?
+## Which platforms does HOKO support?
 
 Currently, HOKO supports iOS, Android, and desktop web applications. Yet we are also expanding our
 SDK to other frameworks, so if you are really looking forward to using HOKO [let us know](mailto:support@hokolinks.com) which
 framework you use!
 
-# What are the sizes of the SDKs?
+## What are the sizes of the SDKs?
 
 We aim to make the most complete and light SDKs possible.
 With that in mind, the SDK sizes for the latest versions are:
@@ -33,7 +33,7 @@ With that in mind, the SDK sizes for the latest versions are:
 
 * **Android** &#8594; *approx.* 72 KB
 
-# How do I get started?
+## How do I get started?
 
 The integration process is as easy as peeling a banana! We have spent half of our time building the best deep linking platform for you, and the other half making sure that it was extremely simple to use.
 

@@ -29,20 +29,21 @@
 }
 .suggest-edits-btn {
   background-color: transparent;
-  padding: 6px 20px 6px 35px;
-  color: #333!important;
+  padding: 6px 20px 6px 23px;
+  color: #496fdd;
   border-radius: 3px;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 400;
   display: inline-block;
   background-image: url("/assets/images/pencil.svg");
   background-size: 12px 12px;
-  background-position: 15px 9px;
+  background-position: 3px center;
   background-repeat: no-repeat;
-  border: 1px solid #999;
+  margin-top: 6px;
+
   &:hover {
-    background-color: #ddd;
     text-decoration: none;
+    color: darken(#496fdd, 15%);
   }
 }
 .btn-next {

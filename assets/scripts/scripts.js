@@ -46,4 +46,80 @@ $(function() {
         $('#search-results').hide();
       }
   });
+
+
+  // ----------------------------------------
+  // Search component using twitter typeahead
+  // ----------------------------------------
+
+  // Instantiate the bloodhound suggestion engine
+  var engine = new Bloodhound({
+    datumTokenizer: function (datum) {
+      var a = Bloodhound.tokenizers.whitespace(datum.title),
+          b = Bloodhound.tokenizers.whitespace(datum.description);
+          c = Bloodhound.tokenizers.whitespace(datum.category);
+
+      return a.concat(b).concat(c);
+    },
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    prefetch: {
+      url: "/search.json",
+      filter: function (data) {
+        return $.map(data, function (data) {
+          return {
+            title: data.title,
+            category: data.category,
+            description: data.description,
+            url: data.url
+          };
+        });
+      }
+    }
+  });
+
+  // Initialize the bloodhound suggestion engine
+  engine.initialize();
+
+  // Instantiate the typeahead UI
+  $('#prefetch .typeahead').typeahead(
+    {
+      hint: true,
+      highlight: true,
+      minLength: 2
+    },
+    {
+      name: 'engine',
+      ttl_ms: 1,
+      limit: 8,
+      displayKey: 'title',
+      source: engine.ttAdapter(),
+      templates: {
+        empty: [
+          '<div class="tt-empty">',
+            'No results found',
+          '</div>'
+        ].join('\n'),
+        suggestion: function(data) {
+          var hasCategory = function() {
+            return data.category ? 'show' : 'hide';
+          };
+
+          var category = function() {
+            if (data.category === 'ios') {
+              return 'iOS';
+            } else {
+              return data.category;
+            }
+          };
+
+          return '<p class="' + hasCategory() + '">' + data.title + ' - <span class="category-name">' + category() + '</span></p>';
+        }
+      }
+    }).bind('typeahead:selected', function (obj, datum) {
+      window.location.href = datum.url;
+    });
+
+    // Clear the prefetched search.json from localStorage
+    window.localStorage.clear();
+
 });

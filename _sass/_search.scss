@@ -3,86 +3,70 @@
   border-radius: 3px;
   box-shadow: none;
   border: 1px solid #aaa;
-  width: 216px;
+  width: 246px;
   background-image: url("/assets/images/search-icon.svg");
   background-repeat: no-repeat;
   background-position: 8px center;
   background-size: 18px;
   font-size: 13px;
-  transition: width 230ms ease;
 
   &:focus {
     border-color: #666;
-    width: 270px;
-
-    + .search-results {
-      opacity: 1;
-    }
   }
 }
 
-.search-results {
-  position: absolute;
-  background: white;
-  width: 270px;
-  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  z-index: 99;
-  margin-top: 5px;
-  text-align: center;
-  font-size: 14px;
+.category-name {
+  font-size: 12px;
+  font-weight: 400;
   color: #aaa;
-  opacity: 0;
-  transition: opacity 100ms ease;
+  margin: 0;
+  text-transform: capitalize;
+  line-height: 1;
+  margin-bottom: 6px;
+}
 
-  li {
-    line-height: 1;
-    display: block;
-    width: 100%;
-    text-align: left;
-    white-space: nowrap;
+.tt-hint {
+  color: #ddd;
+}
 
-    &.selected {
-      background: red;
-    }
+.tt-menu {
+  background: white;
+  width: 100%;
+  border-radius: 4px;
+  margin-top: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.2);
+  overflow: hidden;
+}
 
-    &:after {
-      display: none;
-    }
+.tt-empty {
+  padding: 10px;
+  font-size: 12px;
+  text-align: center;
+  color: #aaa;
+}
 
-    &[class*="category"] {
-      display: none !important;
-    }
+.tt-suggestion {
+  font-size: 13px;
+  padding: 10px;
+  margin: 0;
+  color: #496fdd;
+  font-weight: 400;
+  border-radius: 4px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover,
+  &.tt-cursor {
+    background: #F7F9FB;
+  }
+
+  &.hide {
+    display: none;
   }
 }
 
-.search-result {
-  .category-name {
-    font-size: 12px;
-    font-weight: 600;
-    color: #2b2b2b;
-    margin: 0;
-    text-transform: capitalize;
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-
-  a {
-    font-size: 13px;
-    font-weight: 300;
-    line-height: 1;
-    padding: 8px 12px;
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    &:hover {
-      text-decoration: none;
-      background: #f7f9fb;
-      border-radius: 4px;
-      span {
-        text-decoration: none;
-      }
-    }
-  }
+.tt-highlight {
+  font-weight: 700;
 }

@@ -67,3 +67,31 @@ HOKO is the solution for this problem because it acts as the developer website, 
 With HOKO you can skip this tedious configuration because we provided it out-of-the-box. Furthermore our servers run using the industry top standards for security and performance, providing this configuration to each device in a secure and fast manner.
 
 <a href="http://support.hokolinks.com/advantages-of-using-smart-links/" class="btn-next">Read more about the advantages of using HOKO's smart links &#8594;</a>
+
+## Troubleshooting
+
+If you are having some problems opening your app using Universal Links, check the following list of
+common mistakes:
+
+**-** Be aware that if you type a smart link in Safari it will not open your app through Universal Links
+because this mechanism only works when you tap on link that is visible on the screen, e.g. tapping
+on a smart link inside a SMS, Web Page, Note or other
+
+**-** If you are using a custom domain, make sure you can access the configuration file for
+Universal Links through HTTPS, i.e. open `https://yourdomain.com/apple-app-site-association` with your
+desktop browser and check for any security errors
+
+**-** Check if your app's Bundle and Team Id is correct here
+`https://yourapp.hoko.link/apple-app-site-association`
+
+**-** Check your URL Scheme in XCode > Project Properties > Info > URL Types > URL Schemes
+
+**-** Check if the Associated Domain in XCode > Capabilities > Associated Domains > Domains > has the following format: `applinks:yourapp.hoko.link` or `applinks:yourdomain.com`
+
+**-** Delete the app from your device after configuring HOKO to request the configuration file
+regarding universal links from our servers
+
+**-** Make sure you don’t have this error in the console when you are compiling:
+"We have detected that you have 2 classes that implement the UIApplicationDelegate protocol"
+
+**-** Check the console of XCode for errors

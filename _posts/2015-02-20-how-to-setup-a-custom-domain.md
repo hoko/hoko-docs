@@ -59,15 +59,18 @@ You can check this configuration file by opening
 `https://yoursubdomain.hoko.link/apple-app-site-association` or
 `https://yoursubdomain.hoko.link/.well-known/assetlinks.json`
 
-We provide this certification for free with our standard sub domains. If you want to use a custom
-domain you must then buy a SSL certificate and send us the bundle file provided by the CA and your
-private key. We will then perform the same actions one would perform in a web server to secure a
-domain using a SSL certificate.
+We provide this certification for free with our standard sub domains. Internally we use
+[Namecheap.com](http://www.namecheap.com) as our registar and for SSL we use their
+[Comodo](http://www.comodo.com) certificates.
 
-Alternatively, you can quickly have SSL using Cloudflare, which is free and easy to
-setup. Create an account with your custom domain and point the latter to us through a CNAME / A
-record and use the IP address described above. After this configuration you must wait up to 24 hours
-for the change to be propagated through the Internet.
+If you want to use a custom domain you must then buy a SSL certificate and send us the bundle file
+provided by the CA and your private key. We will then perform the same actions one would perform in
+a web server to secure a domain using a SSL certificate.
+
+Alternatively, you can quickly have SSL using [Cloudflare](https://www.cloudflare.com/), which is
+free and easy to setup. Create an account with your custom domain and point the latter to us
+through a CNAME / A record and use the IP address described above. After this configuration you
+must wait up to 24 hours for the change to be propagated through the Internet.
 
 ## Troubleshooting
 

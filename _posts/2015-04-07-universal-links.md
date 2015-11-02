@@ -20,11 +20,11 @@ For users, Universal Links brings a better experience and the only change they w
 
 Developers might be septic to change because they might actually be using the old way to achieve mobile deep linking through custom URL Schemes. However, Apple highly recommends the adoption of Universal Links due to the following benefits:
 
-**-** Universal Links will always the one and only app that claims a web domain, unlike custom URL schemes where different developers could claim the same URL scheme.
+* Universal Links will always the one and only app that claims a web domain, unlike custom URL schemes where different developers could claim the same URL scheme.
 
-**-** With URL schemes, if the app was not previously installed, tapping a URL would result in a broken experience and nothing would happen. Using Universal Links, the experience falls gracefully by redirecting the user to the web page through Safari.
+* With URL schemes, if the app was not previously installed, tapping a URL would result in a broken experience and nothing would happen. Using Universal Links, the experience falls gracefully by redirecting the user to the web page through Safari.
 
-**-** A single link works for all users of your content, regardless of whether they view it in your app or on your website. Universal Links are also platform agnostic because they are based on a common platform: the web.
+* A single link works for all users of your content, regardless of whether they view it in your app or on your website. Universal Links are also platform agnostic because they are based on a common platform: the web.
 
 ## App and web site association
 
@@ -73,25 +73,25 @@ With HOKO you can skip this tedious configuration because we provided it out-of-
 If you are having some problems opening your app using Universal Links, check the following list of
 common mistakes:
 
-**-** Be aware that if you type a smart link in Safari it will not open your app through Universal Links
+* Be aware that if you type a smart link in Safari it will not open your app through Universal Links
 because this mechanism only works when you tap on link that is visible on the screen, e.g. tapping
 on a smart link inside a SMS, Web Page, Note or other
 
-**-** If you are using a custom domain, make sure you can access the configuration file for
+* If you are using a custom domain, make sure you can access the configuration file for
 Universal Links through HTTPS, i.e. open `https://yourdomain.com/apple-app-site-association` with your
 desktop browser and check for any security errors
 
-**-** Check if your app's Bundle and Team Id is correct here
+* Check if your app's Bundle and Team Id is correct here
 `https://yourapp.hoko.link/apple-app-site-association`
 
-**-** Check your URL Scheme in XCode > Project Properties > Info > URL Types > URL Schemes
+* Check your URL Scheme in XCode > Project Properties > Info > URL Types > URL Schemes
 
-**-** Check if the Associated Domain in XCode > Capabilities > Associated Domains > Domains > has the following format: `applinks:yourapp.hoko.link` or `applinks:yourdomain.com`
+* Check if the Associated Domain in XCode > Capabilities > Associated Domains > Domains > has the following format: `applinks:yourapp.hoko.link` or `applinks:yourdomain.com`
 
-**-** Delete the app from your device after configuring HOKO to request the configuration file
+* Delete the app from your device after configuring HOKO to request the configuration file
 regarding universal links from our servers
 
-**-** Make sure you don’t have this error in the console when you are compiling:
+* Make sure you don’t have this error in the console when you are compiling:
 "We have detected that you have 2 classes that implement the UIApplicationDelegate protocol"
 
-**-** Check the console of XCode for errors
+* Check the console of XCode for errors

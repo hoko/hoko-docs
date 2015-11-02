@@ -7,7 +7,7 @@ description: Personalized smart links with custom domains.
 ---
 
 Setup a custom domain to generate smart links with your domain,
-e.g. `http://myapp.link/TCw1RoX`. This is a bittricky but we will assist you through the process.
+e.g. `http://myapp.link/TCw1RoX`. This is a bit tricky but we will assist you through the process.
 
 Before hand, we recommend you to have knowledge about the DNS records, network and SSL certificates
 of your domain. After that you must point your custom domain to us and setup a secure

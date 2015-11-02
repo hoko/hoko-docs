@@ -26,8 +26,7 @@ section of the *Dashboard* and choose a new name. This takes effect immediately 
 next smart links will contain the new name automatically.
 
 You can take this customization further and completely re-brand your smart links with your own
-domain name, e.g. `http://blackapp.link/TCw1RoX`. All you need to do is to setup a
-[custom domain](/how-to-setup-a-custom-domain/) and add your domain name in the *Settings* section.
+domain name, e.g. `http://myapp.link/TCw1RoX`.
 
 <a href="http://support.hokolinks.com/how-to-setup-a-custom-domain/" class="btn-next">Re-brand your smart links with a custom domain &#8594;</a>
 

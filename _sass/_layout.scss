@@ -23,6 +23,11 @@ html {
     padding-left: 20px;
     margin-bottom: 15px;
     list-style: initial;
+
+    &.index-list {
+      list-style: none;
+    }
+    
     li {
       float: none;
       font-size: 16px;

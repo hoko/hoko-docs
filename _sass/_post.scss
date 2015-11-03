@@ -20,19 +20,35 @@
   li {
     background: #f7f9fb;
     padding: 0 20px;
+    display: block;
+
+    p {
+      margin-bottom: 5px;
+
+      &:before {
+        content: '- ';
+        color: #333;
+        font-size: 12px;
+        margin-right: 5px;
+      }
+    }
+
     &:first-of-type {
       padding-top: 20px;
       border-radius: 6px 6px 0 0;
     }
+
     &:last-of-type {
       padding-bottom: 20px;
       border-radius: 0 0 6px 6px;
     }
   }
 }
+
 .post-content {
   margin-bottom: $spacing-unit;
 }
+
 .content .index-list {
   margin: 0;
   padding: 0;

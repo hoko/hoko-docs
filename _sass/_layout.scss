@@ -22,19 +22,11 @@ html {
   ul {
     padding-left: 20px;
     margin-bottom: 15px;
+    list-style: initial;
     li {
       float: none;
-      display: block;
       font-size: 16px;
-      p {
-        margin-bottom: 5px;
-        &:before {
-          content: '- ';
-          color: #333;
-          font-size: 12px;
-          margin-right: 5px;
-        }
-      }
+
       li {
         font-size: 14px;
         padding-left: 15px;

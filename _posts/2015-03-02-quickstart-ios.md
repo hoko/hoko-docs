@@ -84,7 +84,7 @@ func application(application: UIApplication,
 }
 {% endhighlight %}
 
-If you want to use your own domain on your smart links (check <a href="http://support.hokolinks.com/how-to-setup-a-custom-domain/" target="_blank">how you can setup a custom domain</a>) you must setup the iOS SDK using `setupWithToken:customDomain:` as following:
+If you are using a <a href="http://support.hokolinks.com/how-to-setup-a-custom-domain/" target="_blank">custom domain</a> in your smart links, you must setup the iOS SDK using `setupWithToken:customDomain:` as following:
 
 {% highlight objective-c %}
 #import <Hoko/Hoko.h>

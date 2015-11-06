@@ -92,7 +92,7 @@ If you are using a <a href="http://support.hokolinks.com/how-to-setup-a-custom-d
 - (BOOL)application:(UIApplication *)application
   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   [Hoko setupWithToken:@"YOUR-APP-TOKEN"
-         customDomain:@[@"your.custom.domain.com"]];
+         customDomain:@"your.custom.domain.com"];
   // The rest of your code goes here...
 
   return YES;
@@ -103,7 +103,7 @@ If you are using a <a href="http://support.hokolinks.com/how-to-setup-a-custom-d
 func application(application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
   Hoko.setupWithToken("YOUR-APP-TOKEN",
-      customDomain: ["your.custom.domain.com"])
+      customDomain: "your.custom.domain.com")
   // The rest of your code goes here...
 
   return true

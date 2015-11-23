@@ -9,19 +9,38 @@ description: E-commerce and deals applications can take advantage of HOKO by emb
 <a href="#" class="tab active">iOS</a>
 <a href="http://support.hokolinks.com/benefits/android/coupons/" class="tab">Android</a>
 
-E-commerce and deals applications can take advantage of HOKO by embedding **coupons or discounts** in their links. To do this, start by creating a new smart link and adding a new `metadata` entry to it, as shown below:
+Digital Coupons & Discounts are an excellent way of advertising on a low marketing budget.
+This marketing and sales hook, will enable you to sell more products and faster, besides
+promoting customer loyalty. On the other hand, it's also a great tool to increase brand
+awareness and drive traffic to your app.
 
-{% highlight json %}
-{
-  "coupon": "save20",
-  "value": "20"
-}
-{% endhighlight %}
+HOKO allows you create coupons links that can be reused throughout the mobile and desktop arena
+seamlessly. All you need to do is create a smart link with metadata,
+prepare you app to handle coupons and share the link.
 
-![](/assets/images/use-case-coupon.png)
+We will take care of driving both new users and current users directly to your app, even if they
+need to go through the app store in between. Inside the app we will delegate the coupon so you can
+presented it to the user.
 
-As soon as you do it, your link will be ready to transmit metadata to your users. The following code shows how you can put this into practice with a very simple and straightforward example that displays an alert to the user, with the amount they receive with your coupon:
+![Coupons](/assets/images/use-case-coupon.png)
 
+As soon as your app is ready to handle any kind of coupons, you can focus only on creating and
+sharing their links. We provide you with a sample app that demonstrates what we are going to discuss
+here in-depth.
+
+<a href="https://github.com/hokolinks/HOKOstore" class="btn-next" target="_blank">Demo app using coupons (Swift) &#8594;</a>
+
+## Creating the smart link for the coupon
+
+Let's keep it simple and say that is a seasonally discount, e.g. cyber Monday. Thus, we must create the smart link and add the necessary metadata. You can either create the smart link through the dashboard or through the SDK. For the sake of simplicity, we are creating the link through the dashboard like so:
+
+<iframe width="630" height="450" src="https://www.youtube.com/embed/fpesz5VhrS0" frameborder="0" allowfullscreen></iframe>
+
+## Prepare your app to handle the coupon
+
+The following snippet depicts how our SDK delegates the coupon to your app, so you can then
+do whatever you think it's best. In this simple example, we are just going to display a success
+popup.
 
 {% highlight objective-c %}
 // AppDelegate.m
@@ -66,12 +85,13 @@ Hoko.deeplinking().addHandlerBlock { (deeplink: HOKDeeplink) -> Void in
 }
 {% endhighlight %}
 
-<a href="https://github.com/hokolinks/HOKOstore" class="btn-next" target="_blank">Demo app using coupons (Swift) &#8594;</a>
-
-### Limit the number of redeems (optional)
-
-As an added bonus, HOKO allows you to set a limit to how many times the metadata field can be accessed while opening a deeplink.
-
-Please check our Metadata documentation on how to limit the number of coupon redeems.
+If you intend to create a more complex structure of deep links we recommend you have a separate
+route just for coupons. In this case you would be using the `mapRoute:toTarget:` delegation method.
 
 <a href="http://support.hokolinks.com/ios/ios-deeplinking/#metadata" class="btn-next">Metadata documentation &#8594;</a>
+
+## Limit the number of redeems (optional)
+
+As an added bonus, HOKO allows you to set a limit on how many times your users can access or redeem
+the coupon. Please check our
+[metadata](http://support.hokolinks.com/ios/ios-deeplinking/#metadata) documentation to learn more.

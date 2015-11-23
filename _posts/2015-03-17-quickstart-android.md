@@ -70,7 +70,7 @@ Now for the actual deeplinking, please add the `Activity` and `Receiver` to the 
 </receiver>
 {% endhighlight %}
 
-The subdomain will be used to avoid request the user on which app to open the link and to avoid going through an HTML page redirect. Everytime a link with `http://yourapp.hoko.link` domain gets opened, it will automatically open your app and resolve the Smartlink into an actual `Deeplink`, redirecting the user to the proper `Activity` or `Fragment`.
+The subdomain will be used to avoid request the user on which app to open the link and to avoid going through an HTML page redirect. Everytime a link with `http://yourapp.hoko.link` domain gets opened, it will automatically open your app and resolve the smart link into an actual `Deeplink`, redirecting the user to the proper `Activity` or `Fragment`.
 
 See the [Why do I need a subdomain](http://support.hokolinks.com/why-do-i-need-a-subdomain/) section for more information regarding this.
 
@@ -86,7 +86,7 @@ public void onCreate() {
 }
 {% endhighlight %}
 
-We advise you to setup the SDK on your `Application's` subclass `onCreate()` method because it guarantees that the SDK will be initialized when the application is launched.  
+We advise you to setup the SDK on your `Application's` subclass `onCreate()` method because it guarantees that the SDK will be initialized when the application is launched.
 
 Note: Check the Logs for your device token so you can upload routes into HOKO!
 

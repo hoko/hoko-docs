@@ -54,7 +54,7 @@ length of the URL.
 In this example we are going to have a look on how to create a smart link with
 parameters as a referral link, using the SDK and its `generateSmartlinkForDeeplink` method.
 
-![Sharing](/assets/images/share-controller.png)
+![Sharing](/assets/images/share-ios.png)
 
 Then, we are going to share the message using iOS `UIActivityViewController`, so Ricardo can pick
 the messaging app that we wants to send the message. Let's have a look at the code

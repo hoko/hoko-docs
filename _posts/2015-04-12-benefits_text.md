@@ -182,7 +182,11 @@ will take the user through the app store to install your app.
 
 When the user opens your app through a smart link, it's up to you to present the appropriate view
 within your app. You also have to define what are the deep linking routes that your app is going to
-support. We will take care of everything else. More information about [Route Mapping](http://support.hokolinks.com/ios/ios-deeplinking/#route-mapping) in the documentation.
+support.
+
+We will take care of everything else. Be sure to check the documentation about
+[Route Mapping](http://support.hokolinks.com/ios/ios-deeplinking/#route-mapping) to know
+how to handle smart links inside your app.
 
 Further more, we provide utility methods to help you handling smart links, like presenting the correct view
 or setting the root view, based on the route parameters, query parameters or metadata.

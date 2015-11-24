@@ -103,7 +103,8 @@ platform and a `Template` configured. Check the documentation about
 
 When the user opens your app through a smart link, it's up to you to present the appropriate view
 within your app. You also have to define what are the deep linking routes that your app is going to
-support. We will take care of everything else.
+support.
 
-Check the documentation about [Route Mapping](http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations) to know more.
-
+We will take care of everything else. Be sure to check the documentation about
+[Route Mapping](http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations)
+to know how to handle smart links inside your app.

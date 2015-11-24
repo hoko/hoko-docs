@@ -46,13 +46,9 @@ When the user opens your app through a smart link, it's up to you to present the
 within your app. You also have to define what are the deep linking routes that your app is going to support
 and we will do the rest.
 
-More information about Route Mapping:
-
-<a href="http://support.hokolinks.com/ios/ios-deeplinking/#route-mapping" class="tab active">iOS</a>
-<a href="http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations" class="tab active">Android</a>
+More information about Route Mapping for [iOS](http://support.hokolinks.com/ios/ios-deeplinking/#route-mapping) and [Android](http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations)
 
 Further more, we provide utility methods to help you handling smart links, like presenting the correct view
 or setting the root view, based on the route parameters, query parameters or metadata.
-Check the documentation about [Deeplink Utilities](http://support.hokolinks.com/ios/ios-utilities/) to know more.
 
-
+More information about Deeplink Utilities for [iOS](http://support.hokolinks.com/ios/ios-utilities/)

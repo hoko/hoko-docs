@@ -9,9 +9,9 @@ description: Sharing your app content on social media (such as Twitter or Facebo
 <a href="#" class="tab active">iOS</a>
 <a href="http://support.hokolinks.com/benefits/android/share/" class="tab">Android</a>
 
-Sharing your app content on social media (such as Twitter or Facebook) helps you to find **new customers, expand audience** and **increase brand awareness**. With HOKO, doing it is so **simple** that anybody can do it.  
+Sharing your app content on social media (such as Twitter or Facebook) helps you to find **new customers, expand audience** and **increase brand awareness**. With HOKO, doing it is so **simple** that anybody can do it.
 
-In this example, our app is a restaurant booking application where users can share with their friends, trough social media, where they are enjoying a nice meal. Share is done by using a smart link that redirects users to that specific restaurant inside the app.
+In this example, our app is a restaurant booking application where users can share with their friends, through social media, where they are enjoying a nice meal. Share is done by using a smart link that redirects users to that specific restaurant inside the app.
 
 {% highlight objective-c %}
 - (IBAction)shareToSocialNetworksButtonTapped:(id)sender {
@@ -71,7 +71,7 @@ In this example, our app is a restaurant booking application where users can sha
 
       // And... it's ready! The following line displays the share
       // popup to the user and your smart links will start flying
-      self.presentViewController(shareController, animated: true, completion: nil)  
+      self.presentViewController(shareController, animated: true, completion: nil)
     }
 
   }) { error in

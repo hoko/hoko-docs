@@ -3,13 +3,13 @@ title: Embed in Text Messages
 categories: benefits
 layout: documentation
 permalink: /:categories/ios/text
-description: Besides sharing content on social networks, your users can also do it trough text messages (regular sms or chat messaging).
+description: Besides sharing content on social networks, your users can also do it through text messages (regular sms or chat messaging).
 ---
 
 <a href="#" class="tab active">iOS</a>
 <a href="http://support.hokolinks.com/benefits/android/text/" class="tab">Android</a>
 
-Besides sharing content on social networks, your users can also do it trough text messages (regular sms or chat messaging). Embedding HOKO's smart links in messages can be a powerful way of **promoting your app**, with deep linked content. With this in mind, our SDK allows the developers to do it quickly. Your smart text messages will be up and running in no time.
+Besides sharing content on social networks, your users can also do it through text messages (regular sms or chat messaging). Embedding HOKO's smart links in messages can be a powerful way of **promoting your app**, with deep linked content. With this in mind, our SDK allows the developers to do it quickly. Your smart text messages will be up and running in no time.
 
 In the following code section, we will show you how to do it.
 

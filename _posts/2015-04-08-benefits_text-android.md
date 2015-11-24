@@ -9,7 +9,7 @@ description: Learn more about using HOKO smart links to enhance your user experi
 <a href="http://support.hokolinks.com/benefits/ios/text/" class="tab">iOS</a>
 <a href="#" class="tab active">Android</a>
 
-Besides sharing content on social networks, your users can also do it trough text messages (regular sms or chat messaging). Embedding HOKO's smart links in messages can be a powerful way of **promoting your app**, with deep linked content. With this in mind, our SDK allows the developers to do it quickly. Your smart text messages will be up and running in no time.
+Besides sharing content on social networks, your users can also do it through text messages (regular sms or chat messaging). Embedding HOKO's smart links in messages can be a powerful way of **promoting your app**, with deep linked content. With this in mind, our SDK allows the developers to do it quickly. Your smart text messages will be up and running in no time.
 
 In the following code section, we will show you how to do it.
 

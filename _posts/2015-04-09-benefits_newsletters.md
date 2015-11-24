@@ -43,8 +43,8 @@ follows a specific format and includes the mobile deep link that will direct the
 ## Handle smart links inside your app
 
 When the user opens your app through a smart link, it's up to you to present the appropriate view
-within your app. You also have to define what are the deep linking routes that your app is going to support
-and we will do the rest.
+within your app. You also have to define what are the deep linking routes that your app is going to
+support. We will take care of everything else.
 
 More information about Route Mapping for [iOS](http://support.hokolinks.com/ios/ios-deeplinking/#route-mapping) and [Android](http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations)
 

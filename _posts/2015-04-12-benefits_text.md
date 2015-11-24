@@ -9,9 +9,27 @@ description: Besides sharing content on social networks, your users can also do 
 <a href="#" class="tab active">iOS</a>
 <a href="http://support.hokolinks.com/benefits/android/text/" class="tab">Android</a>
 
-Besides sharing content on social networks, your users can also do it through text messages (regular sms or chat messaging). Embedding HOKO's smart links in messages can be a powerful way of **promoting your app**, with deep linked content. With this in mind, our SDK allows the developers to do it quickly. Your smart text messages will be up and running in no time.
+SMS, iMessage, Messaging Apps... allow your users to share content through text channels,
+always delivering the best possible experience. Our goal is to be able to drive users straight
+to the app once they click on a smart link inside a text message.
 
-In the following code section, we will show you how to do it.
+![Smart links in text messages](/assets/images/hoko-smart-link.png)
+
+Embedding smart links in messages can be a powerful way
+of **promoting your app** with deep linked content. With this in mind, our SDK allows
+developers to send messages that will target your app using smart links.
+
+## Embedding smart links in text messages
+
+Let's start by creating a mobile deep link for this item using the `deeplinkWithRoute` method.
+This is necessary so the app knows what to do when some other user opens the app through the link.
+Next, we are going to encapsulate the deeplink inside a smart
+link using the `generateSmartlinkForDeeplink` function.
+
+Finally, we are going to send the message using iOS `MFMessageComposeViewController`. Once the
+message it's sent we can react to the outcome of this action by delegating
+`messageComposeViewController:didFinishWithResult` to our controller. In the
+following snippet we will demonstrate how you can do this in-depth:
 
 {% highlight objective-c %}
 #import <Hoko/Hoko.h>
@@ -156,4 +174,16 @@ extension YourViewController: MFMessageComposeViewControllerDelegate {
 }
 {% endhighlight %}
 
-And... That's it! So simple, right?
+Once the recipient user taps on the smart link, the smart will drive the user to your app
+where it will handle the deep link and show the appropriate view. If it's a new user, the smart link
+will take the user through the app store to install your app.
+
+## Handle smart links inside your app
+
+When the user opens your app through a smart link, it's up to you to present the appropriate view
+within your app. You also have to define what are the deep linking routes that your app is going to support
+and we will do the rest. More information about [Route Mapping](http://support.hokolinks.com/ios/ios-deeplinking/#route-mapping) in the documentation.
+
+Further more, we provide utility methods to help you handling smart links, like presenting the correct view
+or setting the root view, based on the route parameters, query parameters or metadata.
+Check the documentation about [Deeplink Utilities](http://support.hokolinks.com/ios/ios-utilities/) to know more.

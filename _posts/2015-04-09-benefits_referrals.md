@@ -34,7 +34,7 @@ invitation and it will download the pre-assigned metadata. The Yood! app will pr
 saluting the friend with a special discount and displaying Ricardo profile picture, just to make the
 experience extra special and welcome!
 
-## Creating and sharing the referring smart link
+## 1. Creating and sharing the referring smart link
 
 Generate referrals with smart links through our SDK using `query parameters` or `metadata`.
 It's up to you to decide which method suits you best. Moreover, you can use both if you need to.
@@ -145,7 +145,7 @@ If you prefer metadata
 just use the `metadata` attribute instead of `queryParameters`.
 Read more information about [metadata](http://support.hokolinks.com/ios/ios-deeplinking/#metadata).
 
-## Personalized Landing Page
+## 2. Personalized Landing Page
 
 Now that we know how to create and share referral smart links, we must handle
 these links once the users opens the app. We are going to

@@ -26,7 +26,7 @@ Tapping on a lazy smart link triggers the creation of smart link that will follo
 and rules and drive the user to your app. When the user opens the app, the SDK will call your
 app to present the appropriate view.
 
-## Creating the lazy smart link
+## 1. Creating the lazy smart link
 
 You will probably create hundreds of newsletters using your e-mail campaign software. Creating smart
 links manually for every link in a newsletter would then require a lot of copy and paste work.
@@ -40,7 +40,7 @@ follows a specific format and includes the mobile deep link that will direct the
 
 <a href="http://support.hokolinks.com/api/rest-creating-lazy-smartlinks/" class="btn-next">More information about Lazy Smart Links</a>
 
-## Handle smart links inside your app
+## 2. Handle smart links inside your app
 
 When the user opens your app through a smart link, it's up to you to present the appropriate view
 within your app. You also have to define what are the deep linking routes that your app is going to

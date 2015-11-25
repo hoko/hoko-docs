@@ -19,7 +19,7 @@ Sharing your app content on social media (such as Twitter or Facebook) helps you
 **new customers, expand audience** and **increase brand awareness**. With HOKO it's so simple that
 anyone can do it.
 
-## Sharing on social media
+## 1. Sharing on social media
 
 In this example, our app is a restaurant booking application where users can share with their
 friends where they are enjoying a nice meal. Share is done by using a smart
@@ -114,7 +114,7 @@ posts you can have extra data like thumbnails and descriptions. Make sure you ha
 platform and a `Template` configured. Check the documentation about
 [templates](http://support.hokolinks.com/what-is-a-template/) to know more.
 
-## Handle smart links inside your app
+## 2. Handle smart links inside your app
 
 When the user opens your app through a smart link, it's up to you to present the appropriate view
 within your app. You also have to define what are the deep linking routes that your app is going to

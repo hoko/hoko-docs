@@ -30,13 +30,13 @@ here in-depth.
 
 <a href="https://github.com/hokolinks/HOKOStore-Android" class="btn-next" target="_blank">Demo app using coupons (Android) &#8594;</a>
 
-## Creating the smart link for the coupon
+## 1. Creating the smart link for the coupon
 
 Let's keep it simple and say that is a seasonally discount, e.g. cyber Monday. Thus, we must create the smart link and add the necessary metadata. You can either create the smart link through the dashboard or through the SDK. For the sake of simplicity, we are creating the link through the dashboard like so:
 
 <iframe width="630" height="450" src="https://www.youtube.com/embed/fpesz5VhrS0" frameborder="0" allowfullscreen></iframe>
 
-## Prepare your app to handle the coupon
+## 2. Prepare your app to handle the coupon
 
 The following snippet depicts how our SDK delegates the coupon to your app, so you can then
 do whatever you think it's best. In this simple example, we are just going to display a success
@@ -102,7 +102,7 @@ app is launched.
 
 <a href="http://support.hokolinks.com/android/android-deeplinking/#metadata" class="btn-next">Metadata documentation &#8594;</a>
 
-## Limit the number of redeems (optional)
+## 3. (Optional) Limit the number of redeems
 
 As an added bonus, HOKO allows you to set a limit on how many times your users can access or redeem
 the coupon. Please check our

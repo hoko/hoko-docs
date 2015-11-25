@@ -120,10 +120,34 @@ When the user opens your app through a smart link, it's up to you to present the
 within your app. You also have to define what are the deep linking routes that your app is going to
 support.
 
-We will take care of everything else. Be sure to check the documentation about
-[Route Mapping](http://support.hokolinks.com/ios/ios-deeplinking/#route-mapping) to know
-how to handle smart links inside your app.
+Map routes using the deep linking module's `mapRoute:toTarget` method
+inside the `application:didFinishLaunchingWithOptions:` of your application `AppDelegate` subclass.
 
-Further more, we provide utility methods to help you handling smart links, like presenting the correct view
-or setting the root view, based on the route parameters, query parameters or metadata.
-Check the documentation about [Deeplink Utilities](http://support.hokolinks.com/ios/ios-utilities/) to know more.
+{% highlight objective-c %}
+[[Hoko deeplinking] mapRoute:@"restaurant/:restaurant_id"
+                    toTarget:^(HOKDeeplink *deeplink) {
+  NSString* productId = deeplink.routeParameters[@"restaurant_id"];
+
+  // Do something when deeplink is opened
+}];
+{% endhighlight %}
+
+{% highlight swift %}
+Hoko.deeplinking().mapRoute("restaurant/:restaurant_id", toTarget: {
+  (deeplink: HOKDeeplink) -> Void in
+    if let productId = deeplink.routeParameters?["restaurant_id"] {
+      // Do something when deep link is opened
+    }
+})
+{% endhighlight %}
+
+This will map a `restaurant/:restaurant_id` route to an executable `target` block. This `target`
+will always be executed when a deep link matching the route is opened in the user's device,
+e.g. opening `hoko://restaurant/pizza`. You can find more information about
+[Route Mapping](http://support.hokolinks.com/ios/ios-deeplinking/#route-mapping) in the
+documentation.
+
+Further more, we provide utility methods to help you handling smart links, like presenting the
+correct view or setting the root view, based on the route parameters, query parameters or metadata.
+Check the documentation about [Deeplink Utilities](http://support.hokolinks.com/ios/ios-utilities/)
+to know more.

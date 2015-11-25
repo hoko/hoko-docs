@@ -1,13 +1,13 @@
 ---
 title: Newsletters
-categories: benefits
+categories:
 layout: documentation
-permalink: /:categories/newsletters
+permalink: /benefits/android/newsletters
 description: Re-engage with your users with smart newsletters.
 ---
 
-<a href="#" class="tab active">iOS</a>
-<a href="http://support.hokolinks.com/benefits/android/newsletters/" class="tab">Android</a>
+<a href="http://support.hokolinks.com/benefits/newsletters/" class="tab">iOS</a>
+<a href="#" class="tab active">Android</a>
 
 Newsletters are a great way to re-engage your users and make them aware of your products.
 Nevertheless it's important to provide a great experience once the user engages with the newsletter
@@ -49,34 +49,41 @@ When the user opens your app through a smart link, it's up to you to present the
 within your app. You also have to define what are the deep linking routes that your app is going to
 support.
 
-Map routes using the deep linking module's `mapRoute:toTarget` method
-inside the `application:didFinishLaunchingWithOptions:` of your application `AppDelegate` subclass.
+One way to start mapping your routes with HOKO is to use our simple and straightforward
+**annotations** at the beginning of your `Activities` and `Fragments`.
 
-{% highlight objective-c %}
-[[Hoko deeplinking] mapRoute:@"products/:product_id"
-                    toTarget:^(HOKDeeplink *deeplink) {
-  NSString* productId = deeplink.routeParameters[@"product_id"];
+{% highlight java %}
+@DeeplinkRoute("products/:product_id")
+public class ProductActivity extends Activity {
 
-  // Do something when deeplink is opened
-}];
+  @DeeplinkRouteParameter("product_id")
+  private int mProductId;
+
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    mProductId = getIntent().getIntExtra("product_id", 0);
+
+    // Do something when deeplink is opened
+  }
+}
 {% endhighlight %}
 
-{% highlight swift %}
-Hoko.deeplinking().mapRoute("products/:product_id", toTarget: {
-  (deeplink: HOKDeeplink) -> Void in
-    if let productId = deeplink.routeParameters?["product_id"] {
-      // Do something when deep link is opened
-    }
+If you wish to **manually** manage the deep linking logic, all you have to do is map each route
+with `Hoko.deeplinking().mapRoute()` and a `DeeplinkCallback` callback object.
+
+{% highlight java %}
+Hoko.deeplinking().mapRoute("products/:product_id", new DeeplinkCallback() {
+  @Override
+  public void deeplinkOpened(Deeplink deeplink) {
+    String productId = deeplink.getRouteParameters().get("product_id");
+
+    // Start your activity to show the item
+  }
 })
 {% endhighlight %}
 
-This will map a `products/:product_id` route to an executable `target` block. This `target`
-will always be executed when a deep link matching the route is opened in the user's device,
-e.g. opening `hoko://products/amazing-case`. You can find more information about
-[Route Mapping](http://support.hokolinks.com/ios/ios-deeplinking/#route-mapping) in the
-documentation.
-
-Further more, we provide utility methods to help you handling smart links, like presenting the
-correct view or setting the root view, based on the route parameters, query parameters or metadata.
-Check the documentation about [Deeplink Utilities](http://support.hokolinks.com/ios/ios-utilities/)
-to know more.
+You can find more information about
+[Route Mapping](http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations)
+in the documentation.

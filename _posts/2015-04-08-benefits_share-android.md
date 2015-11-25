@@ -105,6 +105,41 @@ When the user opens your app through a smart link, it's up to you to present the
 within your app. You also have to define what are the deep linking routes that your app is going to
 support.
 
-We will take care of everything else. Be sure to check the documentation about
+One way to start mapping your routes with HOKO is to use our simple and straightforward
+**annotations** at the beginning of your `Activities` and `Fragments`.
+
+{% highlight java %}
+@DeeplinkRoute("products/:product_id")
+public class ProductActivity extends Activity {
+
+  @DeeplinkRouteParameter("product_id")
+  private int mProductId;
+
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    mProductId = getIntent().getIntExtra("product_id", 0);
+
+    // Do something when deeplink is opened
+  }
+}
+{% endhighlight %}
+
+If you wish to **manually** manage the deep linking logic, all you have to do is map each route
+with `Hoko.deeplinking().mapRoute()` and a `DeeplinkCallback` callback object.
+
+{% highlight java %}
+Hoko.deeplinking().mapRoute("products/:product_id", new DeeplinkCallback() {
+  @Override
+  public void deeplinkOpened(Deeplink deeplink) {
+    String productId = deeplink.getRouteParameters().get("product_id");
+
+    // Start your activity to show the item
+  }
+})
+{% endhighlight %}
+
+You can find more information about
 [Route Mapping](http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations)
-to know how to handle smart links inside your app.
+in the documentation.

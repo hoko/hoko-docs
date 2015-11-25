@@ -145,7 +145,7 @@ If you prefer metadata
 just use the `metadata` attribute instead of `queryParameters`.
 Read more information about [metadata](http://support.hokolinks.com/ios/ios-deeplinking/#metadata).
 
-## 2. Personalized Landing Page
+## 2. Personalized landing page
 
 Now that we know how to create and share referral smart links, we must handle
 these links once the users opens the app. We are going to

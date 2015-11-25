@@ -17,6 +17,8 @@ If an application which has a **product detail view controller** it should someh
 {% highlight objective-c %}
 [[Hoko deeplinking] mapRoute:@"products/:product_id"
                     toTarget:^(HOKDeeplink *deeplink) {
+  NSString* productId = deeplink.routeParameters[@"product_id"];
+
   // Do something when deeplink is opened
 }];
 {% endhighlight %}
@@ -24,11 +26,13 @@ If an application which has a **product detail view controller** it should someh
 {% highlight swift %}
 Hoko.deeplinking().mapRoute("products/:product_id", toTarget: {
   (deeplink: HOKDeeplink) -> Void in
-    // Do something when deep link is opened
+    if let productId = deeplink.routeParameters?["product_id"] {
+      // Do something when deep link is opened
+    }
 })
 {% endhighlight %}
 
-This will map a `products/:product_id` route to an executable `target` block. This `target` will always be executed when a deep link matching the route is opened in the user's device. (e.g. opening `hoko://products/42?referrer=hokolinks.com`).
+This will map a `products/:product_id` route to an executable `target` block. This `target` will always be executed when a deep link matching the route is opened in the user's device, e.g. opening `hoko://products/42?referrer=hokolinks.com`.
 
 ### HOKDeeplink
 

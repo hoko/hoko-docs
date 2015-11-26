@@ -9,8 +9,8 @@ description: E-commerce and deals applications can take advantage of HOKO by emb
 <a href="#" class="tab active">iOS</a>
 <a href="http://support.hokolinks.com/benefits/android/coupons/" class="tab">Android</a>
 
-Create coupons that can be reused throughout the mobile and desktop arena
-seamlessly. All you need to do is create a smart link with metadata, prepare you app to handle
+Create coupons that can be used seamlessly on mobile and desktop.
+All you need to do is create a smart link with metadata, prepare you app to handle
 coupons and share the link. We will take care of driving both new users and current users directly
 to your app, even if they need to go through the app store in between.
 

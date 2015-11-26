@@ -109,3 +109,12 @@ how many times your users can redeem the metadata through the `Dashboard` under 
 editing the smart link. Hence, we guarantee that the coupon is only going to be redeemed the right
 amount of times.
 
+![Redeem limit](/assets/images/redeem-limit.png)
+
+### More information
+
+Need to know more about these subjects? Check the following pages for more information:
+
+- [Mapping routes with callbacks](http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations)
+- [Generating smart links](http://support.hokolinks.com/android/android-deeplinking/#smart-link-generation)
+- [Smart links with Metadata](http://support.hokolinks.com/android/android-deeplinking/#metadata)

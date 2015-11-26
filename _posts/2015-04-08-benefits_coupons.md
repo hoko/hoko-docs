@@ -9,21 +9,17 @@ description: E-commerce and deals applications can take advantage of HOKO by emb
 <a href="#" class="tab active">iOS</a>
 <a href="http://support.hokolinks.com/benefits/android/coupons/" class="tab">Android</a>
 
-Create coupons links that can be reused throughout the mobile and desktop arena
-seamlessly. All you need to do is create a smart link with metadata,
-prepare you app to handle coupons and share the link.
-
-We will take care of driving both new users and current users directly to your app, even if they
-need to go through the app store in between. Inside the app we will delegate the coupon so you can
-presented it to the user.
+Create coupons that can be reused throughout the mobile and desktop arena
+seamlessly. All you need to do is create a smart link with metadata, prepare you app to handle
+coupons and share the link. We will take care of driving both new users and current users directly
+to your app, even if they need to go through the app store in between.
 
 ![Coupons](/assets/images/use-case-coupon.png)
 
-As soon as your app is ready to handle any kind of coupons, you can focus only on creating and
-sharing their links. We provide you with a sample app that demonstrates what we are going to discuss
-here in-depth.
+Inside your app, the SDK will delegate the coupon so you can presented it to the user.
+You can view this use case in-depth in a sample app provided here.
 
-<a href="https://github.com/hokolinks/HOKOstore" class="btn-next" target="_blank">Demo app using coupons (Swift) &#8594;</a>
+<a href="https://github.com/hokolinks/HOKOstore" class="btn-next" target="_blank">Sample app with coupons (Swift) &#8594;</a>
 
 ## Step 1: Creating the smart link for the coupon
 
@@ -82,8 +78,8 @@ Hoko.deeplinking().addHandlerBlock { (deeplink: HOKDeeplink) -> Void in
 
 If you intend to create a more complex structure of deep links we recommend you have a separate
 route just for coupons. In this case you would be using the `mapRoute:toTarget:` delegation method.
-
-<a href="http://support.hokolinks.com/ios/ios-deeplinking/#metadata" class="btn-next">Metadata documentation &#8594;</a>
+Please check our
+[metadata](http://support.hokolinks.com/ios/ios-deeplinking/#metadata) documentation to learn more.
 
 ## Step 3: (Optional) Limit the number of redeems
 
@@ -91,6 +87,8 @@ In use cases like coupons, we want to control the access to the metadata. You ca
 how many times your users can redeem the metadata through the `Dashboard` under `Redeem limit` when
 editing the smart link. Hence, we guarantee that the coupon is only going to be redeemed the right
 amount of times.
+
+![Redeem limit](/assets/images/redeem-limit.png)
 
 If you are creating the smart link through the SDK you can also define this limit through the
 `redeemLimit` parameter when creating the `HOKDeeplink` object.
@@ -120,5 +118,11 @@ Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink:
 }
 {% endhighlight %}
 
-Please check our
-[metadata](http://support.hokolinks.com/ios/ios-deeplinking/#metadata) documentation to learn more.
+### More information
+
+Need to know more about these subjects? Check the following pages for more information:
+
+- [Mapping routes with callbacks](http://support.hokolinks.com/ios/ios-deeplinking/#route-mapping)
+- [Generating smart links](http://support.hokolinks.com/ios/ios-deeplinking/#smart-link-generation)
+- [Smart links with Metadata](http://support.hokolinks.com/ios/ios-deeplinking/#metadata)
+- [Utilities](http://support.hokolinks.com/ios/ios-utilities/)

@@ -41,7 +41,7 @@ support.
 #### Route mapping with annotations
 
 One way to start mapping your routes with HOKO is to use our simple and straightforward
-**annotations** at the beginning of your `Activities` and `Fragments`.
+annotations at the beginning of your `Activities` and `Fragments`.
 
 {% highlight java %}
 @DeeplinkRoute("products/:product_id")

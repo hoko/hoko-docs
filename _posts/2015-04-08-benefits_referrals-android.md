@@ -9,26 +9,15 @@ description: Learn more about using HOKO smart links to enhance your user experi
 <a href="http://support.hokolinks.com/benefits/ios/referrals/" class="tab">iOS</a>
 <a href="#" class="tab active">Android</a>
 
-Consumers are more willing to try or buy a product if recommended by someone on
-their network. Moreover, you can combine Referrals with Coupons to achieve a bigger
-boost on sales and installs. Before diving into the code, let's consider the following example.
+Allow your users to invite others through referrals. We will use smart
+links to identify the user sending the invite and once the invited user opens the app
+we are going to display a personalized landing page to make the experience
+extra special and welcome.
 
 ![Referrals](/assets/images/referrals.jpg)
 
-Ricardo is looking for a nice restaurant in the Yood! app. After choosing the restaurant he invites
-a friend through the app. The app is going to create and send a message to his friend that contains
-a smart link generated through the SDK.
-
-When the link is created, the app adds some metadata to the smart link to associate it with
-Ricardo’s friend invitation.
-
-Later, Ricardo’s friend is going to tap on the smart link on his device. Since the app it’s not
-installed on the device, the smart link will take Ricardo’s friend through the app store.
-
-After installing and opening the app, our SDK will figure it out that the user comes from an
-invitation and it will download the pre-assigned metadata. The Yood! app will present these data by
-saluting the friend with a special discount and displaying Ricardo profile picture, just to make the
-experience extra special and welcome!
+Take a step further and combine referrals with coupons to increase its efficiency.
+We are going to start by preparing your app to generate and share smart links.
 
 ## Step 1: Sharing the smart link
 
@@ -153,3 +142,14 @@ public class InviteSignUpActivity extends Activity {
 {% endhighlight %}
 
 That's it. You now have a customized referral experience that your users are going to love!
+
+### More information
+
+Need to know more about this? You can find more information in the following pages:
+
+- [Mapping routes with callbacks](http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations)
+- [Generating smart links](http://support.hokolinks.com/android/android-deeplinking/#smart-link-generation)
+- [Utilities](http://support.hokolinks.com/android/android-utilities/)
+
+Check our [frequently asked questions](http://support.hokolinks.com/faq/) or [send us a message](mailto:support@hokolinks.com) if you can't find what you are looking for. We're always glad
+to hear from you and answer all your questions.

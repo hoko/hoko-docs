@@ -9,6 +9,8 @@ description: Re-engage with your users with smart newsletters.
 <a href="http://support.hokolinks.com/benefits/newsletters/" class="tab">iOS</a>
 <a href="#" class="tab active">Android</a>
 
+### Overview
+
 Newsletters with smart links are a great to re-engage your users and drive traffic from e-mails to
 your app. But smart links must be created beforehand to be shared later.
 Hence, sending thousands of e-mails would require you to generate a lot of smart links, where most
@@ -20,7 +22,7 @@ We are introducing Lazy Smart Links for Newsletters that will generate smart lin
 on-demand. Tapping on a lazy smart link triggers the creation of smart link that will follow your
 pre-configured templates and drive the user to your app.
 
-## Step 1: Creating lazy smart links
+### Step 1: Creating lazy smart links
 
 Creating a lazy smart link is extremely easy. All you need to do is to create an `HTML` hyperlink
 that follows a specific format and includes the **encoded** mobile deep link that will drive the
@@ -32,7 +34,7 @@ user to your view inside your app, in the `uri` query parameter.
 
 You can find more information about [Lazy Smart Links](http://support.hokolinks.com/api/rest-creating-lazy-smartlinks/) in its reference section.
 
-## Step 2: Handling smart links inside your app
+### Step 2: Handling smart links inside your app
 
 When the user opens your app through a smart link, it's up to you to present the appropriate view
 within your app. You also have to define what are the deep linking routes that your app is going to
@@ -80,3 +82,14 @@ Hoko.deeplinking().mapRoute("products/:product_id", new DeeplinkCallback() {
 You can find more information about
 [Route Mapping](http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations)
 in the documentation.
+
+### More information
+
+Need to know more about this? You can find more information in the following pages:
+
+- [Mapping routes with callbacks](http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations)
+- [Generating smart links](http://support.hokolinks.com/android/android-deeplinking/#smart-link-generation)
+- [Utilities](http://support.hokolinks.com/android/android-utilities/)
+
+Check our [frequently asked questions](http://support.hokolinks.com/faq/) or [send us a message](mailto:support@hokolinks.com) if you can't find what you are looking for. We're always glad
+to hear from you and answer all your questions.

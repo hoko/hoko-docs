@@ -19,7 +19,7 @@ Embedding smart links in messages can be a powerful way
 of **promoting your app** with deep linked content. With this in mind, our SDK allows
 developers to send messages that will target your app using smart links.
 
-## 1. Embedding smart links in text messages
+## Step 1: Embedding smart links in text messages
 
 Let's start by creating a mobile deep link for this item using the `deeplinkWithRoute` method.
 This is necessary so the app knows what to do when some other user opens the app through the link.
@@ -90,7 +90,7 @@ Once the recipient user taps on the smart link, the smart will drive the user to
 where it will handle the deep link and show the appropriate view. If it's a new user, the smart link
 will take the user through the app store to install your app.
 
-## 2. Handle smart links inside your app
+## Step 2: Handling smart links inside your app
 
 When the user opens your app through a smart link, it's up to you to present the appropriate view
 within your app. You also have to define what are the deep linking routes that your app is going to
@@ -126,7 +126,7 @@ Hoko.deeplinking().mapRoute("products/:product_id", new DeeplinkCallback() {
   public void deeplinkOpened(Deeplink deeplink) {
     String productId = deeplink.getRouteParameters().get("product_id");
 
-    // Start your activity to show the item
+    // Start the activity to show the item
   }
 })
 {% endhighlight %}

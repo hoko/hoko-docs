@@ -44,7 +44,7 @@ public class MyProductActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Was this Activity started manually or through a smart link?
+        // Was this Activity manually started or through a smart link?
         if (!Hoko.deeplinking().inject(this)) {
             // If it was manually called
         } else {

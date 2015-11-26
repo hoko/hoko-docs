@@ -9,22 +9,18 @@ description: Learn more about using HOKO smart links to enhance your user experi
 <a href="http://support.hokolinks.com/benefits/ios/referrals/" class="tab">iOS</a>
 <a href="#" class="tab active">Android</a>
 
-Incentives work! Referrals and Invites help you not only to grow your traffic but also, get
-quality clients. Consumers are more willing to try or buy a product if recommended by someone on
-their network. Also, you can combine Referrals with Coupons, which will give you an even bigger
-boost on your sales.
-
-Inviting or referring someone to use your app is the best way to **increase installs** and HOKO can
-definitely help you with that. Here's an example of this use case:
+Consumers are more willing to try or buy a product if recommended by someone on
+their network. Moreover, you can combine Referrals with Coupons to achieve a bigger
+boost on sales and installs. Before diving into the code, let's consider the following example.
 
 ![Referrals](/assets/images/referrals.jpg)
 
 Ricardo is looking for a nice restaurant in the Yood! app. After choosing the restaurant he invites
 a friend through the app. The app is going to create and send a message to his friend that contains
- a smart link generated through the SDK.
+a smart link generated through the SDK.
 
 When the link is created, the app adds some metadata to the smart link to associate it with
- Ricardo’s friend invitation.
+Ricardo’s friend invitation.
 
 Later, Ricardo’s friend is going to tap on the smart link on his device. Since the app it’s not
 installed on the device, the smart link will take Ricardo’s friend through the app store.
@@ -34,22 +30,17 @@ invitation and it will download the pre-assigned metadata. The Yood! app will pr
 saluting the friend with a special discount and displaying Ricardo profile picture, just to make the
 experience extra special and welcome!
 
-## Step 1: Creating and sharing the referring smart link
+## Step 1: Sharing the smart link
 
 Generate referrals with smart links through our SDK using `query parameters` or `metadata`.
-It's up to you to decide which method suits you best. Moreover, you can use both if you need to.
+It's up to you to decide which method suits you. Moreover, you can use and combine both
+if you need to.
+
+#### Option 1: Smart links with query parameters
 
 With `query parameters` your links will have extra information visible, e.g.
 `http://app.hoko.link/invitation?referrer=OfjaiSD8h9238`. These links are easier to create
 and to be shared because there is no need for pre-configurations.
-
-That's the case of `metadata`, because it requires you
-to assign and load data when creating and parsing the smart link. Although, these links are shorter
-and clearer because they don't use HTTP query parameters. e.g. `http://app.hoko.link/invitation`.
-
-Smart links with `metadata` are ideal to hide and control sensitive data. They also have the
-advantage of supporting unlimited meta data, unlike query parameters where you are limit by the
-length of the URL.
 
 In this example we are going to have a look on how to create a smart link with
 parameters as a referral link, using the SDK and its `generateSmartlinkForDeeplink` method.
@@ -61,52 +52,36 @@ the messaging app that we wants to send the message. Let's have a look at the co
 needed to generate and share the smart link:
 
 {% highlight java %}
-// This private method would be called inside your Activity's onCreate()
-// method and it's used to setup the invite button to generate a new
-// HOKO Smart link when tapped.
 private void setupInviteButton() {
   // R.id.inviteButton would be the ID you would give to that button
-  mInviteButton = (Button) findViewById(R.id.inviteButton);
+  mInviteButton = (Button)findViewById(R.id.inviteButton);
 
-  // Add a click event listener so you know when to ask HOKO to generate
-  // your awesome smart links
+  // Add a click event listener to generate smart links
   mInviteButton.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-      // First, we'll create a new deep link with the referrer data so
-      // we can generate a smart link from it.
-      // For this example, we will use the route "invite" for the deep links.
-      //
-      // NOTE: Make sure you're already mapping that route before executing the
-      // following code, otherwise the smart link generation won't work.
-
       HashMap queryParameters = new HashMap();
       queryParameters.put("referrer", mCurrentUser.getName());
 
       Deeplink deeplink = Deeplink.deeplink("invite", null, queryParameters);
 
-      // After that, just call the generateSmartlink SDK method
-      // and we'll handle all the hard work for you
+      // Generate the smart link based on a deep link
       Hoko.deeplinking().generateSmartlink(deeplink, new LinkGenerationListener() {
           @Override
           public void onLinkGenerated(String smartlink) {
-            // A smart link was generated successfully. Let's share it!
-
+            // Build the message together with the smart link
             String inviteText = "Join me, this app is a-mazing! " + smartlink;
             Intent inviteIntent = new Intent(Intent.ACTION_SEND);
             inviteIntent.setType("text/plain");
             inviteIntent.putExtra(Intent.EXTRA_TEXT, inviteText);
+
+            // And... it's ready! Let's present the share popup to the user
             startActivity(Intent.createChooser(inviteIntent, "Share"));
           }
 
           @Override
           public void onError(Exception e) {
-            // Ooops, looks like HOKO couldn't create your awesome Smart link
-            // But don't be sad, the error description will clear up
-            // on what's wrong
             System.out.println(e.getMessage());
-
-            // Fail gracefully. Show an error popup, for instance
             showErrorPopup();
           }
       });
@@ -116,9 +91,24 @@ private void setupInviteButton() {
 
 {% endhighlight %}
 
-If you prefer metadata
-just use the `metadata` attribute instead of `queryParameters`.
-Read more information about [metadata](http://support.hokolinks.com/ios/ios-deeplinking/#metadata).
+Thanks to `Deeplink.deeplink` this will generate a smart link like
+`http://app.hoko.link/invitation?referrer=OfjaiSD8h9238`. Alternatively, you could create the same
+smart link using `metadata`.
+
+#### Option 2: Smart links with metadata
+
+Smart links with `metadata` requires you
+to assign and load data when creating and parsing the smart link. Nevertheless, these links are
+shorter and clearer because they don't use HTTP query parameters,
+e.g. `http://app.hoko.link/invitation`.
+
+Metadata are ideal to hide and control sensitive data. They also have the
+advantage of supporting unlimited meta data, unlike query parameters where you are limit by the
+length of the URL.
+
+Use the `metadata` argument in `Deeplink.deeplink` to pass a hash with the respecting metadata
+to be saved with the smart link. Read more information about
+[metadata](http://support.hokolinks.com/android/android-deeplinking/#metadata).
 
 ## Step 2: Personalized landing page
 
@@ -134,12 +124,10 @@ case Ricardo) that referred the new user. You can go even further by getting the
 picture and other information from your back end.
 
 {% highlight java %}
-// Start by mapping the invite route so your Activity gets called every time
-// a new referral deep link is opened
+// Map route and Activity to be called when opening a smart link
 @DeeplinkRoute("invite")
 public class InviteSignUpActivity extends Activity {
-  // This variable will automatically receive the deep link's
-  // referrer query parameter when a smart link is opened.
+  // Inject the value of the query parameter into this variable
   @DeeplinkQueryParameter("referrer")
   private String mReferrerName;
 
@@ -147,32 +135,20 @@ public class InviteSignUpActivity extends Activity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    // We need to check whether this Activity was started via a HOKO smart
-    // link or manually. To do that, we call the 'inject()' method.
-    // If that returns false, it means that this Activity was
-    // not called through a smart link.
+    // Was this Activity manually started or through a smart link?
     if (!Hoko.deeplinking().inject(this)) {
-      // This Activity was not called from a HOKO smart link
-      // Your code here to process the Activity ...
-
+      // If it was manually called
     } else {
-      // This block of code will _only_ be executed if a smart link
-      // was opened.
-
       // Verify if the invite link has a referrer in the query parameters
       if (mReferrerName != null) {
-        // If so, present your personalized landing page with the referrer name
+        // Present your personalized landing page with the referrer name
         showInviteSignUpWithReferrer(mReferrerName);
       } else {
         // The deep link does not contain any information about the referrer.
-        // Fail gracefully or show the default sign up view
         showRegularSignUp();
       }
     }
   }
-
-  . . .
-
 }
 {% endhighlight %}
 

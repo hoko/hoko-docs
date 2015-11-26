@@ -9,26 +9,17 @@ description: Learn more about using HOKO smart links to enhance your user experi
 <a href="http://support.hokolinks.com/benefits/ios/coupons/" class="tab">iOS</a>
 <a href="#" class="tab active">Android</a>
 
-Digital Coupons & Discounts are an excellent way of advertising on a low marketing budget.
-This marketing and sales hook, will enable you to sell more products and faster, besides
-promoting customer loyalty. On the other hand, it's also a great tool to increase brand
-awareness and drive traffic to your app.
-
-HOKO allows you create coupons links that can be reused throughout the mobile and desktop arena
-seamlessly. All you need to do is create a smart link with metadata,
-prepare you app to handle coupons and share the link.
-
-We will take care of driving both new users and current users directly to your app, even if they
-need to go through the app store in between. Inside the app we will delegate the coupon so you can
-presented it to the user.
+Create coupons that can be reused throughout the mobile and desktop arena
+seamlessly. All you need to do is create a smart link with metadata, prepare you app to handle
+coupons and share the link. We will take care of driving both new users and current users directly
+to your app, even if they need to go through the app store in between.
 
 ![Coupons](/assets/images/use-case-coupon.png)
 
-As soon as your app is ready to handle any kind of coupons, you can focus only on creating and
-sharing their links. We provide you with a sample app that demonstrates what we are going to discuss
-here in-depth.
+Inside your app, the SDK will delegate the coupon so you can presented it to the user.
+You can view this use case in-depth in a sample app provided here.
 
-<a href="https://github.com/hokolinks/HOKOStore-Android" class="btn-next" target="_blank">Demo app using coupons (Android) &#8594;</a>
+<a href="https://github.com/hokolinks/HOKOstore" class="btn-next" target="_blank">Sample app with coupons (Swift) &#8594;</a>
 
 ## Step 1: Creating the smart link for the coupon
 

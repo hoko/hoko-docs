@@ -9,41 +9,30 @@ description: Re-engage with your users with smart newsletters.
 <a href="#" class="tab active">iOS</a>
 <a href="http://support.hokolinks.com/benefits/android/newsletters/" class="tab">Android</a>
 
-Newsletters are a great way to re-engage your users and make them aware of your products.
-Nevertheless it's important to provide a great experience once the user engages with the newsletter
-to increase its effectiveness and further re-engagements.
-
-Newsletters usually drive traffic from e-mail clients to your website or app but most of the times
-is either one way of the other. Moreover, mobile deep links to apps usually drive users to welcome
-or sign up views. Truth be told, mobile deep links don't work if the app is not installed.
-
-All these jumps hinder the experience. Mobile developers create beautiful apps that are designed for
-premium experiences on mobile devices. Hence, the optimal experience should in fact be taking users
-from Newsletters to Apps and straight to the product view and through the App Store to install the
-app if they have to.
+Newsletters with smart links are a great to re-engage your users and drive traffic from e-mails to
+your app. But smart links must be created beforehand to be shared later.
+Hence, sending thousands of e-mails would require you to generate a lot of smart links, where most
+would probably never be used.
 
 ![Newsletter](/assets/images/newsletters.png)
 
-We are introducing Lazy Smart Links for Newsletters that will make this as easy as pie.
-Tapping on a lazy smart link triggers the creation of smart link that will follow your templates
-and rules and drive the user to your app. When the user opens the app, the SDK will call your
-app to present the appropriate view.
+We are introducing Lazy Smart Links for Newsletters that will generate smart links
+on-demand. Tapping on a lazy smart link triggers the creation of smart link that will follow your
+pre-configured templates and drive the user to your app.
 
-## 1. Creating the lazy smart link
+## Step 1: Creating lazy smart links
 
-You will probably create hundreds of newsletters using your e-mail campaign software. Creating smart
-links manually for every link in a newsletter would then require a lot of copy and paste work.
-
-Creating a lazy smart link is extremely easy. All you need to do is to create a hyperlink that
-follows a specific format and includes the mobile deep link that will direct the user to your app.
+Creating a lazy smart link is extremely easy. All you need to do is to create an `HTML` hyperlink
+that follows a specific format and includes the **encoded** mobile deep link that will drive the
+user to your view inside your app, in the `uri` query parameter.
 
 {% highlight bash %}
-<a href="http://app.hoko.link/lazy?uri=products%2Famazing-case">Buy Now</a>
+<a href="http://yourapp.hoko.link/lazy?uri=products%2F">Buy Now</a>
 {% endhighlight %}
 
-<a href="http://support.hokolinks.com/api/rest-creating-lazy-smartlinks/" class="btn-next">More information about Lazy Smart Links</a>
+You can find more information about [Lazy Smart Links](http://support.hokolinks.com/api/rest-creating-lazy-smartlinks/) in its reference section.
 
-## 2. Handle smart links inside your app
+## Step 2: Handling smart links inside your app
 
 When the user opens your app through a smart link, it's up to you to present the appropriate view
 within your app. You also have to define what are the deep linking routes that your app is going to
@@ -70,7 +59,7 @@ Hoko.deeplinking().mapRoute("products/:product_id", toTarget: {
 })
 {% endhighlight %}
 
-This will map a `products/:product_id` route to an executable `target` block. This `target`
+This will map a `products/:product_id` route to an executable `target` block that
 will always be executed when a deep link matching the route is opened in the user's device,
 e.g. opening `hoko://products/amazing-case`. You can find more information about
 [Route Mapping](http://support.hokolinks.com/ios/ios-deeplinking/#route-mapping) in the

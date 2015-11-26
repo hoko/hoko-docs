@@ -30,15 +30,11 @@ Let's keep it simple and say that is a seasonally discount, e.g. cyber Monday. T
 ## Step 2: Prepare your app to handle the coupon
 
 The following snippet depicts how our SDK delegates the coupon to your app, so you can then
-do whatever you think it's best. In this simple example, we are just going to display a success
-popup.
+do whatever you think it's best. In this simple example, we are just going to display a
+popup with a success message.
 
 {% highlight objective-c %}
 // AppDelegate.m
-
-// addHandlerBlock: is going to be called every time your application opens a
-// deep link. if you prefer, you can focus on specific deep link routes,
-// to give a coupon/discount, by using mapRoute:toTarget:
 [[Hoko deeplinking] addHandlerBlock:^(HOKDeeplink *deeplink) {
     // check if the deeplink has metadata for coupons
     if (deeplink.metadata[@"coupon"] && deeplink.metadata[@"value"]) {
@@ -59,14 +55,10 @@ popup.
 
 {% highlight swift %}
 // AppDelegate.swift
-
-// addHandlerBlock() is going to be called every time your application opens a
-// deeplink. if you prefer, you can focus on specific deeplink routes, to give
-// a coupon/discount, by using mapRoute(_:toTarget:)
 Hoko.deeplinking().addHandlerBlock { (deeplink: HOKDeeplink) -> Void in
-    // check if the deeplink has metadata for 'coupon'
+    // Check if the deeplink has metadata for 'coupon'
     if let coupon = deeplink.metadata?["coupon"] {
-        // notify the user that they successfully redeemed your coupon
+        // Notify the user that they successfully redeemed your coupon
         let alertController = UIAlertController(title: "Congratulations",
                                                 message: "You just earned a $\(coupon) through a coupon because you clicked on the right link!", preferredStyle: .Alert)
         let action = UIAlertAction(title: "Awesome!", style: .Default, handler: nil)
@@ -76,9 +68,9 @@ Hoko.deeplinking().addHandlerBlock { (deeplink: HOKDeeplink) -> Void in
 }
 {% endhighlight %}
 
-If you intend to create a more complex structure of deep links we recommend you have a separate
-route just for coupons. In this case you would be using the `mapRoute:toTarget:` delegation method.
-Please check our
+The `addHandlerBlock()` is going to be called every time your application opens a
+deeplink. If you prefer, you can focus on one specific deeplink routes at the time using the
+`mapRoute(_:toTarget:)` delegation method. Please check our
 [metadata](http://support.hokolinks.com/ios/ios-deeplinking/#metadata) documentation to learn more.
 
 ## Step 3: (Optional) Limit the number of redeems
@@ -126,3 +118,6 @@ Need to know more about these subjects? Check the following pages for more infor
 - [Generating smart links](http://support.hokolinks.com/ios/ios-deeplinking/#smart-link-generation)
 - [Smart links with Metadata](http://support.hokolinks.com/ios/ios-deeplinking/#metadata)
 - [Utilities](http://support.hokolinks.com/ios/ios-utilities/)
+
+Check our [frequently asked questions](http://support.hokolinks.com/faq/) or [send us a message](mailto:support@hokolinks.com) if you can't find what you are looking for. We're always glad
+to hear from you and answer all your questions.

@@ -30,18 +30,13 @@ Let's keep it simple and say that is a seasonally discount, e.g. cyber Monday. T
 ## Step 2: Prepare your app to handle the coupon
 
 The following snippet depicts how our SDK delegates the coupon to your app, so you can then
-do whatever you think it's best. In this simple example, we are just going to display a success
-popup.
+do whatever you think it's best. In this simple example, we are just going to display a
+popup with a success message.
 
 {% highlight java %}
-// First you need to use the @DeeplinkRoute annotation in your Activities that
-// will tell the SDK which Activity should be started when a deep link,
-// that matches the route given in the parameters, is opened.
-// In this case, we will use "product/:product_id".
 @DeeplinkRoute("product/:product_id")
 public class MyProductActivity extends Activity {
-    // This variable will automatically receive the deep link's
-    // metadata when a smart link is opened.
+    // Inject the smart link metadata into this variable
     @DeeplinkMetadata
     public JSONObject metadata;
 
@@ -49,18 +44,11 @@ public class MyProductActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // We need to check whether this Activity was started via a HOKO smart
-        // link or manually. To do that, we call the 'inject()' method.
-        // If that returns false, it means that this Activity was
-        // not called through a smart link.
+        // Was this Activity started manually or through a smart link?
         if (!Hoko.deeplinking().inject(this)) {
-            // Your code here to process the Activity
-
+            // If it was manually called
         } else {
-            // This block of code will _only_ be executed if a smart link
-            // was opened.
-            //
-            // We will check if the deep link contains any metadata
+            // Check if the smart link opened has any medatada
             if (this.metadata != null) {
                 // Get the coupon name from the metadata
                 String couponName = metadata.optString("coupon");
@@ -68,9 +56,6 @@ public class MyProductActivity extends Activity {
                 // Get coupon discount from the metadata
                 double couponDiscount = metadata.optDouble("value");
 
-                // We assume that if we can retrieve the coupon name
-                // from the deep link's metadata, there's a real
-                // coupon available
                 if (couponName != null) {
                     System.out.println(
                         "Successfully redeemed the coupon '"
@@ -79,19 +64,22 @@ public class MyProductActivity extends Activity {
                                   + couponDiscount
                     );
                 }
-
-              // Your code here to process the Activity, whether there
-              // was a coupon in the deep link's metadata or not
             }
+
+            // Do something when there is no metadata
         }
     }
 }
 {% endhighlight %}
 
-If everything goes well, you should see the message `Successfully redeemed the coupon` when your
-app is launched.
+Notice the `@DeeplinkRoute` annotation that will tell our SDK that this Activity
+should be started when a deep link that matches the route given is opened, i.e.
+`product/:product_id`. Next we use the `@DeeplinkMetadata` to inject any metadata present in
+the smart link into the variable.
 
-<a href="http://support.hokolinks.com/android/android-deeplinking/#metadata" class="btn-next">Metadata documentation &#8594;</a>
+When the Activity starts we must check if it was started by a smart link or manually. To know this,
+we call the `inject()` method that returns `true` if this Activity was called through a
+smart link.
 
 ## Step 3: (Optional) Limit the number of redeems
 
@@ -109,3 +97,6 @@ Need to know more about these subjects? Check the following pages for more infor
 - [Mapping routes with callbacks](http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations)
 - [Generating smart links](http://support.hokolinks.com/android/android-deeplinking/#smart-link-generation)
 - [Smart links with Metadata](http://support.hokolinks.com/android/android-deeplinking/#metadata)
+
+Check our [frequently asked questions](http://support.hokolinks.com/faq/) or [send us a message](mailto:support@hokolinks.com) if you can't find what you are looking for. We're always glad
+to hear from you and answer all your questions.

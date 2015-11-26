@@ -9,12 +9,7 @@ description: E-commerce and deals applications can take advantage of HOKO by emb
 <a href="#" class="tab active">iOS</a>
 <a href="http://support.hokolinks.com/benefits/android/coupons/" class="tab">Android</a>
 
-Digital Coupons & Discounts are an excellent way of advertising on a low marketing budget.
-This marketing and sales hook, will enable you to sell more products and faster, besides
-promoting customer loyalty. On the other hand, it's also a great tool to increase brand
-awareness and drive traffic to your app.
-
-HOKO allows you create coupons links that can be reused throughout the mobile and desktop arena
+Create coupons links that can be reused throughout the mobile and desktop arena
 seamlessly. All you need to do is create a smart link with metadata,
 prepare you app to handle coupons and share the link.
 
@@ -30,13 +25,13 @@ here in-depth.
 
 <a href="https://github.com/hokolinks/HOKOstore" class="btn-next" target="_blank">Demo app using coupons (Swift) &#8594;</a>
 
-## 1. Creating the smart link for the coupon
+## Step 1: Creating the smart link for the coupon
 
 Let's keep it simple and say that is a seasonally discount, e.g. cyber Monday. Thus, we must create the smart link and add the necessary metadata. You can either create the smart link through the dashboard or through the SDK. For the sake of simplicity, we are creating the link through the dashboard like so:
 
 <iframe width="630" height="450" src="https://www.youtube.com/embed/fpesz5VhrS0" frameborder="0" allowfullscreen></iframe>
 
-## 2. Prepare your app to handle the coupon
+## Step 2: Prepare your app to handle the coupon
 
 The following snippet depicts how our SDK delegates the coupon to your app, so you can then
 do whatever you think it's best. In this simple example, we are just going to display a success
@@ -90,8 +85,40 @@ route just for coupons. In this case you would be using the `mapRoute:toTarget:`
 
 <a href="http://support.hokolinks.com/ios/ios-deeplinking/#metadata" class="btn-next">Metadata documentation &#8594;</a>
 
-## 3. (Optional) Limit the number of redeems
+## Step 3: (Optional) Limit the number of redeems
 
-As an added bonus, HOKO allows you to set a limit on how many times your users can access or redeem
-the coupon. Please check our
+In use cases like coupons, we want to control the access to the metadata. You can define
+how many times your users can redeem the metadata through the `Dashboard` under `Redeem limit` when
+editing the smart link. Hence, we guarantee that the coupon is only going to be redeemed the right
+amount of times.
+
+If you are creating the smart link through the SDK you can also define this limit through the
+`redeemLimit` parameter when creating the `HOKDeeplink` object.
+
+{% highlight objective-c %}
+HOKDeeplink *deeplink = [HOKDeeplink deeplinkWithRoute:@"products/:product_id"
+                                       routeParameters:@{@"product_id": @(self.product.identifier)}
+                                       queryParameters:@{@"referrer": self.user.name}
+                                              metadata:@{@"coupon": @"20"}
+                                           redeemLimit:3];
+[[Hoko deeplinking] generateSmartlinkForDeeplink:deeplink success:^(NSString *smartlink) {
+  // Do something with the smart link
+} failure:^(NSError *error) {
+  // Oops, something went wrong
+}];
+{% endhighlight %}
+
+{% highlight swift %}
+let deeplink = HOKDeeplink("products/:product_id", routeParameters: ["product_id": product.identifier],
+                                                 queryParameters:["referrer": user.name],
+                                                 metadata: ["coupon": "20"],
+                                                 redeemLimit: 3)
+Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink: String) -> Void in
+  // Do something with the smart link
+}) { (error: NSError) -> Void in
+  // Oops, something went wrong
+}
+{% endhighlight %}
+
+Please check our
 [metadata](http://support.hokolinks.com/ios/ios-deeplinking/#metadata) documentation to learn more.

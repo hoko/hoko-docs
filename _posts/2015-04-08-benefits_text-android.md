@@ -9,15 +9,15 @@ description: Learn more about using HOKO smart links to enhance your user experi
 <a href="http://support.hokolinks.com/benefits/ios/text/" class="tab">iOS</a>
 <a href="#" class="tab active">Android</a>
 
-SMS, iMessage, Messaging Apps... allow your users to share content through text channels,
-always delivering the best possible experience. Our goal is to be able to drive users straight
-to the app once they click on a smart link inside a text message.
+Our goal is to be able to drive users straight
+to the app once they tap on a smart link inside a text message. Keep in mind that it's up to the
+OS to render the message with a clickable hyperlink. Some messaging apps on Android don't render
+hyperlinks. In those cases you should consider sending e-mails instead.
 
 ![Smart links in text messages](/assets/images/hoko-smart-link.png)
 
-Embedding smart links in messages can be a powerful way
-of **promoting your app** with deep linked content. With this in mind, our SDK allows
-developers to send messages that will target your app using smart links.
+We are going to achieve this by building the message with an embedded smart link. Your app is going
+to facilitate this using our SDK and react when the message is sent.
 
 ## Step 1: Embedding smart links in text messages
 
@@ -27,32 +27,16 @@ Next, we are going to encapsulate the deeplink inside a smart
 link using the `generateSmartlinkForDeeplink` function.
 
 Finally, we are going to send the message using Android `Intent.ACTION_VIEW`.
-In the following snippet we will demonstrate how you can do this in-depth:
 
 {% highlight java %}
-// This private method would be called inside your Activity's onCreate()
-// method and it's used to setup the share text button to generate a new
-// HOKO Smart link when tapped.
 private void setupShareTextButton() {
   // R.id.shareTextButton would be the ID you would give to that button
   mShareTextButton = (Button) findViewById(R.id.shareTextButton);
 
-  // Add a click event listener so you know when to ask HOKO to generate
-  // your awesome smart links
+  // Add a click event listener to send the message
   mShareTextButton.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-      // OK, button tapped. Let's do this!
-
-      // For this example, we will share a smart link for one product inside
-      // the app and, therefore, we will use the route "product/:product_id"
-      // for the product deep links.
-      //
-      // NOTE: Make sure you're already mapping that route before executing
-      // the following code, otherwise the smart link generation won't work.
-
-      // Start by creating an HashMap for your deeplink's route parameters
-      // and the Deeplink object itself.
       HashMap routeParameters = new HashMap();
       routeParameters.put("product_id", Integer.toString(mProduct.getId()));
 
@@ -62,22 +46,19 @@ private void setupShareTextButton() {
       Hoko.deeplinking().generateSmartlink(productDeeplink, new LinkGenerationListener() {
           @Override
           public void onLinkGenerated(String smartlink) {
-            // The Smart link was created successfully. Let's send it
-
+            // Build the SMS
             String textBody = "Hey! You should check out this product. I have a feeling that you'll love it. " + smartlink;
             Intent textMessageIntent = new Intent(Intent.ACTION_VIEW);
             textMessageIntent.setType("vnd.android-dir/mms-sms");
             textMessageIntent.putExtra("sms_body", textBody);
+
+            // Present the messaging controller
             startActivity(textMessageIntent);
           }
 
           @Override
           public void onError(Exception e) {
-            // Oh no! There was an error while trying to generate a
-            // new HOKO Smart link.
             System.out.println(e.getMessage());
-
-            // Notify the user that an error occurred.
             displayErrorAlert();
           }
       });
@@ -96,8 +77,10 @@ When the user opens your app through a smart link, it's up to you to present the
 within your app. You also have to define what are the deep linking routes that your app is going to
 support.
 
+#### Route mapping with annotations
+
 One way to start mapping your routes with HOKO is to use our simple and straightforward
-**annotations** at the beginning of your `Activities` and `Fragments`.
+annotations at the beginning of your `Activities` and `Fragments`.
 
 {% highlight java %}
 @DeeplinkRoute("products/:product_id")
@@ -117,8 +100,10 @@ public class ProductActivity extends Activity {
 }
 {% endhighlight %}
 
-If you wish to **manually** manage the deep linking logic, all you have to do is map each route
-with `Hoko.deeplinking().mapRoute()` and a `DeeplinkCallback` callback object.
+#### Route mapping without annotations
+
+If you wish to manage the deep linking mapping logic manually, all you have to do is to map each
+route with `Hoko.deeplinking().mapRoute()` and a `DeeplinkCallback` callback object.
 
 {% highlight java %}
 Hoko.deeplinking().mapRoute("products/:product_id", new DeeplinkCallback() {
@@ -134,3 +119,14 @@ Hoko.deeplinking().mapRoute("products/:product_id", new DeeplinkCallback() {
 You can find more information about
 [Route Mapping](http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations)
 in the documentation.
+
+### More information
+
+Need to know more about this? You can find more information in the following pages:
+
+- [Mapping routes with callbacks](http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations)
+- [Generating smart links](http://support.hokolinks.com/android/android-deeplinking/#smart-link-generation)
+- [Utilities](http://support.hokolinks.com/android/android-utilities/)
+
+Check our [frequently asked questions](http://support.hokolinks.com/faq/) or [send us a message](mailto:support@hokolinks.com) if you can't find what you are looking for. We're always glad
+to hear from you and answer all your questions.

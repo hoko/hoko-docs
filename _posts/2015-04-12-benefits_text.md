@@ -9,15 +9,14 @@ description: Besides sharing content on social networks, your users can also do 
 <a href="#" class="tab active">iOS</a>
 <a href="http://support.hokolinks.com/benefits/android/text/" class="tab">Android</a>
 
-SMS, iMessage, Messaging Apps... allow your users to share content through text channels,
-always delivering the best possible experience. Our goal is to be able to drive users straight
-to the app once they click on a smart link inside a text message.
+Our goal is to be able to drive users straight
+to the app once they tap on a smart link inside a text message. Keep in mind that it's up to the
+OS to render the message with a clickable hyperlink.
 
 ![Smart links in text messages](/assets/images/hoko-smart-link.png)
 
-Embedding smart links in messages can be a powerful way
-of **promoting your app** with deep linked content. With this in mind, our SDK allows
-developers to send messages that will target your app using smart links.
+We are going to achieve this by building the message with an embedded smart link. Your app is going
+to facilitate this using our SDK and react when the message is sent.
 
 ## Step 1: Embedding smart links in text messages
 
@@ -28,80 +27,45 @@ link using the `generateSmartlinkForDeeplink` function.
 
 Finally, we are going to send the message using iOS `MFMessageComposeViewController`. Once the
 message it's sent we can react to the outcome of this action by delegating
-`messageComposeViewController:didFinishWithResult` to our controller. In the
-following snippet we will demonstrate how you can do this in-depth:
+`messageComposeViewController:didFinishWithResult` to our controller.
 
 {% highlight objective-c %}
 #import <Hoko/Hoko.h>
 
-// First step: To work with SMS, you will need to import the following
-// framework. You can import it right on your .m file
+// Import iOS messaging library
 #import <MessageUI/MessageUI.h>
 
-// Next up: make sure your view controller conforms to the
-// MFMessageComposeViewControllerDelegate delegate.
+// Delegate MFMessageComposeViewControllerDelegate
 @interface YourViewController () <MFMessageComposeViewControllerDelegate>
-
 @end
 
-. . .
+...
 
 - (IBAction)shareSMSButtonTapped:(id)sender {
-  // Before actually sending the message, we need to check if the device
-  // supports SMS
+  // Check if the device supports SMS
   if ([MFMessageComposeViewController canSendText]) {
-    // Cool, we're good to go!
-
-    // For this example, we will share a smart link for one product inside
-    // the app and, therefore, we will use the route "product/:product_id"
-    // for the product deep links.
-    //
-    // NOTE: Make sure you're already mapping that route (in your
-    // AppDelegate.m, for instance) before executing the following code,
-    // otherwise the smart link generation won't work.
     NSString *productID = [NSString stringWithFormat:@"%li", self.currentProduct.uniqueID];
     HOKDeeplink *productDeeplink = [HOKDeeplink deeplinkWithRoute:@"product/:product_id"
                                                   routeParameters:@{@"product_id": productID}];
 
+     // Create the smart link based on the deep link
     [[Hoko deeplinking] generateSmartlinkForDeeplink:productDeeplink success:^(NSString *smartlink) {
-      // The Smart link was generated successfully. Let's send it
 
+      // Build the SMS
       MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
       controller.body = [NSString stringWithFormat:@"Hey! You should check out this product. I have a feeling that you'll love it. %@", smartlink];
       controller.messageComposeDelegate = self;
+
+      // Present the messaging controller
       [self presentViewController:controller animated:YES completion:nil];
 
     } failure:^(NSError *error) {
-      // Oh no! There was an error while trying to generate a
-      // new HOKO Smart link.
       NSLog(@"%@", error.description);
-
-      // Notify the user that an error occurred.
       [self displayErrorAlert];
     }];
   } else {
     // Bummer... Looks like the device does not support SMS
   }
-}
-
-// Final step: implement the MFMessageComposeViewController delegate method
-- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
-  switch (result) {
-    case MessageComposeResultSent:
-      // The SMS was successfully sent
-      break;
-
-    case MessageComposeResultCancelled:
-      // Looks like the user cancelled the SMS
-      break;
-
-    default:
-      // Failed sending a message
-      break;
-  }
-
-  // Dismiss the SMS view controller so the user gets back to your app
-  [controller dismissViewControllerAnimated:YES completion:nil];
 }
 {% endhighlight %}
 
@@ -147,11 +111,36 @@ import MessageUI
     // Bummer... Looks like the device does not support SMS
   }
 }
+{% endhighlight %}
 
-. . .
+Sending a message is delegated to the OS, but your app must implement the
+`MFMessageComposeViewController`
+to support the different outcomes.
 
-// Final step: we need to make sure our View Controller conforms to the
-// MFMessageComposeViewControllerDelegate delegate
+{% highlight objective-c %}
+// Final step: implement the MFMessageComposeViewController delegate method
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+  switch (result) {
+    case MessageComposeResultSent:
+      // The SMS was successfully sent
+      break;
+
+    case MessageComposeResultCancelled:
+      // Looks like the user cancelled the SMS
+      break;
+
+    default:
+      // Failed sending a message
+      break;
+  }
+
+  // Dismiss the SMS view controller so the user gets back to your app
+  [controller dismissViewControllerAnimated:YES completion:nil];
+}
+{% endhighlight %}
+
+{% highlight swift %}
+// Final step: implement the MFMessageComposeViewController delegate method
 extension YourViewController: MFMessageComposeViewControllerDelegate {
   func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
     switch (result.rawValue) {
@@ -215,3 +204,14 @@ Further more, we provide utility methods to help you handling smart links, like 
 correct view or setting the root view, based on the route parameters, query parameters or metadata.
 Check the documentation about [Deeplink Utilities](http://support.hokolinks.com/ios/ios-utilities/)
 to know more.
+
+### More information
+
+Need to know more about this? You can find more information in the following pages:
+
+- [Mapping routes with callbacks](http://support.hokolinks.com/ios/ios-deeplinking/#route-mapping)
+- [Generating smart links](http://support.hokolinks.com/ios/ios-deeplinking/#smart-link-generation)
+- [Utilities](http://support.hokolinks.com/ios/ios-utilities/)
+
+Check our [frequently asked questions](http://support.hokolinks.com/faq/) or [send us a message](mailto:support@hokolinks.com) if you can't find what you are looking for. We're always glad
+to hear from you and answer all your questions.

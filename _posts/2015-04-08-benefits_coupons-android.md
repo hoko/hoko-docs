@@ -9,28 +9,34 @@ description: Learn more about using HOKO smart links to enhance your user experi
 <a href="http://support.hokolinks.com/benefits/ios/coupons/" class="tab">iOS</a>
 <a href="#" class="tab active">Android</a>
 
-One way to take advantage of HOKO is by embedding your own **coupons or discounts** on your links. To do this, start by creating a new smart link and adding a new `metadata` entry to it, like the following:
+Create coupons that can be reused throughout the mobile and desktop arena
+seamlessly. All you need to do is create a smart link with metadata, prepare you app to handle
+coupons and share the link. We will take care of driving both new users and current users directly
+to your app, even if they need to go through the app store in between.
 
-{% highlight json %}
-{
-  "coupon": "save20",
-  "value": "20"
-}
-{% endhighlight %}
+![Coupons](/assets/images/use-case-coupon.png)
 
+Inside your app, the SDK will delegate the coupon so you can presented it to the user.
+You can view this use case in-depth in a sample app provided here.
 
-After doing that, your link is fully ready to transmit metadata to your users. The following code shows how you can put this into practice with a very simple and straightforward example that explains how you can decode and access the coupon's data and log a simple message to the console with the information you want:
+<a href="https://github.com/hokolinks/HOKOstore" class="btn-next" target="_blank">Sample app with coupons (Swift) &#8594;</a>
 
+## Step 1: Creating the smart link for the coupon
+
+Let's keep it simple and say that is a seasonally discount, e.g. cyber Monday. Thus, we must create the smart link and add the necessary metadata. You can either create the smart link through the dashboard or through the SDK. For the sake of simplicity, we are creating the link through the dashboard like so:
+
+<iframe width="630" height="450" src="https://www.youtube.com/embed/fpesz5VhrS0" frameborder="0" allowfullscreen></iframe>
+
+## Step 2: Prepare your app to handle the coupon
+
+The following snippet depicts how our SDK delegates the coupon to your app, so you can then
+do whatever you think it's best. In this simple example, we are just going to display a
+popup with a success message.
 
 {% highlight java %}
-// First you need to use the @DeeplinkRoute annotation in your Activities that
-// will tell the SDK which Activity should be started when a deep link,
-// that matches the route given in the parameters, is opened.
-// In this case, we will use "product/:product_id".
 @DeeplinkRoute("product/:product_id")
 public class MyProductActivity extends Activity {
-    // This variable will automatically receive the deep link's
-    // metadata when a smart link is opened.
+    // Inject the smart link metadata into this variable
     @DeeplinkMetadata
     public JSONObject metadata;
 
@@ -38,18 +44,11 @@ public class MyProductActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // We need to check whether this Activity was started via a HOKO smart
-        // link or manually. To do that, we call the 'inject()' method.
-        // If that returns false, it means that this Activity was
-        // not called through a smart link.
+        // Was this Activity manually started or through a smart link?
         if (!Hoko.deeplinking().inject(this)) {
-            // Your code here to process the Activity
-
+            // If it was manually called
         } else {
-            // This block of code will _only_ be executed if a smart link
-            // was opened.
-            //
-            // We will check if the deep link contains any metadata
+            // Check if the smart link opened has any medatada
             if (this.metadata != null) {
                 // Get the coupon name from the metadata
                 String couponName = metadata.optString("coupon");
@@ -57,9 +56,6 @@ public class MyProductActivity extends Activity {
                 // Get coupon discount from the metadata
                 double couponDiscount = metadata.optDouble("value");
 
-                // We assume that if we can retrieve the coupon name
-                // from the deep link's metadata, there's a real
-                // coupon available
                 if (couponName != null) {
                     System.out.println(
                         "Successfully redeemed the coupon '"
@@ -68,21 +64,39 @@ public class MyProductActivity extends Activity {
                                   + couponDiscount
                     );
                 }
-
-              // Your code here to process the Activity, whether there
-              // was a coupon in the deep link's metadata or not
             }
+
+            // Do something when there is no metadata
         }
     }
 }
 {% endhighlight %}
 
-<a href="https://github.com/hokolinks/HOKOStore-Android" class="btn-next" target="_blank">Demo app using coupons &#8594;</a>
+Notice the `@DeeplinkRoute` annotation that will tell our SDK that this Activity
+should be started when a deep link that matches the route given is opened, i.e.
+`product/:product_id`. Next we use the `@DeeplinkMetadata` to inject any metadata present in
+the smart link into the variable.
 
-### Limit the number of redeems (optional)
+When the Activity starts we must check if it was started by a smart link or manually. To know this,
+we call the `inject()` method that returns `true` if this Activity was called through a
+smart link.
 
-As an added bonus, HOKO allows you to set a limit to how many times the metadata field can be accessed while opening a deeplink. This can be set through a `redeemLimit` when generating a smartlink. This will make sure that whenever a smartlink is opened it will only be able to retrieve the `metadata` field if the redeem limit has not been reached.
+## Step 3: (Optional) Limit the number of redeems
 
-Please check our Metadata documentation on how to limit the number of coupon redeems.
+In use cases like coupons, we want to control the access to the metadata. You can define
+how many times your users can redeem the metadata through the `Dashboard` under `Redeem limit` when
+editing the smart link. Hence, we guarantee that the coupon is only going to be redeemed the right
+amount of times.
 
-<a href="http://support.hokolinks.com/android/android-deeplinking/#metadata" class="btn-next">Metadata documentation &#8594;</a>
+![Redeem limit](/assets/images/redeem-limit.png)
+
+### More information
+
+Need to know more about these subjects? Check the following pages for more information:
+
+- [Mapping routes with callbacks](http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations)
+- [Generating smart links](http://support.hokolinks.com/android/android-deeplinking/#smart-link-generation)
+- [Smart links with Metadata](http://support.hokolinks.com/android/android-deeplinking/#metadata)
+
+Check our [frequently asked questions](http://support.hokolinks.com/faq/) or [send us a message](mailto:support@hokolinks.com) if you can't find what you are looking for. We're always glad
+to hear from you and answer all your questions.

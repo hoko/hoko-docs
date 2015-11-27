@@ -1,16 +1,18 @@
 ---
-title: Ad Campaigns
+title: Mobile Ads
 categories: benefits
 layout: documentation
 permalink: /:categories/ad-campaigns
 description: HOKO works perfectly as both reengagement and acquisition campaigns due to the nature of how smart links work (with and without the app installed).
 ---
 
-## Using AdMob Campaigns
-
 HOKO works perfectly as both reengagement and acquisition campaigns due to the nature of how smart links work (with and without the app installed).
 
-In order to fulfill an ad network campaign all that is required is for the campaign link to be a HOKO smart link (e.g. http://app.hoko.link/adcampaign) instead of the link to the AppStore. To do this go to your **Admob Dashboard** (https://apps.admob.com), go to **Promote**, click on **Create New Campaign** and follow the steps below.
+In order to create an ad campaign all that is required is for the campaign link to be a HOKO smart link (e.g. `http://app.hoko.link/adcampaign`) instead of the link to the AppStore.
+
+## With AdMob
+
+To do this go to your **Admob Dashboard** (https://apps.admob.com), go to **Promote**, click on **Create New Campaign** and follow the steps below.
 
 ![](/assets/images/ios-admob-step-1.png)
 
@@ -20,7 +22,7 @@ After selecting the app of which you want to create a new campaign, select eithe
 
 When clicking either of them, a special input box referring the **Destination URL** will be among them and instead of setting it to the default (the application's AppStore URL) you can set it to a HOKO smart link which will lead your users not only to download your app but also to a specific content inside of it, regardless if they need to install it and open it, or just opening the content directly if they have the app already.
 
-## Using Facebook Ad Campaigns
+## With Facebook Ads
 
 Aside from AdMob, HOKO also works with Facebook Ad campaigns, both reengagement and acquisition. This is due to the fact that smart links can be opened regardless of the app being already installed or not.
 

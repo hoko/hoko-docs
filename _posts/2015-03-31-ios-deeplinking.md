@@ -17,6 +17,8 @@ If an application which has a **product detail view controller** it should someh
 {% highlight objective-c %}
 [[Hoko deeplinking] mapRoute:@"products/:product_id"
                     toTarget:^(HOKDeeplink *deeplink) {
+  NSString* productId = deeplink.routeParameters[@"product_id"];
+
   // Do something when deeplink is opened
 }];
 {% endhighlight %}
@@ -24,11 +26,13 @@ If an application which has a **product detail view controller** it should someh
 {% highlight swift %}
 Hoko.deeplinking().mapRoute("products/:product_id", toTarget: {
   (deeplink: HOKDeeplink) -> Void in
-    // Do something when deep link is opened
+    if let productId = deeplink.routeParameters?["product_id"] {
+      // Do something when deep link is opened
+    }
 })
 {% endhighlight %}
 
-This will map a `products/:product_id` route to an executable `target` block. This `target` will always be executed when a deep link matching the route is opened in the user's device. (e.g. opening `hoko://products/42?referrer=hokolinks.com`).
+This will map a `products/:product_id` route to an executable `target` block. This `target` will always be executed when a deep link matching the route is opened in the user's device, e.g. opening `hoko://products/42?referrer=hokolinks.com`.
 
 ### HOKDeeplink
 
@@ -157,8 +161,8 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
 
 ## Universal Links Delegation (NSUserActivity)
 
-HOKO is all about saving your development time and, with that in mind, our SDK also **does not require** you to delegate the `application:continueUserActivity:restorationHandler:` method from the `AppDelegate` in order to work with Apple's Universal Links (HOKO handles all of this automatically via method swizzling). Although that delegate method is used for Universal Links, keep in mind that it is also used for `Handoff` and `iOS 9's` search.  
-When this method is called, HOKO verifies that the link associated with the `NSUserActivity`, generated and passed by `iOS`, is a proper HOKO link. If it's not, the SDK will redirect the method's call to your `AppDelegate`, if implemented.  
+HOKO is all about saving your development time and, with that in mind, our SDK also **does not require** you to delegate the `application:continueUserActivity:restorationHandler:` method from the `AppDelegate` in order to work with Apple's Universal Links (HOKO handles all of this automatically via method swizzling). Although that delegate method is used for Universal Links, keep in mind that it is also used for `Handoff` and `iOS 9's` search.
+When this method is called, HOKO verifies that the link associated with the `NSUserActivity`, generated and passed by `iOS`, is a proper HOKO link. If it's not, the SDK will redirect the method's call to your `AppDelegate`, if implemented.
 Should you choose to delegate manually, you must make sure to return `true` in case the `NSUserActivity` was handled, by either HOKO or by any framework/method and `false` otherwise.
 
 {% highlight objective-c %}
@@ -282,10 +286,13 @@ If you choose not to have a completion block, you can use the `openSmartlink:` m
 
 ## Metadata
 
-The passing of `metadata` through **Smartlinks** involves securely saving data on the HOKO platform and retrieving it when the smartlink is opened in the application. This allows the developer to pass sensitive information through deeplink.
+Passing `metadata` through smart links is meant to securely save data on HOKO platform
+and retrieve it when the smart link is opened inside the app. Hence passing sensitive information
+through deeplink.
 
-To make sure that developers have greater control on how this metadata is consumed, upon generating a Smartlink through a `HOKDeeplink` object, you can specify the `redeemLimit` of a given `HOKDeeplink` object.
-This allows you to control how many times a given Smartlink is opened and can actually retrieve sensitive information saved in the metadata field.
+You can also limit the access to this sensitive metadata by controlling how many times your user can
+redeem your metadata. Just specify the `redeemLimit` parameter of a given
+`HOKDeeplink` object.
 
 {% highlight objective-c %}
 HOKDeeplink *deeplink = [HOKDeeplink deeplinkWithRoute:@"products/:product_id"
@@ -314,7 +321,8 @@ Hoko.deeplinking().generateSmartlinkForDeeplink(deeplink, success: { (smartlink:
 }
 {% endhighlight %}
 
-When a deeplink with metadata is opened you can `redeem` it to make sure the redeem limit is respected upon opening a deeplink.
+When a deeplink with metadata is opened you can `redeem` it to make sure the redeem limit
+is respected upon opening a deeplink.
 
 {% highlight objective-c %}
 [[Hoko deeplinking] mapRoute:@"products/:product_id"
@@ -343,15 +351,18 @@ Hoko.deeplinking().mapRoute("products/:product_id", toTarget: {
 })
 {% endhighlight %}
 
+You can not only add metadata to a smart link through the SDK, but also when you are creating
+or editing a smart link inside the dashboard.
+
 ## Deep link filtering (optional)
 
-A filter allows you to explicitly control if a deep link should be open right away or not. Simply add a new filter block calling `addFilterBlock` for any kind of validation that you may need.  
+A filter allows you to explicitly control if a deep link should be open right away or not. Simply add a new filter block calling `addFilterBlock` for any kind of validation that you may need.
 Each of your **filter blocks** will be called by the SDK when a deep link is about to open (passing that deep link object as the block's parameter) and you should return `true` if that deep link should be processed or `false` otherwise.
 
 For instance, a deep link for a friend’s profile page in a chat app should not be open if the user is not logged in at the moment. To accomplish this behavior, you should check if the user is not signed in and return `false` to stop the opening of the deep link or return `true` to open it right away.
 After the user signed up, you can retrieve the latest deep link, processed by SDK, by accessing the `currentDeeplink` property in `HOKDeeplinking` and check if it `wasOpened`. If it was not, simply call `[[Hoko deeplinking] openCurrentDeeplink]` to open it.
 
-If **all** of your filter blocks return a truthy response it means that your application is ready to open the deep link (and consequently that deep link's route will be called as usual), otherwise the deep link will be saved in the SDK's `currentDeeplink` which can be manually accessed and opened later on.  
+If **all** of your filter blocks return a truthy response it means that your application is ready to open the deep link (and consequently that deep link's route will be called as usual), otherwise the deep link will be saved in the SDK's `currentDeeplink` which can be manually accessed and opened later on.
 
 {% highlight objective-c %}
 [[Hoko deeplinking] addFilterBlock:^BOOL (HOKDeeplink *deeplink) {

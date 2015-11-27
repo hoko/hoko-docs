@@ -84,7 +84,7 @@ func application(application: UIApplication,
 }
 {% endhighlight %}
 
-If you wish to use your own domain(s) on your HOKO smart links (<a href="http://support.hokolinks.com/how-tp-setup-a-custom-domain/" target="_blank">see "Setting up a custom domain"</a>), setup the iOS SDK using `setupWithToken:customDomains:` as following:
+If you are using a <a href="http://support.hokolinks.com/how-to-setup-a-custom-domain/" target="_blank">custom domain</a> in your smart links, you must setup the iOS SDK using `setupWithToken:customDomain:` as following:
 
 {% highlight objective-c %}
 #import <Hoko/Hoko.h>
@@ -92,7 +92,7 @@ If you wish to use your own domain(s) on your HOKO smart links (<a href="http://
 - (BOOL)application:(UIApplication *)application
   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   [Hoko setupWithToken:@"YOUR-APP-TOKEN"
-         customDomains:@[@"your.custom.domain.com"]];
+         customDomain:@"your.custom.domain.com"];
   // The rest of your code goes here...
 
   return YES;
@@ -103,7 +103,7 @@ If you wish to use your own domain(s) on your HOKO smart links (<a href="http://
 func application(application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
   Hoko.setupWithToken("YOUR-APP-TOKEN",
-      customDomains: ["your.custom.domain.com"])
+      customDomain: "your.custom.domain.com")
   // The rest of your code goes here...
 
   return true

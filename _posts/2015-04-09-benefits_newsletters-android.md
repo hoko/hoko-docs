@@ -1,13 +1,13 @@
 ---
 title: Newsletters
-categories: benefits
+categories:
 layout: documentation
-permalink: /:categories/newsletters
+permalink: /benefits/android/newsletters
 description: Re-engage with your users with smart newsletters.
 ---
 
-<a href="#" class="tab active">iOS</a>
-<a href="http://support.hokolinks.com/benefits/android/newsletters/" class="tab">Android</a>
+<a href="http://support.hokolinks.com/benefits/newsletters/" class="tab">iOS</a>
+<a href="#" class="tab active">Android</a>
 
 Newsletters with smart links are a great to re-engage your users and drive traffic from e-mails to
 your app. But smart links must be created beforehand to be shared later.
@@ -38,45 +38,56 @@ When the user opens your app through a smart link, it's up to you to present the
 within your app. You also have to define what are the deep linking routes that your app is going to
 support.
 
-Map routes using the deep linking module's `mapRoute:toTarget` method
-inside the `application:didFinishLaunchingWithOptions:` of your application `AppDelegate` subclass.
+#### Route mapping with annotations
 
-{% highlight objective-c %}
-[[Hoko deeplinking] mapRoute:@"products/:product_id"
-                    toTarget:^(HOKDeeplink *deeplink) {
-  NSString* productId = deeplink.routeParameters[@"product_id"];
+One way to start mapping your routes with HOKO is to use our simple and straightforward
+annotations at the beginning of your `Activities` and `Fragments`.
 
-  // Do something when deeplink is opened
-}];
+{% highlight java %}
+@DeeplinkRoute("products/:product_id")
+public class ProductActivity extends Activity {
+
+  @DeeplinkRouteParameter("product_id")
+  private int mProductId;
+
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    mProductId = getIntent().getIntExtra("product_id", 0);
+
+    // Do something when deeplink is opened
+  }
+}
 {% endhighlight %}
 
-{% highlight swift %}
-Hoko.deeplinking().mapRoute("products/:product_id", toTarget: {
-  (deeplink: HOKDeeplink) -> Void in
-    if let productId = deeplink.routeParameters?["product_id"] {
-      // Do something when deep link is opened
-    }
+#### Route mapping without annotations
+
+If you wish to manage the deep linking mapping logic manually, all you have to do is to map each
+route with `Hoko.deeplinking().mapRoute()` and a `DeeplinkCallback` callback object.
+
+{% highlight java %}
+Hoko.deeplinking().mapRoute("products/:product_id", new DeeplinkCallback() {
+  @Override
+  public void deeplinkOpened(Deeplink deeplink) {
+    String productId = deeplink.getRouteParameters().get("product_id");
+
+    // Start the activity to show the item
+  }
 })
 {% endhighlight %}
 
-This will map a `products/:product_id` route to an executable `target` block that
-will always be executed when a deep link matching the route is opened in the user's device,
-e.g. opening `hoko://products/amazing-case`. You can find more information about
-[Route Mapping](http://support.hokolinks.com/ios/ios-deeplinking/#route-mapping) in the
-documentation.
-
-Further more, we provide utility methods to help you handling smart links, like presenting the
-correct view or setting the root view, based on the route parameters, query parameters or metadata.
-Check the documentation about [Deeplink Utilities](http://support.hokolinks.com/ios/ios-utilities/)
-to know more.
+You can find more information about
+[Route Mapping](http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations)
+in the documentation.
 
 ### More information
 
 Need to know more about this? You can find more information in the following pages:
 
-- [Mapping routes with callbacks](http://support.hokolinks.com/ios/ios-deeplinking/#route-mapping)
-- [Generating smart links](http://support.hokolinks.com/ios/ios-deeplinking/#smart-link-generation)
-- [Utilities](http://support.hokolinks.com/ios/ios-utilities/)
+- [Mapping routes with callbacks](http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations)
+- [Generating smart links](http://support.hokolinks.com/android/android-deeplinking/#smart-link-generation)
+- [Utilities](http://support.hokolinks.com/android/android-utilities/)
 
 Check our [frequently asked questions](http://support.hokolinks.com/faq/) or [send us a message](mailto:support@hokolinks.com) if you can't find what you are looking for. We're always glad
 to hear from you and answer all your questions.

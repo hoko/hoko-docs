@@ -12,7 +12,7 @@ description: Nowadays, most modern apps and APIs use some sort of OAuth or anoth
 Take your app's log-in form to the next level by letting your users sign in with a single tap of a
 button, avoiding complex passwords typing or password resets requests.
 
-![](/assets/images/slack-one-click-login.png)
+<iframe width="630" height="450" src="https://www.youtube.com/embed/pr4SSCID0uM" frameborder="0" allowfullscreen></iframe>
 
 After tapping on the button the user will receive an email with an embedded smart link. Tapping on
 the email's link, will take the user back to the app and loggin him in.

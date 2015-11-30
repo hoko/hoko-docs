@@ -9,24 +9,37 @@ description: Learn more about using HOKO smart links to enhance your user experi
 <a href="http://support.hokolinks.com/benefits/ios/one-click-login/" class="tab">iOS</a>
 <a href="#" class="tab active">Android</a>
 
-Nowadays, most modern apps and APIs use some sort of OAuth or another token-based login session. With HOKO you can leverage it to the next level. Let's take an approach similar to Slack's Magical Link login.
+Take your app's log-in form to the next level by signing your users with a single tap of a button.
+Provide your users an innovative way to avoid having to type complex passwords or request
+password resets.
 
 ![](/assets/images/slack-one-click-login.png)
 
-After inputting your email you are presented with a **Send Magic Link** button and a **Type password instead** button. Let's focus on the first one. What this does is request the server to send an email to the user's account, which contains a link carrying the user's token to be passed to the app through their deep linking logic.
+After tapping on the button the user will receive an email with an embedded smart link. Tapping on
+the email's link, will take the user back to the app and loggin him in.
+For this to work, your app and your backend must integrate HOKO. Let's start with your app.
 
-For this to work on your app you need to integrate with HOKO on both your back-end and your app. First you need to add a "request one click login" API, which will most likely receive the user's email and some other meta-data. Then, when a request comes in, the server will email the user's email with a lazy smart link (e.g. `http://app.hoko.link/lazy?uri=%2Flogin%2F<user-authentication-token>`). Learn more about lazy smart links <a href="http://support.hokolinks.com/api/rest-creating-lazy-smartlinks" target="_blank">here</a>.
+## Generating the lazy smart link for authentication
 
-For the application itself, all we need to do is map a `login/:auth_token` route and set the user's token without ever needing the user's password.
+The user will enter his email and will tap on the **Send Magic Link** button.
+This will request your server to send an email to the user's account containing a lazy smart link
+with the user's authentication token, e.g. `http://app.hoko.link/lazy?uri=%2Flogin%2Fq5w2e3r5t8y`.
+
+![How One Click Login UX works](https://s3-eu-west-1.amazonaws.com/hoko-blog/one_click_login_diagram.png)
+
+Once the user opens the email and taps on the lazy smart link, it is going to request the generation
+of a smart link that will in fact redirect the user to your app.
+
+## Authenticating the token
+
+For the application itself, all we need to do is map a `login/:auth_token` route that calls a method
+that is going to forward the authorization token to the backend to be validated.
 
 {% highlight java %}
-// Start by adding the DeeplinkRoute annotation that tells the SDK that this
-// Activity will map the "login/:auth_token" route
 @DeeplinkRoute("login/:auth_token")
 public class AuthTokenLoginActivity extends Activity {
 
-  // Your String variable that will automatically receive the auth token from
-  // the HOKO deep link after calling the inject() method
+  // Inject the auth. token in the deep link into this variable
   @DeeplinkRouteParameter("auth_token")
   private String mAuthToken;
 
@@ -36,15 +49,34 @@ public class AuthTokenLoginActivity extends Activity {
     setContentView(R.layout.auth_token_login_view); // your view ID here
 
     if (!Hoko.deeplinking().inject(this)) {
-      // Looks like this Activity was not launched from a HOKO deep link.
-      // Fail gracefully or process the auth login action in another way
-      . . .
-
+      // If you manually launched this activity
     } else {
-      // Your code here to process the user login with your mAuthToken
-      // variable already holding the information from the deep link
-      . . .  
+      // Validates the authentication token in the backend
+      LoginHelper.validateWithToken(mAuthToken, onSuccess);
     }
+  }
+
+  protected void onSuccess() {
+    // Set's the user access token
+    _GLOBAL_AUTH_TOKEN = mAuthToken
+
+    // Display the right activity
+    startActivity(MyActivity)
   }
 }
 {% endhighlight %}
+
+If the response is positive, we can login the user and present the appropriate view. We are also
+going to save the current authorization token to be used on future requests.
+
+### More information
+
+Need to know more about these subjects? Check the following pages for more information:
+
+- [Mapping routes with callbacks](http://support.hokolinks.com/android/android-deeplinking/#route-mapping-using-annotations)
+- [Generating smart links](http://support.hokolinks.com/android/android-deeplinking/#smart-link-generation)
+- [Lazy smart links](http://support.hokolinks.com/api/rest-creating-lazy-smartlinks)
+- [Smart links with Metadata](http://support.hokolinks.com/android/android-deeplinking/#metadata)
+
+Check our [frequently asked questions](http://support.hokolinks.com/faq/) or [send us a message](mailto:support@hokolinks.com) if you can't find what you are looking for. We're always glad
+to hear from you and answer all your questions.

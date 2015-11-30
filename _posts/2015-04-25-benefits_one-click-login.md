@@ -9,9 +9,8 @@ description: Nowadays, most modern apps and APIs use some sort of OAuth or anoth
 <a href="#" class="tab active">iOS</a>
 <a href="http://support.hokolinks.com/benefits/android/one-click-login/" class="tab">Android</a>
 
-Take your app's log-in form to the next level by signing your users with a single tap of a button.
-Provide your users an innovative way to avoid having to type complex passwords or request
-password resets.
+Take your app's log-in form to the next level by letting your users sign in with a single tap of a
+button, avoiding complex passwords typing or password resets requests.
 
 ![](/assets/images/slack-one-click-login.png)
 

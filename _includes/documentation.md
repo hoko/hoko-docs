@@ -54,3 +54,14 @@
     </li>
   {% endfor %}
 </ul>
+
+### Misc.
+
+<ul class="index-list">
+  {% for page in site.categories.misc reversed %}
+    <li>
+      <a href="{{page.url}}">{{ page.title }}</a>
+      <p>{{ page.description }}</p>
+    </li>
+  {% endfor %}
+</ul>

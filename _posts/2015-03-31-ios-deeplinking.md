@@ -159,6 +159,28 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
 }
 {% endhighlight %}
 
+or
+
+{% highlight objective-c %}
+// AppDelegate.m
+func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+  if ([[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation: nil])
+    return YES;
+  return Hoko.deeplinking().openURL(url, sourceApplication: options["UIApplicationOpenURLOptionsSourceApplicationKey"], annotation: nil)
+}
+{% endhighlight %}
+
+{% highlight swift %}
+// AppDelegate.swift
+func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+  if FBSDKApplicationDelegate.sharedInstance().application(app, openURL: url, sourceApplication: options["UIApplicationOpenURLOptionsSourceApplicationKey"] as! String, annotation: nil) {
+    return true
+  }
+
+  return Hoko.deeplinking().openURL(url, sourceApplication: (options["UIApplicationOpenURLOptionsSourceApplicationKey"] as! String), annotation: nil)
+}
+{% endhighlight %}
+
 ## Universal Links Delegation (NSUserActivity)
 
 HOKO is all about saving your development time and, with that in mind, our SDK also **does not require** you to delegate the `application:continueUserActivity:restorationHandler:` method from the `AppDelegate` in order to work with Apple's Universal Links (HOKO handles all of this automatically via method swizzling). Although that delegate method is used for Universal Links, keep in mind that it is also used for `Handoff` and `iOS 9's` search.

@@ -56,6 +56,17 @@ In HOKO we refer to mobile deep linking technology as â€œthe internet of apps.â€
   {% endfor %}
 </ul>
 
+### Preview page
+
+<ul class="index-list">
+  {% for page in site.categories.preview reversed %}
+    <li>
+      <a href="{{page.url}}">{{ page.title }}</a>
+      <p>{{ page.description }}</p>
+    </li>
+  {% endfor %}
+</ul>
+
 ### Templates
 
 <ul class="index-list">

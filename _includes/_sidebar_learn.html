@@ -46,6 +46,21 @@
 <div>
   <ul>
     <li>
+      Preview page
+      <ul>
+      {% for page in site.categories.preview reversed %}
+        <li>
+          <a href="{{page.url}}">{{ page.title }}</a>
+        </li>
+      {% endfor %}
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <ul>
+    <li>
       Templates
       <ul>
       {% for page in site.categories.templates reversed %}

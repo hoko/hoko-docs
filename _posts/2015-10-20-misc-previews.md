@@ -6,7 +6,7 @@ permalink: /:categories/:title
 description: Configure the preview page of your smart links
 ---
 
-Preview pages are shown whenever a Universal or App Link doesn’t work, i.e. on apps that use in-app web views, manually entering the smart link URL or when your app is not installed on the user's device. These pages provide a preview of what the link points to and
+Preview pages are shown whenever a Universal or App Link don't work, i.e. on apps that use in-app web views, manually entering the smart link URL or when your app is not installed on the user's device. These pages provide a preview of what the link points to and
 from there you can open the content in the app or see it online.
 
 ![Smart Link Preview](/assets/images/smart-link-preview.png)

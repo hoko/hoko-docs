@@ -8,7 +8,7 @@ description: The preview page it's a fallback mechanism for when Universal Links
 
 Since iOS 9.0 we cannot know if the device has your app installed, so our preview page has to be ready for when the user has your app and when he doesn't.
 
-#### Avoid this popup with smart links that are specific for intalls (e.g. invitation links) and drive users straight to the app store by skipping the preview page. Check our documentation on [how to skip the preview page](http://support.hokolinks.com/hide-preview).
+#### Avoid this popup with smart links that are specific for intalls (e.g. invitation links) and drive users straight to the app store by skipping the preview page. Check our documentation on [how to skip the preview page](http://support.hokolinks.com/can-I-skip-the-preview-page/).
 
 If the user doesn't have your app installed, he taps on `Open App` and because the app it's not installed, he will see popup saying `Cannot Open Page`. This is a very annoying popup from Apple, but at least the user understands that the reason for it, is because he tried to open something that he doesn't have.
 

@@ -21,7 +21,7 @@ To integrate HOKO open source SDK in your app (only <u>iOS 5 and higher</u>) you
 
 ### Manual integration
 
-1- Download the [Hoko SDK](https://github.com/hokolinks/hoko-ios/archive/master.zip).
+1- Download the [Hoko SDK](https://github.com/hokolinks/hoko-ios/releases/latest).
 
 2- Drag the `Hoko` folder to your project.
 
